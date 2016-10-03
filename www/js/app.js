@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('ignite2', ['ionic','ignite2.controllers'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -23,42 +23,72 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
+  
   $stateProvider
 
-    .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+    .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+    controller: 'LoginCtrl'
   })
 
-  .state('app.dashboard', {
-    url: '/dashboard',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/dashboard.html'
-      }
-    }
+    .state('managerApp', {
+    url: '/managerMenu',
+    templateUrl: 'templates/Manager/managerMenu.html',
   })
 
-  .state('app.logout', {
-      url: '/logout',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/logout.html'
+  .state('managerApp.dashboard', {
+    url: '/managerDashboard',
+     views: {
+      'managerMenuContent': {
+    templateUrl: 'templates/Manager/dashboard.html',
+    controller:'DashboardCtrl'
+          }
+       }
+  })
+
+    .state('managerApp.settings', {
+    url: '/settings',
+         views: {
+      'managerMenuContent': {
+    templateUrl: 'templates/Manager/settings.html'
+     }
+   }
+  })
+
+
+    .state('suprvsrApp', {
+    url: '/suprvsrMenu',
+    templateUrl: 'templates/Supervisor/supervisorMenu.html',
+  })
+
+      .state('suprvsrApp.dashboard', {
+      url: '/suprvsrDashboard',
+           views: {
+      'supMenuContent': {
+          templateUrl: 'templates/Supervisor/dashboard.html'
         }
       }
-    })  
-    .state('app.overrideApp', {
-      url: '/overrideApp',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/override.html',
-  //        controller: 'PlaylistsCtrl'
+     })
+
+    .state('suprvsrApp.overrideApp', {
+      url: '/suprvsrOverride',
+           views: {
+      'supMenuContent': {
+          templateUrl: 'templates/Supervisor/override.html'
         }
       }
-    });
+    })
+
+    .state('suprvsrApp.settings', {
+    url: '/settings',
+      views: {
+     'supMenuContent': {
+    templateUrl: 'templates/Supervisor/settings.html'
+     }
+   }
+  });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/dashboard');
+  $urlRouterProvider.otherwise('/login');
 });
