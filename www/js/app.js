@@ -4,9 +4,13 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('ignite2', ['ionic','ignite2.controllers'])
+angular.module('ignite2', ['ionic','ignite2.controllers','ignite2.override'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$rootScope, $state, $stateParams) {
+
+    $rootScope.$state = $state;
+  $rootScope.$stateParams = $stateParams;
+  
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -75,10 +79,24 @@ angular.module('ignite2', ['ionic','ignite2.controllers'])
       url: '/suprvsrOverride',
            views: {
       'supMenuContent': {
-          templateUrl: 'templates/Supervisor/override.html'
+          templateUrl: 'templates/Supervisor/override.html',
+          controller:'overrideCntrl'
         }
       }
     })
+
+     .state('suprvsrApp.overrideApp.detail', {
+      url: '/detail',
+         views: {
+      'supMenuContent@suprvsrApp': {
+          templateUrl: 'templates/Supervisor/overrideDetail.html',
+          controller:'overrideCntrl'
+       }
+     },
+           params: {
+        detailData: null
+       }
+    })   
 
     .state('suprvsrApp.settings', {
     url: '/settings',

@@ -1,5 +1,14 @@
 <ion-view view-title="Override App">
-  <ion-content>
-    <h1>SuperVisor Override App</h1>
+  <ion-content class="grid-basic-page" overflow-scroll="true">
+<div class="list">
+   <div class="item item-divider">Pending</div>
+   <div ng-repeat="items in suprvsrArr">
+   <div class="item"><a style="cursor: pointer" ui-sref="suprvsrApp.overrideApp.detail({detailData:items})">Delivery - {{items.DeliveryNo}} - PO - {{items.PoNbr}} - Item - {{items.ItemNbr}}</a></div>
+   </div>
+   <div class="item item-divider">Approved</div>
+   <div class="item">Item 4</div>
+   <div class="item">Item 5</div>
+   <div class="item">Item 6</div>
+</div>
   </ion-content>
 </ion-view>

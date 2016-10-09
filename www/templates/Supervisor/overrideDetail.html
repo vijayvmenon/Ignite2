@@ -1,0 +1,23 @@
+<ion-view view-title="Override Detail">
+  <ion-content class="grid-basic-page" overflow-scroll="true">
+  <div class="list">
+<p><strong>PO Nbr </strong> : {{details.PoNbr}}</p>
+<p><strong>Delivery Nbr </strong> : {{details.DeliveryNo}}</p>
+<p><strong>Item Nbr </strong>  :  {{details.ItemNbr}}</p>
+<p><strong>Operator ID </strong>: {{details.UserID}}</p>
+<p><strong>Comments </strong> :  {{details.Comments}}</p>
+<div class="row">
+   <div class="col col-50" style="border:none">
+		<button class="button button-large button-positive" ng-click="approve()">
+ 		 Approve
+		</button>
+	</div>
+	<div class="col co-50" style="border:none">
+		<button class="button button-large button-positive" ng-click="$state.go('suprvsrApp.overrideApp')">
+	     Cancel
+		</button>
+	</div>
+</div>
+</div>
+    </ion-content>
+</ion-view>
