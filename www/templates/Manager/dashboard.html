@@ -1,5 +1,37 @@
 <ion-view view-title="Dashboards">
   <ion-content class="grid-basic-page" overflow-scroll="true">
+<div class="list card">
+ <a ui-sref="managerApp.dashboard.audit" class="item item-icon-left">
+    <i class="icon"><img src="img/audit.png" style="height:40px;width:40px"></i>
+   Audits<br> <div isteven-omni-bar
+    current-value="auditAvg"        
+    max-value="maxValue"
+    current-style="loadingCurrent1"
+    container-style="loadingBarStyle1">
+    Audit Completion: {{auditAvg}}% of {{maxValue}}
+    </div>
+  </a>
+  <a href="#" class="item item-icon-left">
+    <i class="icon ion-card"></i>
+    Slot Availability
+  </a>
+<a href="#" class="item item-icon-left">
+    <i class="icon ion-alarm"></i>
+    Inventory Movement
+  </a>
+<a href="#" class="item item-icon-left">
+    <i class="icon ion-alarm"></i>
+     DC Performance
+  </a>
+<a href="#" class="item item-icon-left">
+    <i class="icon battery-charging"></i>
+     Trends in DC
+  </a>
+</div>
+    </ion-content>
+</ion-view>
+
+<!--
 <div class = "row responsive-sm">
    <div class = "col col-60"><nvd3 options="graph1_options" data="graph1_data"></nvd3></div>
    <div class = "col">
@@ -21,3 +53,4 @@
  </div>
   </ion-content>
 </ion-view>
+-->

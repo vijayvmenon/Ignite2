@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('ignite2', ['ionic','ignite2.controllers','ignite2.override'])
+angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override','ignite2.managerDashboard'])
 
 .run(function($ionicPlatform,$rootScope, $state, $stateParams) {
 
@@ -46,10 +46,22 @@ angular.module('ignite2', ['ionic','ignite2.controllers','ignite2.override'])
      views: {
       'managerMenuContent': {
     templateUrl: 'templates/Manager/dashboard.html',
-    controller:'DashboardCtrl'
+    controller:'manDashboardCntrl'
           }
        }
   })
+
+  .state('managerApp.dashboard.audit', {
+    url: '/auditGraph',
+    views: {
+      'managerMenuContent@managerApp': {
+    parent:'managerApp.dashboard',
+    templateUrl: 'templates/Manager/auditGraph.html',
+    controller:'manDashboardCntrl'
+  }
+}
+  })
+
 
     .state('managerApp.settings', {
     url: '/settings',
@@ -94,7 +106,9 @@ angular.module('ignite2', ['ionic','ignite2.controllers','ignite2.override'])
        }
      },
            params: {
-        detailData: null
+        detailData: null,
+        showpending:false,
+        showapproved:false
        }
     })   
 

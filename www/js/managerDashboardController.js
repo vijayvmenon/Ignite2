@@ -1,123 +1,112 @@
-angular.module('ignite2.controllers', ['nvd3'])
+angular.module('ignite2.managerDashboard', ['LocalStorageModule','nvd3','isteven-omni-bar','nvd3ChartDirectives'])
+
+.controller('manDashboardCntrl', ['$scope','$http','$ionicPopup','localStorageService', '$stateParams', '$state', function($scope,$http,$ionicPopup,localStorageService,$stateParams,$state){
+	
+
+      //Audit Graph Logic 
+   // $scope.currentValue = 43;
+    $scope.maxValue     = 100;
+    $scope.loadingCurrent1 = {
+    backgroundColor: "#008080"
+}
 
 
-//This is the Controller that controls login to the Application
-.controller('LoginCtrl', ['$scope','LoginService','$ionicPopup','$state', function($scope,LoginService,$ionicPopup, $state) {
-  
-   $scope.data = {};
- 
-    $scope.login = function() {
-        LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
-          if($scope.data.username == 'manager') {
-            $state.go('managerApp');
-          };
-         if($scope.data.username == 'suprvsr') {
-            $state.go('suprvsrApp');
-          }
-        }).error(function(data) {
-            var alertPopup = $ionicPopup.alert({
-                title: 'Login failed!',
-                template: 'Please check your credentials!'
-            });
-        });
-    }
-
-}])
-
-/**
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
-
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-  // Form data for the login modal
-  $scope.loginData = {};
-
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
-  };
-
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
-
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  };
-})
-
-**/
-
-.controller('DashboardCtrl', function($scope) {
-
-  //Main Graph
 $scope.graph1_options = {
     chart: {
-        type: 'discreteBarChart',
-        height: 400,
+        type: 'multiBarHorizontalChart',
+        height: 450,
         margin : {
             top: 20,
             right: 20,
             bottom: 60,
-            left: 70
+            left: 200
         },
-
 
         x: function(d){ return d.label; },
-        y: function(d){ return d.value; },
+        y: function(d){ return d.value },
         showValues: true,
         valueFormat: function(d){
-            return d3.format(',.4f')(d);
+           // return d3.format()(d);
+          return d + "%"; 
+     //   return d3.format(',.1f')(d);
         },
-        transitionDuration: 500,
+        duration: 500,
         xAxis: {
-            axisLabel: 'X Axis'
+            axisLabel: '    '
         },
         yAxis: {
-            axisLabel: 'No of Stores',
-       //     axisLabelDistance: 30
-        }
+            axisLabel: 'Percentage of Audit Completed',
+          //  "showMaxMin": true,
+            "tickValues": [0,100], 
+          //  axisLabelDistance: -10,
+            tickFormat:d3.format(),
+        },
+        //yDomain is used to set max range for yAxis . similar for xAxis
+     yDomain: [0,100],
+     //below is used to generate a custom tooltip
+    useInteractiveGuideline: false,
+      tooltip: {
+                contentGenerator: function (e) {
+                    console.log(e);
+                  var series = e.series[0];
+                  var data=e.data.label;
+                  if (series.value === null) return;
+                  /**  var rows = 
+                    "<tr>" +
+                      "<td class='key'>" + 'Time: ' + "</td>" +
+                      "<td class='x-value'>" + e.value + "</td>" + 
+                    "</tr>" +
+                    "<tr>" +
+                      "<td class='key'>" + 'Voltage: ' + "</td>" +
+                      "<td class='x-value'><strong>" + (series.value?series.value.toFixed(2):0) + "</strong></td>" +
+                    "</tr>";**/
+
+                  var header = 
+                    "<thead>" + 
+                      "<tr>" +
+                        "<td class='legend-color-guide'><div style='background-color: " + series.color + ";'></div></td>" +
+                        "<td class='key'><strong>" + data + "   -   " + series.value + "%" + "</strong></td>" +
+                      "</tr>" + 
+                    "</thead>";
+                    
+                  return "<table>" +
+                      header  +
+                      //"<tbody>" + 
+                       // rows + 
+                     // "</tbody>" +
+                    "</table>";
+              //    return series.color + "  " + series.key + "  " + series.value + "%";
+              }
+          }
       },
+
     title: {
         enable: true,
-        text: 'Main Graph with receiving and store data'
-        }
+        text: 'Audit Statistics'
+        },
+           yDomain: [0,100]
 };
 
 $scope.graph1_data = [{
     key: "Cumulative Return",
     values: [
-        { "label" : "A" , "value" : 30 },
-        { "label" : "B" , "value" : 0 },
-        { "label" : "C" , "value" : 40 },
-        { "label" : "D" , "value" : 50},
-        { "label" : "E" , "value" : 40},
-        { "label" : "F" , "value" : 45 },
-        { "label" : "G" , "value" : 10 },
-        { "label" : "H" , "value" : 25 }
+        { "label" : "Order Processing" , "value" : 32.00},
+        { "label" : "Quality Assurance" , "value" : 46.00 },
+        { "label" : "Shipping" , "value" : 54.00},
+        { "label" : "Receiving" , "value" : 63.00},
+        { "label" : "Order Filling" , "value" : 21.00 },
         ]
     }];
 
+//Calculate average of Audit Graph to display in  Snapshot
+var sum = 0; 
+for (var i = 0; i < $scope.graph1_data[0].values.length;i++)
+{
+    sum+=parseInt($scope.graph1_data[0].values[i].value, 10);
+}
+
+$scope.auditAvg=sum/$scope.graph1_data[0].values.length;
+console.log($scope.auditAvg);
 
 //Side Graph 1
 $scope.sidegraph1_options = {
@@ -250,9 +239,5 @@ $scope.sidegraph1_options = {
             }
         ];        
 
-})
 
-
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+}]);

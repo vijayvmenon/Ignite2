@@ -1,4 +1,4 @@
-angular.module('ignite2.controllers')
+angular.module('ignite2.loginController')
 
 //Below service is used for Role based authentication
 .service('LoginService', function($q) {
