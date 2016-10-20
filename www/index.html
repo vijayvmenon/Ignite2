@@ -19,9 +19,10 @@
     </script>-->
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.3/nv.d3.min.css"/>
+    <link rel="stylesheet" href="lib/css/isteven-omni-bar.css">
+    <link rel="stylesheet" href="lib/css/fmpCardDirective.css">    
     <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.min.css"/>
-     <link rel="stylesheet" href="lib/css/isteven-omni-bar.css">
 
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
@@ -32,15 +33,18 @@
     <!-- ionic/angularjs js -->
   <script src="lib/ionic/js/ionic.bundle.js"></script>
   <script src="lib/js/isteven-omni-bar.js"></script>
-  <script src="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"></script>
+  <script src="lib/js/roundProgress.js"></script>
+  <script src="lib/js/fmpCardDirective.js"></script>
+<!--  <script src="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"></script>-->
 
     <!-- d3,nvd3 and angular-nvd3 js files being referred below -->
   <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.9/d3.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.3/nv.d3.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.9/angular-nvd3.js"></script>
         <script src="lib/js/angularjs-nvd3-directives.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.5.0/angular-local-storage.js"></script>
+
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
@@ -48,8 +52,12 @@
     <script src="js/app.js"></script>
     <script src="js/loginController.js"></script>
     <script src="js/loginService.js"></script>
-    <script src="js/overrideController.js"></script>
-    <script src="js/managerDashboardController.js"></script>
+    <script src="js/supervisor/overrideController.js"></script>
+    <script src="js/manager/managerDashboardMain.js"></script>
+    <script src="js/manager/slotGraphController.js"></script>
+    <script src="js/manager/productivityGraphController.js"></script>
+    <script src="js/manager/remedyCrqController.js"></script>
+    <script src="js/manager/palletMoveController.js"></script>
   </head>
 
   <body ng-app="ignite2">

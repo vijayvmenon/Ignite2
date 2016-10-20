@@ -1,4 +1,191 @@
 /* Empty. Add your own CSS if you like */
+
+/**
 .col{
-border:thick solid black;
+border:1px solid black;
 }
+**/
+
+.maxValue {
+    background-color: #ffffff;
+}
+
+.infoText {
+    color: #000000;
+}
+
+/**Below Styling is for angular svg round bar used in remedy crq statistics in manager dashboard  **/
+.progress-percentage-wrapper {
+    position: relative;	
+    margin: 20px auto;
+    font-size: 50px;
+    width: 200px;
+    height: 200px;
+}
+.progress-percentage {
+    position: absolute;
+    color: #bbb;
+    width: 100%;
+    font-size: 20px;
+    text-align: center ;
+    top: 45%;
+    right: 10%;
+}
+ /** End od Angular svg round styling **/
+
+ #nvtooltip-69762 {
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  height: 12px;
+  padding: 8px;
+  margin-top: -20px;
+  font: 10px sans-serif;
+  background: #ddd;
+  pointer-events: none;
+ }
+
+
+ /**Below Style is for flipping cards to Show Tickets and CRQ details in Manager Dashboard **/
+
+		.flip-container {
+			-webkit-perspective: 1000;
+			-moz-perspective: 1000;
+			-ms-perspective: 1000;
+			perspective: 1000;
+
+			-ms-transform: perspective(1000px);
+			-moz-transform: perspective(1000px);
+			-moz-transform-style: preserve-3d; 
+			-ms-transform-style: preserve-3d; 
+		}
+
+		.flip-container.clicked .back {
+      -webkit-transform: rotateY(0deg);
+      -moz-transform: rotateY(0deg);
+      -o-transform: rotateY(0deg);
+      -ms-transform: rotateY(0deg);
+      transform: rotateY(0deg);
+    }
+
+    .flip-container.clicked .front {
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -o-transform: rotateY(180deg);
+      -ms-transform: rotateY(180deg);
+      transform: rotateY(180deg);
+    }
+
+		.flip-container, .front, .back {
+			width: 300px;
+			height: 200px;
+			border-radius: 10px;
+		}
+
+		#remcrqfronttextheader {
+     font-family: Georgia;
+    font-size: 2.5em;
+    text-align: center;
+    margin-top: 20px;
+   /** line-height: 200px;**/
+   }
+
+		#remcrqfronttext {
+     font-family: Georgia;
+    font-size: 2em;
+    text-align: center;
+   }
+
+   #remcrqfrontanchor {
+   	font-family: Georgia;
+   	 font-size: 1.2em;
+   	 text-align: center;
+   	 line-height: 50px;
+   	 margin-top: 50px;
+    cursor: pointer;
+    color: blue;
+   }
+
+
+   		#remcrqbacktextheader {
+     font-family: Georgia;
+    font-size: 2.5em;
+    text-align: center;
+    margin-top: 20px;
+   /** line-height: 200px;**/
+   }
+
+
+   		#remcrqbacktext {
+     font-family: Georgia;
+    font-size: 1.5em;
+    text-align: center;
+   }
+
+   #remcrqbackanchor {
+   	font-family: Georgia;
+   	 font-size: 1.2em;
+   	 text-align: center;
+   	 line-height: 50px;
+    cursor: pointer;
+    color: blue;
+   }
+
+		.flipper {
+			-webkit-transition: 0.6s;
+			-webkit-transform-style: preserve-3d;
+			-ms-transition: 0.6s;
+
+			-moz-transition: 0.6s;
+			-moz-transform: perspective(1000px);
+			-moz-transform-style: preserve-3d;
+			-ms-transform-style: preserve-3d;
+
+			transition: 0.6s;
+			transform-style: preserve-3d;
+
+			position: relative;
+		}
+
+		.front, .back {
+			-webkit-backface-visibility: hidden;
+			-moz-backface-visibility: hidden;
+			-ms-backface-visibility: hidden;
+			backface-visibility: hidden;
+
+	    -webkit-transition: 0.6s;
+	    -webkit-transform-style: preserve-3d;
+
+	    -moz-transition: 0.6s;
+	    -moz-transform-style: preserve-3d;
+
+	    -o-transition: 0.6s;
+	    -o-transform-style: preserve-3d;
+
+	    -ms-transition: 0.6s;
+	    -ms-transform-style: preserve-3d;
+
+	    transition: 0.6s;
+	    transform-style: preserve-3d;
+
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.front {
+			-webkit-transform: rotateY(0deg);
+			-ms-transform: rotateY(0deg);
+			background: lightgreen;
+			z-index: 2;
+		}
+
+		.back {
+			background: lightblue;
+			-webkit-transform: rotateY(-180deg);
+	    -moz-transform: rotateY(-180deg);
+	    -o-transform: rotateY(-180deg);
+	    -ms-transform: rotateY(-180deg);
+	    transform: rotateY(-180deg);
+		}
+/**End of Flip Card Styling **/

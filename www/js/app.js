@@ -46,22 +46,54 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
      views: {
       'managerMenuContent': {
     templateUrl: 'templates/Manager/dashboard.html',
-    controller:'manDashboardCntrl'
+  //  controller:'manDashboardCntrl'
           }
        }
   })
 
-  .state('managerApp.dashboard.audit', {
-    url: '/auditGraph',
+  .state('managerApp.dashboard.slot', {
+    url: '/slotGraph',
     views: {
       'managerMenuContent@managerApp': {
-    parent:'managerApp.dashboard',
-    templateUrl: 'templates/Manager/auditGraph.html',
-    controller:'manDashboardCntrl'
+   parent:'managerApp.dashboard',
+   // templateUrl: 'templates/Manager/slotGraph.html',
+    controller:'manSlotCntrl'
   }
 }
   })
 
+  .state('managerApp.dashboard.productivity', {
+    url: '/productivityGraph',
+    views: {
+      'managerMenuContent@managerApp': {
+    parent:'managerApp.dashboard',
+  //  templateUrl: 'templates/Manager/productivityGraph.html',
+    controller:'manProductivityCntrl'
+  }
+}
+  })
+
+  .state('managerApp.dashboard.remedycrq', {
+    url: '/remedycrq',
+    views: {
+      'managerMenuContent@managerApp': {
+    parent:'managerApp.dashboard',
+//    templateUrl: 'templates/Manager/productivityGraph.html',
+    controller:'manRemedyCrqCntrl'
+  }
+}
+  })
+
+    .state('managerApp.dashboard.palletmvmt', {
+    url: '/palletMvmt',
+    views: {
+      'managerMenuContent@managerApp': {
+    parent:'managerApp.dashboard',
+ //   templateUrl: 'templates/Manager/palletmvmt.html',
+    controller:'manPalletMvmtCntrl'
+  }
+}
+  })
 
     .state('managerApp.settings', {
     url: '/settings',

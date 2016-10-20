@@ -1,19 +1,169 @@
 <ion-view view-title="Dashboards">
-  <ion-content class="grid-basic-page" overflow-scroll="true">
+    <ion-content class="grid-basic-page" overflow-scroll="true">
+        <div class="row responsive-sm">  
+              <div class="col col-60">
+                  <div class="row responsive-sm">
+                      <div class="col" ng-controller="manProductivityCntrl">
+                          <div ng-if="manProdSvc.showDaily"><nvd3 options="prodgraphdaily_options" data="prodgraphdaily_data"></nvd3></div>
+                          <div ng-if="manProdSvc.showWeekly"><nvd3 options="prodgraphweekly_options" data="prodgraphweekly_data"></nvd3></div>
+                          <div ng-if="manProdSvc.showMonthly"><nvd3 options="prodgraphmonthly_options" data="prodgraphmonthly_data"></nvd3></div> 
+                      </div>
+                  </div>
+                  <div class="row responsive-sm">
+                      <div class="col"></div>
+                      <div class = "col-50" ng-controller="manProductivityCntrl">
+                        <div class="button-bar">
+                          <button class="button button-small button-positive" ng-click="showDailyfn();">Daily</button>
+                          <button class="button button-small button-assertive" ng-click="showWeeklyfn();">Weekly</button>
+                          <button class="button button-small button-energized" ng-click="showMonthlyfn();">Monthly</button>
+                        </div>
+                      </div>
+                      <div class="col"></div>
+                  </div>
+              </div> 
+              <div class="col">
+                  <div class="row responsive-sm">
+                     <div class="col" ng-controller="manSlotCntrl">
+                         <div ng-if="manSlotSvc.showsstk"><nvd3 options="slotgraphsstk_options" data="slotgraphsstk_data"></nvd3></div>
+                         <div ng-if="manSlotSvc.showpbyl"><nvd3 options="slotgraphpbyl_options" data="slotgraphpbyl_data"></nvd3></div>
+                        <div ng-if="manSlotSvc.showpick2put"><nvd3 options="slotgraphpick2put_options" data="slotgraphpick2put_data"></nvd3></div>
+                     </div>
+                  </div>
+                  <div class="row responsive-sm">
+                        <div class="col"></div>
+                      <div class="col-60" ng-controller="manSlotCntrl">
+                       <div class="button-bar">
+                           <button class="button button-small button-positive" ng-click="showSSTKfn();">SSTK</button>
+                           <button class="button button-small button-assertive" ng-click="showPBYLfn();">PBYL</button>
+                           <button class="button button-small button-energized" ng-click="showPick2Putfn();">PICK2PUT</button>
+                        </div>
+                      </div>
+                      <div class="col"></div>
+                  </div>
+              </div>
+        </div>
+
+<div class = "row responsive-sm">
+    <div class="col col-40" ng-controller="manPalletMvmtCntrl">
+        <div class = "row responsive-sm" id="manpalletgraph">
+         <nvd3 options="palletmvmtgraph_options" data="palletmvmtgraph_data"></nvd3>
+        </div>
+    </div>
+    <div class="col col-30 col-offset-5">
+     <h4 style="margin-left:75px"><u>Remedy Statistics</u></h4>
+      <div class="col col-15" ng-controller="manRemedyCrqCntrl" >
+       <div class="flip-container" ng-click="flip = !flip" ng-class="{'clicked': flip}">
+          <div class="flipper">
+            <div class="front" style="background: lightblue;">
+              <p id="remcrqfronttextheader"><u>Tickets Open</u></p>
+              <br>
+              <p id="remcrqfronttext">{{opentickets}}/{{totaltickets}}</p>
+              <p id="remcrqfrontanchor">CLICK FOR DETAILS</p>
+            </div>
+            <div class="back" style="background: lightgreen;">
+               <p id="remcrqbacktextheader"><u>OPEN TICKETS</u></p>
+               <br>
+               <p id="remcrqbacktext">RECEIVING:{{recvticketcount}}<br>SHIPPING:{{shipticketcount}}<br>QUALITY ASSURANCE:{{qaticketcount}}<br>
+                ORDER PROCESSING:{{opticketcount}}</p>
+                <p id="remcrqbackanchor">GO BACK</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col col-15" ng-controller="manRemedyCrqCntrl" >
+       <div class="flip-container" ng-click="flip = !flip" ng-class="{'clicked': flip}">
+          <div class="flipper">
+            <div class="front" style="background: lightblue;">
+              <p id="remcrqfronttextheader"><u>CRQ's Open</u></p>
+              <br>
+              <p id ="remcrqfronttext">{{opencrqs}}/{{totalcrqs}}</p>
+              <p id="remcrqfrontanchor">CLICK FOR DETAILS</p>
+            </div>
+            <div class="back" style="background: lightgreen;">
+               <p id="remcrqbacktextheader"><u>OPEN CRQ's</u></p>
+               <br>
+               <p id="remcrqbacktext">NETWORKING:{{networkcrqcount}}<br>UNIX ADMIN:{{unixcrqcount}}<br>GLS:{{glscrqcount}}<br>
+                ORDER PROCESSING:{{opticketcount}}</p>
+                <p id="remcrqbackanchor">GO BACK</p>               
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>       
+</div> 
+
+
+
+<!--
+   <div class="col col-30">
+      <div class = "row responsive-sm">
+       <div class="col col-10"></div>
+       <h4>REMEDY-CRQ STATUS</h4>
+       <div class="col col-10"></div>
+      </div>
+      <div class = "row responsive-sm">
+        <div class="col col-15 progress-percentage-wrapper" ng-controller="manRemedyCrqCntrl">
+           <div class="progress-percentage ng-cloak"><u>TICKETS CLOSED</u><br>{{rem_current}}/{{rem_max}}</div>
+             <round-progress max="rem_max" current="rem_current" color="#45ccce" bgcolor="#eaeaea"  radius="100" stroke="20"
+              rounded="false" clockwise="false" responsive="false" animation="easeInOutQuart"></round-progress>
+        </div>
+        <div class="col col-15 progress-percentage-wrapper" ng-controller="manRemedyCrqCntrl">
+           <div class="progress-percentage ng-cloak"><u>CRQ's CLOSED</u><br>{{crq_current}}/{{crq_max}}</div>
+             <round-progress max="crq_max" current="crq_current" color="#45ccce" bgcolor="#eaeaea"  radius="100" stroke="20"
+              rounded="false" clockwise="false" responsive="false" animation="easeInOutQuart"></round-progress>
+        </div>
+      </div>
+    </div>
+
+    <div class="col" ng-controller="manPalletMvmtCntrl">
+        <div class = "row responsive-sm">
+         <nvd3 options="palletmvmtgraph_options" data="palletmvmtgraph_data"></nvd3></div>
+        </div>
+    </div>
+  </div>
+
+
+    <div class=col">
+      <div class = "row responsive-sm">
+          <div class="col"></div>
+          <h4>ITEM MOVEMENT GRAPH</h4>
+          <div class="col"></div>
+      </div>
+      <div class = "row responsive-sm">
+         <h5>GRAPH HERE</h5>
+      </div>
+    </div>
+ </div>
+
+<div class = "row responsive-sm">
+   <div class = "col col-60">Calender</div>
+ </div> -->
+  </ion-content>
+</ion-view>
+
+
+
+<!--
 <div class="list card">
- <a ui-sref="managerApp.dashboard.audit" class="item item-icon-left">
+ <a ui-sref="managerApp.dashboard.slot" class="item item-icon-left" ng-controller="manSlotCntrl">
     <i class="icon"><img src="img/audit.png" style="height:40px;width:40px"></i>
    Audits<br> <div isteven-omni-bar
+    current-value="slotAvg"        
+    max-value="maxValue"
+    current-style="loadingCurrent1"
+    container-style="loadingBarStyle1">
+    Total Slots Filled: {{slotAvg}}% of {{maxValue}}
+    </div>
+  </a>
+  <a ui-sref="managerApp.dashboard.productivity" class="item item-icon-left" ng-controller="manProductivityCntrl">
+    <i class="icon ion-card"></i>
+    Productivity Status<br><div isteven-omni-bar
     current-value="auditAvg"        
     max-value="maxValue"
     current-style="loadingCurrent1"
     container-style="loadingBarStyle1">
-    Audit Completion: {{auditAvg}}% of {{maxValue}}
+    Slot Status: {{auditAvg}}% of {{maxValue}}
     </div>
-  </a>
-  <a href="#" class="item item-icon-left">
-    <i class="icon ion-card"></i>
-    Slot Availability
   </a>
 <a href="#" class="item item-icon-left">
     <i class="icon ion-alarm"></i>
@@ -31,26 +181,3 @@
     </ion-content>
 </ion-view>
 
-<!--
-<div class = "row responsive-sm">
-   <div class = "col col-60"><nvd3 options="graph1_options" data="graph1_data"></nvd3></div>
-   <div class = "col">
-    <div class="col"><nvd3 options="sidegraph1_options" data="sidegraph1_data"></div>
-    <div class="col"><nvd3 options="sidegraph2_options" data="sidegraph2_data"></div>
-    </div>
-</div>
-
-<div class = "row responsive-sm">
-   <div class = "col col-20">Graph 2</div>
-   <div class = "col col-20">Graph 3</div>
-   <div class = "col col-20">Graph 4</div>
-   <div class = "col">Side Graph 3</div>
- </div>
-<div class = "row responsive-sm">
-   <div class = "col col-30">Warehouse Map</div>
-   <div class = "col col-30">Chat Widget</div>
-   <div class = "col col-40">Side Graph 4</div>
- </div>
-  </ion-content>
-</ion-view>
--->
