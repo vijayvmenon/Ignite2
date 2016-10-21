@@ -1,6 +1,7 @@
 <ion-view view-title="Dashboards">
     <ion-content class="grid-basic-page" overflow-scroll="true">
         <div class="row responsive-sm">  
+        <!--Productivity Graph HTML-->
               <div class="col col-60">
                   <div class="row responsive-sm">
                       <div class="col" ng-controller="manProductivityCntrl">
@@ -21,6 +22,7 @@
                       <div class="col"></div>
                   </div>
               </div> 
+              <!--Slot Graph HTML-->
               <div class="col">
                   <div class="row responsive-sm">
                      <div class="col" ng-controller="manSlotCntrl">
@@ -44,53 +46,79 @@
         </div>
 
 <div class = "row responsive-sm">
+   <!--Pallet Movment Graph HTML-->
     <div class="col col-40" ng-controller="manPalletMvmtCntrl">
-        <div class = "row responsive-sm" id="manpalletgraph">
+     <!--   <div class = "row responsive-sm" id="manpalletgraph"> -->
          <nvd3 options="palletmvmtgraph_options" data="palletmvmtgraph_data"></nvd3>
-        </div>
+    <!--   </div> -->
     </div>
+    <!--Remedy CRQ Statistics HTML -->
     <div class="col col-30 col-offset-5">
-     <h4 style="margin-left:75px"><u>Remedy Statistics</u></h4>
-      <div class="col col-15" ng-controller="manRemedyCrqCntrl" >
-       <div class="flip-container" ng-click="flip = !flip" ng-class="{'clicked': flip}">
-          <div class="flipper">
-            <div class="front" style="background: lightblue;">
-              <p id="remcrqfronttextheader"><u>Tickets Open</u></p>
-              <br>
-              <p id="remcrqfronttext">{{opentickets}}/{{totaltickets}}</p>
-              <p id="remcrqfrontanchor">CLICK FOR DETAILS</p>
-            </div>
-            <div class="back" style="background: lightgreen;">
-               <p id="remcrqbacktextheader"><u>OPEN TICKETS</u></p>
-               <br>
-               <p id="remcrqbacktext">RECEIVING:{{recvticketcount}}<br>SHIPPING:{{shipticketcount}}<br>QUALITY ASSURANCE:{{qaticketcount}}<br>
-                ORDER PROCESSING:{{opticketcount}}</p>
-                <p id="remcrqbackanchor">GO BACK</p>
-            </div>
+      <h4 style="margin-left:75px"><u>Remedy Statistics</u></h4>
+        <div class="col col-15" ng-controller="manRemedyCrqCntrl" >
+          <div class="flip-container" ng-click="flip = !flip" ng-class="{'clicked': flip}">
+              <div class="flipper">
+                 <div class="front" style="background: lightblue;">
+                    <p id="remcrqfronttextheader"><u>Tickets Open</u></p>
+                    <br>
+                    <p id="remcrqfronttext">{{opentickets}}/{{totaltickets}}</p>
+                    <p id="remcrqfrontanchor">CLICK FOR DETAILS</p>
+                 </div>
+                 <div class="back" style="background: lightgreen;">
+                    <p id="remcrqbacktextheader"><u>OPEN TICKETS</u></p>
+                    <br>
+                       <p id="remcrqbacktext">RECEIVING:{{recvticketcount}}<br>SHIPPING:{{shipticketcount}}<br>QUALITY ASSURANCE:{{qaticketcount}}<br>
+                    ORDER PROCESSING:{{opticketcount}}</p>
+                    <p id="remcrqbackanchor">GO BACK</p>
+                 </div>
+              </div>
           </div>
+        </div>
+        <div class="col col-15" ng-controller="manRemedyCrqCntrl" >
+           <div class="flip-container" ng-click="flip = !flip" ng-class="{'clicked': flip}">
+              <div class="flipper">
+                  <div class="front" style="background: lightblue;">
+                    <p id="remcrqfronttextheader"><u>CRQ's Open</u></p>
+                    <br>
+                    <p id ="remcrqfronttext">{{opencrqs}}/{{totalcrqs}}</p>
+                    <p id="remcrqfrontanchor">CLICK FOR DETAILS</p>
+                  </div>
+                  <div class="back" style="background: lightgreen;">
+                    <p id="remcrqbacktextheader"><u>OPEN CRQ's</u></p>
+                    <br>
+                    <p id="remcrqbacktext">NETWORKING:{{networkcrqcount}}<br>UNIX ADMIN:{{unixcrqcount}}<br>GLS:{{glscrqcount}}<br>
+                    ORDER PROCESSING:{{opticketcount}}</p>
+                    <p id="remcrqbackanchor">GO BACK</p>               
+                  </div>
+              </div>
+           </div>
+        </div>
+    </div>  
+      <!--Item Movement HTML-->
+      <div class="col" ng-controller="manItemMvmtCntrl">
+        <div class="row responsive-sm">
+           <div ng-if="manItemSvc.showtop"><nvd3 options="topitemmvmtgraph_options" data="topitem_data"></nvd3></div>
+           <div ng-if="manItemSvc.showbottom"><nvd3 options="bottomitemmvmtgraph_options" data="bottomitem_data"></nvd3></div>        
+        </div>   
+        <div class="row responsive-sm">  
+        <div class="col"></div>
+           <div class="button-bar">
+            <button class="button button-small button-positive" ng-click="showtopfn();">TOP 10</button>
+            <button class="button button-small button-assertive" ng-click="showbottomfn();">LOW 10</button>
+           </div>
+           <div class="col"></div>
         </div>
       </div>
-      <div class="col col-15" ng-controller="manRemedyCrqCntrl" >
-       <div class="flip-container" ng-click="flip = !flip" ng-class="{'clicked': flip}">
-          <div class="flipper">
-            <div class="front" style="background: lightblue;">
-              <p id="remcrqfronttextheader"><u>CRQ's Open</u></p>
-              <br>
-              <p id ="remcrqfronttext">{{opencrqs}}/{{totalcrqs}}</p>
-              <p id="remcrqfrontanchor">CLICK FOR DETAILS</p>
-            </div>
-            <div class="back" style="background: lightgreen;">
-               <p id="remcrqbacktextheader"><u>OPEN CRQ's</u></p>
-               <br>
-               <p id="remcrqbacktext">NETWORKING:{{networkcrqcount}}<br>UNIX ADMIN:{{unixcrqcount}}<br>GLS:{{glscrqcount}}<br>
-                ORDER PROCESSING:{{opticketcount}}</p>
-                <p id="remcrqbackanchor">GO BACK</p>               
-            </div>
-          </div>
-        </div>
-      </div>  
-    </div>       
-</div> 
+</div>
+
+<!--Calender For Manager -->
+<div class="row responsive-sm">
+ <div class="col col-60" ng-controller="manCalenderCntrl">
+ <div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources"></div>
+ </div>
+
+</div>
+
 
 
 

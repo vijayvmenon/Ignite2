@@ -77,14 +77,14 @@ border:1px solid black;
     }
 
 		.flip-container, .front, .back {
-			width: 300px;
-			height: 200px;
+			width: 250px;
+			height: 180px;
 			border-radius: 10px;
 		}
 
 		#remcrqfronttextheader {
      font-family: Georgia;
-    font-size: 2.5em;
+    font-size: 2em;
     text-align: center;
     margin-top: 20px;
    /** line-height: 200px;**/
@@ -92,13 +92,13 @@ border:1px solid black;
 
 		#remcrqfronttext {
      font-family: Georgia;
-    font-size: 2em;
+    font-size: 1.2em;
     text-align: center;
    }
 
    #remcrqfrontanchor {
    	font-family: Georgia;
-   	 font-size: 1.2em;
+   	 font-size: 1em;
    	 text-align: center;
    	 line-height: 50px;
    	 margin-top: 50px;
@@ -109,7 +109,7 @@ border:1px solid black;
 
    		#remcrqbacktextheader {
      font-family: Georgia;
-    font-size: 2.5em;
+    font-size: 2em;
     text-align: center;
     margin-top: 20px;
    /** line-height: 200px;**/
@@ -118,15 +118,15 @@ border:1px solid black;
 
    		#remcrqbacktext {
      font-family: Georgia;
-    font-size: 1.5em;
+    font-size: 1.2em;
     text-align: center;
    }
 
    #remcrqbackanchor {
    	font-family: Georgia;
-   	 font-size: 1.2em;
+   	 font-size: 1em;
    	 text-align: center;
-   	 line-height: 50px;
+   	 line-height: 20px;
     cursor: pointer;
     color: blue;
    }

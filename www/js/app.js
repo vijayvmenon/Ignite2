@@ -95,6 +95,28 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
 }
   })
 
+        .state('managerApp.dashboard.itemmvmt', {
+    url: '/itemMvmt',
+    views: {
+      'managerMenuContent@managerApp': {
+    parent:'managerApp.dashboard',
+ //   templateUrl: 'templates/Manager/itemmvmt.html',
+    controller:'manItemMvmtCntrl'
+  }
+}
+  })
+
+        .state('managerApp.dashboard.calender', {
+    url: '/calender',
+    views: {
+      'managerMenuContent@managerApp': {
+    parent:'managerApp.dashboard',
+ //   templateUrl: 'templates/Manager/itemmvmt.html',
+    controller:'manCalenderCntrl'
+  }
+}
+  })
+        
     .state('managerApp.settings', {
     url: '/settings',
          views: {
