@@ -19,8 +19,8 @@ $scope.manItemSvc.showbottom=true;
 $scope.topitemmvmtgraph_options = {
     chart: {
          type: 'multiBarHorizontalChart',
-                height: 450,
-                width: 500,
+                height: 400,
+                width: 380,
                 x: function(d){return d.description;},
                 y: function(d){return d.qty;},
                 showControls: true,
@@ -50,8 +50,8 @@ $scope.topitemmvmtgraph_options = {
 $scope.bottomitemmvmtgraph_options = {
     chart: {
                 type: 'multiBarHorizontalChart',
-                height: 450,
-                width:500,
+                height: 400,
+                width:380,
                 x: function(d){return d.description;},
                 y: function(d){return d.qty;},
                 showControls: true,
@@ -63,7 +63,7 @@ $scope.bottomitemmvmtgraph_options = {
                 yAxis: {
                     axisLabel: 'Values',
                     tickFormat: function(d){
-                        return d3.format(',.2f')(d);
+                        return d3.format(',.1f')(d);
                     }
                 },
                 showLegend: false,

@@ -10,216 +10,89 @@ angular.module('ignite2.managerDashboard')
 $scope.showSSTKfn=function() {
 $scope.manSlotSvc.showsstk=true;
 $scope.manSlotSvc.showpbyl=false;
-$scope.manSlotSvc.showpick2put=false;
+$scope.manSlotSvc.active="SSTK"
 };
 
 $scope.showPBYLfn=function() {
 $scope.manSlotSvc.showsstk=false;
 $scope.manSlotSvc.showpbyl=true;
-$scope.manSlotSvc.showpick2put=false;
-};
-
-$scope.showPick2Putfn=function() {
-$scope.manSlotSvc.showsstk=false;
-$scope.manSlotSvc.showpbyl=false;
-$scope.manSlotSvc.showpick2put=true;
-};
-
-$scope.slotgraphsstk_options = {
-    chart: {
-        type: 'pieChart',
-      height: 500,
-        margin : {
-            top: 0,
-            right: 0,
-            bottom:0 ,
-            left: 0
-        },  
-          "legend": {
-      "margin": {
-        "top": 5,
-        "right": 20,
-        "bottom": 5,
-        "left": 0
-      }
-    },
-        x: function(d){return d.label },
-        y: function(d){ return d.value },
-        showValues: true,
-        showLabels:true,
-         labelSunbeamLayout: true,
-        valueFormat: function(d){
-        },
-        duration: 500,
-     //below is used to generate a custom tooltip
-    useInteractiveGuideline: false,
-      tooltip: {
-                contentGenerator: function (e) {
-                  var series = e.series[0];
-                  var data=e.data.label;
-                  if (series.value === null) return;
-
-                  var header = 
-                    "<thead>" + 
-                      "<tr>" +
-                        "<td class='legend-color-guide'><div style='background-color: " + series.color + ";'></div></td>" +
-                        "<td class='key'><strong>" + series.key+" : " + series.value + "</strong></td>" +
-                      "</tr>" + 
-                    "</thead>";
-                    
-                  return "<table>" +
-                      header  +
-                    "</table>";
-              }
-          }
-      },
-
-    title: {
-        enable: true,
-        text: 'Slot Statistics - SSTK'
-        },
+$scope.manSlotSvc.active="PBYL";
 };
 
 
-$scope.slotgraphpbyl_options = {
-    chart: {
-        type: 'pieChart',
-      height: 500,
-        margin : {
-            top: 0,
-            right: 0,
-            bottom:0 ,
-            left: 0
-        },  
-          "legend": {
-      "margin": {
-        "top": 5,
-        "right": 20,
-        "bottom": 5,
-        "left": 0
-      }
-    },
-        x: function(d){return d.label },
-        y: function(d){ return d.value },
-        showValues: true,
-        showLabels:true,
-         labelSunbeamLayout: true,
-        valueFormat: function(d){
+
+$scope.sstktotal=350;
+
+ $scope.sstkempty_data = {label: "EMPTY", value: 210};
+
+$scope.sstkempty_per=Math.round($scope.sstkempty_data.value*100/$scope.sstktotal);
+
+ $scope.sstkheld_data = {label: "HELD", value: 64};
+
+$scope.sstkheld_per=Math.round($scope.sstkheld_data.value*100/$scope.sstktotal);
+
+ $scope.sstkaudit_data = {label: "AUDITED", value: 34};
+
+$scope.sstkaudit_per=Math.round($scope.sstkaudit_data.value*100/$scope.sstktotal);
+
+ $scope.sstkrotate_data = {label: "NOT ROTATED", value: 78 };
+
+$scope.sstkrotate_per=Math.round($scope.sstkrotate_data.value*100/$scope.sstktotal);
+//$scope.sstkgauge_options = {thickness: 15, mode: "gauge", total: 100};
+
+
+$scope.pbyltotal=250;
+
+ $scope.pbylempty_data = {label: "EMPTY", value: 135};
+
+$scope.pbylempty_per=$scope.pbylempty_data.value*100/$scope.pbyltotal;
+
+ $scope.pbylheld_data = {label: "HELD", value: 47};
+
+$scope.pbylheld_per=$scope.pbylheld_data.value*100/$scope.pbyltotal;
+
+ $scope.pbylaudit_data ={label: "AUDITED", value: 98};
+
+$scope.pbylaudit_per=$scope.pbylaudit_data.value*100/$scope.pbyltotal;
+
+ $scope.pbylrotate_data = {label: "NOT ROTATED", value: 78};
+
+$scope.pbylrotate_per=$scope.pbylrotate_data.value*100/$scope.pbyltotal;
+
+
+/**
+            $http.get('http://igniteservices.cfapps.io/slot/EASYPICK').
+        then(function(response) {
+            $scope.greeting = response.data;
+            console.log($scope.greeting);
         },
-        duration: 500,
-     //below is used to generate a custom tooltip
-    useInteractiveGuideline: false,
-      tooltip: {
-                contentGenerator: function (e) {
-                               var series = e.series[0];
-                  var data=e.data.label;
-                  if (series.value === null) return;
+        function (error) {
+          console.log("not working");
+        });
+**/
 
-                  var header = 
-                    "<thead>" + 
-                      "<tr>" +
-                        "<td class='legend-color-guide'><div style='background-color: " + series.color + ";'></div></td>" +
-                        "<td class='key'><strong>" + series.key+" : " + series.value + "</strong></td>" +
-                      "</tr>" + 
-                    "</thead>";
-                    
-                  return "<table>" +
-                      header  +
-                    "</table>";
-              }
-          }
-      },
-
-    title: {
-        enable: true,
-        text: 'Slot Statistics - PBYL'
-        },
-};
-
-
-$scope.slotgraphpick2put_options = {
-    chart: {
-        type: 'pieChart',
-      height: 500,
-        margin : {
-            top: 0,
-            right: 0,
-            bottom:0 ,
-            left: 0
-        },  
-          "legend": {
-      "margin": {
-        "top": 5,
-        "right": 20,
-        "bottom": 5,
-        "left": 0
-      }
-    },
-        x: function(d){return d.label },
-        y: function(d){ return d.value },
-        showValues: true,
-        showLabels:true,
-         labelSunbeamLayout: true,
-        valueFormat: function(d){
-        },
-        duration: 500,
-     //below is used to generate a custom tooltip
-    useInteractiveGuideline: false,
-      tooltip: {
-                contentGenerator: function (e) {
-                             var series = e.series[0];
-                  var data=e.data.label;
-                  if (series.value === null) return;
-
-                  var header = 
-                    "<thead>" + 
-                      "<tr>" +
-                        "<td class='legend-color-guide'><div style='background-color: " + series.color + ";'></div></td>" +
-                        "<td class='key'><strong>" + series.key+" : " + series.value + "</strong></td>" +
-                      "</tr>" + 
-                    "</thead>";
-                    
-                  return "<table>" +
-                      header  +
-                    "</table>";
-              }
-          }
-      },
-
-    title: {
-        enable: true,
-        text: 'Slot Statistics - PICK2PUT'
-        },
-};
-
-$scope.slotgraphsstk_data = [  
-        { "label" : "Empty" , "value" : 1200.00},
-        { "label" : "Held" , "value" : 600.00 },
-        { "label" : "Audited" , "value" : 200.00},
-        { "label" : "Not Rotated" , "value" : 100.00},     
-        ];
-
-$scope.slotgraphpbyl_data = [
-        { "label" : "Empty" , "value" : 50.00},
-        { "label" : "Held" , "value" : 100.00 },
-        { "label" : "Audited" , "value" : 240.00},
-        { "label" : "Not Rotated" , "value" : 80.00},     
-        ];
-
- $scope.slotgraphpick2put_data = [
-        { "label" : "Empty" , "value" : 460.00},
-        { "label" : "Held" , "value" : 60.00 },
-        { "label" : "Audited" , "value" : 120.00},
-        { "label" : "Not Rotated" , "value" : 50.00},     
-        ];
+// manSlotSvc.getslot();
+ //$scope.slotdet=manSlotSvc.greeting;
+  //$scope.slotdet = manSlotSvc.showpbyl;
+ //console.log($scope.slotdet);
+ //console.log(window.innerWidth); 
 
 }])
 
 
-.factory('manSlotSvc', function(){
+.factory('manSlotSvc', function($http){
   return {
   showsstk:true,
     showpbyl:false,
-    showpick2put:false
-  }
+    active:"SSTK"
+   // getslot: function () {
+     // $http.get('http://igniteservices.cfapps.io/slot/EASYPICK').
+       // then(function(response) {
+         //   greeting = response.data;
+        //},
+        //function (error) {
+         // return "not working";
+        //});
+ // }
+}
 });

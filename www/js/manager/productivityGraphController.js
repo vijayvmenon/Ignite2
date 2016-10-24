@@ -1,14 +1,21 @@
 angular.module('ignite2.managerDashboard')
 
-.controller('manProductivityCntrl', ['$scope','$http','$filter','$ionicPopup','localStorageService', 'manProdSvc','$stateParams', '$state', function($scope,$http,$filter,$ionicPopup,localStorageService,manProdSvc,$stateParams,$state){
+.controller('manProductivityCntrl', ['$scope','$http','$timeout','$filter','$ionicPopup','localStorageService', 'manProdSvc','$stateParams', '$state', function($scope,$http,$timeout,$filter,$ionicPopup,localStorageService,manProdSvc,$stateParams,$state){
 	
-   // $scope.maxValue   = 100;
-    //$scope.auditAvg = 67;
-  //  $scope.loadingCurrent1 = {
-    //backgroundColor: "#33cc33"
-//}
 
-//$scope.callback = function(){ $scope.api.clearElement(); $scope.updateWithTimeout(0); };
+//Get the Time and Date to display at the top Bar in Manager Dashboard
+
+ $scope.today = new Date();
+     $scope.tickInterval = 1000 //ms
+
+    var tick = function() {
+        $scope.clock = Date.now() // get the current time
+        $timeout(tick, $scope.tickInterval); // reset the timer
+    }
+
+    // Start the timer
+    $timeout(tick, $scope.tickInterval);
+
 
 //Below Logic is to show the Daily, MWeekly, Monthly Graphs based on click of Button
 $scope.manProdSvc=manProdSvc;
@@ -36,48 +43,49 @@ $scope.manProdSvc.showMonthly=true;
 
 $scope.prodgraphdaily_options = {
     chart: {
-        type: 'multiBarChart',
-        height: 500,
+        type: 'lineChart',
+        height: 370,
        margin : {
             top: 20,
             right: 20,
-            bottom: 80,
+            bottom: 50,
             left:100
         },
 
-        x: function(d){ return d[0]; },
-        y: function(d){ return d[1] },
-        showValues: true,
-        valueFormat: function(d){
-           // return d3.format()(d);
-         // return d + "%"; 
-       return d3.format(',.1f')(d);
-        },
-        duration: 500,
+        x: function(d){ return d.date},
+        y: function(d){ return d.value },
+        color: d3.scale.category10().range(),
+        duration: 300,
+        useInteractiveGuideline: true,
+        clipVoronoi: false,
         xAxis: {
             axisLabel: 'Date',
-            tickPadding:0,
-            rotateLabels: -45,
+           rotateLabels: -45,
             tickFormat: function(d) {
                         return d3.time.format('%m/%d/%y')(new Date(d))
-                   }
-
-       //   tickValues: function(d){return d[0]}
-
-       //      tickValues:ideas.values.map( function(d){return d.x;} ) );       
+                   },
+         tickValues: function(values) {
+      return _.map(values[0].values, function(v) {
+      return new Date(v.date);
+      })
+      },
+               showMaxMin: false,
+               staggerLabels: true
         },
         reduceXTicks: false,
         yAxis: {
             axisLabel: 'Number of Cases',
-          //  "showMaxMin": true,
-         //   "tickValues": [], 
-          //  axisLabelDistance: -10,
-       tickFormat:d3.format()   
+             tickFormat: function(d){
+           return d3.format(',.f')(d)
+           // console.log(d)
         },
+         axisLabelDistance: 20
+      }
         //yDomain is used to set max range for yAxis . similar for xAxis
    //  yDomain: [0,100],
      //below is used to generate a custom tooltip
-    useInteractiveGuideline: false,
+   /** 
+   useInteractiveGuideline: false,
       tooltip: {
                 contentGenerator: function (e) {
                   //  console.log(e);
@@ -92,7 +100,7 @@ $scope.prodgraphdaily_options = {
                     "<tr>" +
                       "<td class='key'>" + 'Voltage: ' + "</td>" +
                       "<td class='x-value'><strong>" + (series.value?series.value.toFixed(2):0) + "</strong></td>" +
-                    "</tr>";**/
+                    "</tr>";
 
                   var header = 
                     "<thead>" + 
@@ -111,27 +119,28 @@ $scope.prodgraphdaily_options = {
               //    return series.color + "  " + series.key + "  " + series.value + "%";
               }
           }
+          **/
       },
 
     title: {
         enable: true,
-        text: 'DC Productivity'
+        text: 'DC Productivity - Daily'
         },
 };
 
 //Get current day and past 10 days
 
-var dat=new Date();
+var dat=new Date().getTime();
 var oneday=24*60*60*1000;
-dat1=dat.getTime() - (oneday);
-dat2=dat.getTime() - (oneday*2);
-dat3=dat.getTime() - (oneday*3);
-dat4=dat.getTime() - (oneday*4);
-dat5=dat.getTime() - (oneday*5);
-dat6=dat.getTime() - (oneday*6);
-dat7=dat.getTime() - (oneday*7);
-dat8=dat.getTime() - (oneday*8);
-dat9=dat.getTime() - (oneday*9);
+dat1=dat - (oneday);
+dat2=dat - (oneday*2);
+dat3=dat - (oneday*3);
+dat4=dat - (oneday*4);
+dat5=dat - (oneday*5);
+dat6=dat - (oneday*6);
+dat7=dat - (oneday*7);
+dat8=dat - (oneday*8);
+dat9=dat - (oneday*9);
 
 
 
@@ -139,15 +148,17 @@ dat9=dat.getTime() - (oneday*9);
             {
                 key: "Received Cases",
                // mean: 250,
-                values: [ [ dat9 , 84] , [ dat8 , 68] , [ dat7 , 76], [ dat6, 93] , [ dat5, 49],[ dat4 , 62] , [ dat3, 51],[dat2,59],[dat1,78],
-               [dat,85]]
+                values: [ {"date":dat9,"value":84},{"date":dat8,"value":68},{"date":dat7,"value":76},{"date":dat6,"value":93},
+                {"date":dat5,"value":49},{"date":dat4,"value":62},{"date":dat3,"value":51},{"date":dat2,"value":59},
+                {"date":dat1,"value":78},{"date":dat,"value":85} ]
             },
             {
                 key: "Shipped Cases",
               //  mean: -60,
-               values: [ [ dat9, 45] , [ dat8, 22] , [ dat7, 45], [ dat6 , 67] , [ dat5 , 34],[ dat4 , 38] , [ dat3, 21],[dat2,34],[dat1,63],
-               [dat,50]]
-            },  
+                 values: [{"date":dat9,"value":45},{"date":dat8,"value":22},{"date":dat7,"value":54},{"date":dat6,"value":67},
+                {"date":dat5,"value":34},{"date":dat4,"value":38},{"date":dat3,"value":21},{"date":dat2,"value":34},
+                {"date":dat1,"value":63},{"date":dat,"value":50} ]
+            }
 
         ];
 
@@ -158,14 +169,13 @@ dat9=dat.getTime() - (oneday*9);
           var  recv=[];
           var dt=[];
         for (var i=0;i<$scope.prodgraphdaily_data[0].values.length;i++) {
-        	//console.log($scope.prodgraphdaily_data[0].values[i]);
-             recv.push($scope.prodgraphdaily_data[0].values[i][1]);
-             dt.push($scope.prodgraphdaily_data[0].values[i][0])
+             recv.push($scope.prodgraphdaily_data[0].values[i].value);
+             dt.push($scope.prodgraphdaily_data[0].values[i].date)
         }
 
         var shp=[];
         for (var i=0;i<$scope.prodgraphdaily_data[1].values.length;i++) {
-             shp.push($scope.prodgraphdaily_data[1].values[i][1]);
+             shp.push($scope.prodgraphdaily_data[1].values[i].value);
         }
             
         //    console.log(recv,shp,dt);
@@ -173,11 +183,11 @@ dat9=dat.getTime() - (oneday*9);
 
          for (var j = 0;j<$scope.prodgraphdaily_data[1].values.length;j++) {
              var val=recv[j] - shp[j];
-             tot.push([dt[j],val]);
+             tot.push({"date":dt[j],"value":val});
          }
          
          $scope.prodgraphdaily_data.push({key:"Total Inventory",values:tot})
-        // console.log($scope.prodgraphdaily_data);
+         console.log($scope.prodgraphdaily_data);
      // console.log($scope.prodgraphdaily_data);
 
 
@@ -188,10 +198,11 @@ dat9=dat.getTime() - (oneday*9);
 //Below function gets the first and last day of the week in mm/DD format. The data is passed as input to the function
 
 $scope.getWeekFirstLast = function(dt) {
-var firstday = new Date(dt.setDate(dt.getDate() - dt.getDay())).toISOString().slice(5,10).replace(/-/g,"/");
-var lastday = new Date(dt.setDate(dt.getDate() - dt.getDay()+6)).toISOString().slice(5,10).replace(/-/g,"/");
+//var firstday = new Date(dt.setDate(dt.getDate() - dt.getDay())).toISOString().slice(5,10).replace(/-/g,"/");
+//var lastday = new Date(dt.setDate(dt.getDate() - dt.getDay()+6)).toISOString().slice(5,10).replace(/-/g,"/");
+var lastday = new Date(dt.setDate(dt.getDate() - dt.getDay()+6)).getTime();
 //console.log(firstday+"/"+lastday);
-return firstday+" - "+lastday;
+return lastday;
 };
 
 var d1=new Date();
@@ -224,94 +235,19 @@ var w2=$scope.getWeekFirstLast(x);
    x = new Date(d10);
  var w10=$scope.getWeekFirstLast(x);
 
-
-$scope.prodgraphweekly_options = {
-    chart: {
-        type: 'multiBarChart',
-        height: 500,
-       margin : {
-            top: 20,
-            right: 20,
-            bottom: 80,
-            left:100
-        },
-
-        x: function(d){ return d[0]; },
-        y: function(d){ return d[1] },
-        showValues: true,
-        valueFormat: function(d){
-           // return d3.format()(d);
-         // return d + "%"; 
-       return d3.format(',.1f')(d);
-        },
-        duration: 500,
-        xAxis: {
-            axisLabel: 'Date',
-            tickPadding:0,
-            rotateLabels: -45,
-         //   tickFormat: d3.format()
-        },
-        reduceXTicks: false,
-        yAxis: {
-            axisLabel: 'Number of Cases',
-       tickFormat:d3.format()   
-        },
-    useInteractiveGuideline: false,
-      tooltip: {
-                contentGenerator: function (e) {
-                  //  console.log(e);
-                  var series = e.series[0];
-                  var date=e.data[0];
-                  if (series.value === null) return;
-                  /**  var rows = 
-                    "<tr>" +
-                      "<td class='key'>" + 'Time: ' + "</td>" +
-                      "<td class='x-value'>" + e.value + "</td>" + 
-                    "</tr>" +
-                    "<tr>" +
-                      "<td class='key'>" + 'Voltage: ' + "</td>" +
-                      "<td class='x-value'><strong>" + (series.value?series.value.toFixed(2):0) + "</strong></td>" +
-                    "</tr>";**/
-
-                  var header = 
-                    "<thead>" + 
-                      "<tr>" +
-                        "<td class='legend-color-guide'><div style='background-color: " + series.color + ";'></div></td>" +
-                        "<td class='key'><strong>" + series.key + "   -   " + series.value + "</strong></td>" +
-                      "</tr>" + 
-                    "</thead>";
-                    
-                  return "<table>" +
-                      header  +
-                      //"<tbody>" + 
-                       // rows + 
-                     // "</tbody>" +
-                    "</table>";
-              //    return series.color + "  " + series.key + "  " + series.value + "%";
-              }
-          }
-      },
-
-    title: {
-        enable: true,
-        text: 'DC Productivity'
-        },
-};
-
 $scope.prodgraphweekly_data = [
             {
                 key: "Received Cases",
-               // mean: 250,
-                values: [ [ w10 , 160] , [ w9 , 275] , [ w8 , 383], [ w7, 172] , [ w6, 478],[ w5, 255] , [ w4 , 561],[w3,282],[w2,78],
-               [w1,345]]
+                values: [ {"label":w10 ,"value":160},{"label":w9,"value":275},{"label":w8,"value":383},{"label":w7,"value":172},
+                {"label":w6,"value":478},{"label":w5,"value":255},{ "label":w4,"value":561},{"label":w3,"value":282},{"label":w2,"value":78},
+               {"label":w1,"value":345} ]
             },
             {
                 key: "Shipped Cases",
-              //  mean: -60,
-               values: [ [ w10, 125] , [ w9, 130] , [ w8, 210], [ w7, 110] , [ w6 , 210],[ w5 , 120] , [ w4, 250],[w3,130],[w2,23],
-               [w1,150]]
-            },  
-
+               values: [ {"label":w10,"value":125},{"label":w9,"value":130},{"label":w8,"value":210},{"label":w7,"value":110},
+               {"label":w6 ,"value":210 },{"label":w5,"value":120},{"label":w4,"value":250},{"label":w3,"value":130},{"label":w2,"value":23},
+               {"label":w1,"value":150} ]
+            }
         ];
 
 
@@ -321,26 +257,71 @@ $scope.prodgraphweekly_data = [
           var dtw=[];
         for (var i=0;i<$scope.prodgraphweekly_data[0].values.length;i++) {
         	//console.log($scope.prodgraphdaily_data[0].values[i]);
-             recvw.push($scope.prodgraphweekly_data[0].values[i][1]);
-             dtw.push($scope.prodgraphweekly_data[0].values[i][0])
+             recvw.push($scope.prodgraphweekly_data[0].values[i].value);
+             dtw.push($scope.prodgraphweekly_data[0].values[i].label)
         }
 
         var shpw=[];
         for (var i=0;i<$scope.prodgraphweekly_data[1].values.length;i++) {
-             shpw.push($scope.prodgraphweekly_data[1].values[i][1]);
+             shpw.push($scope.prodgraphweekly_data[1].values[i].value);
         }
             
         var totw=[];
 
          for (var j = 0;j<$scope.prodgraphweekly_data[1].values.length;j++) {
              var val=recvw[j] - shpw[j];
-             totw.push([dtw[j],val]);
+             totw.push({"label":dtw[j],"value":val});
          }
          
-         $scope.prodgraphweekly_data.push({key:"Total Inventory",values:totw})
-      //console.log($scope.prodgraphweekly_data);
+         $scope.prodgraphweekly_data.push({key:"Total Inventory",values:totw});
+         console.log($scope.prodgraphweekly_data)
 
-//console.log($filter('date')(d,'w'));
+
+$scope.prodgraphweekly_options = {
+    chart: {
+        type: 'lineChart',
+        height: 370,
+       margin : {
+            top: 20,
+            right: 20,
+            bottom: 100,
+            left:100
+        },
+
+        x: function(d){ return d.label},
+        y: function(d){ return d.value},
+        showValues: true,
+         color: d3.scale.category10().range(),
+        duration: 300,
+        useInteractiveGuideline: true,
+        clipVoronoi: false,
+        xAxis: {
+            axisLabel: 'Date',
+            tickPadding:0,
+            rotateLabels: -45,
+        tickFormat:function(d) {
+        return d3.time.format('Week' +'%U - %b %d,%Y')(new Date(d))
+     },
+              tickValues: function(values) {
+      return _.map(values[0].values, function(v) {
+      return new Date(v.label);
+      })
+     }
+ },
+        reduceXTicks: true,
+        yAxis: {
+            axisLabel: 'Number of Cases',
+       tickFormat:d3.format()   
+       },
+},
+    title: {
+        enable: true,
+        text: 'DC Productivity - Weekly'
+        },
+};
+
+
+
 
 //*****************************************************************************************************
 //                            MONTHLY PRODUCTIVITY GRAPH
@@ -348,122 +329,65 @@ $scope.prodgraphweekly_data = [
 
 //Logic to get the past 12 months with year
 
-var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+//var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 var mdat=new Date();
-var m1=monthNames[new Date(mdat.getFullYear(), mdat.getMonth(), 1).getMonth()];
-var y1=new Date(mdat.getFullYear(), mdat.getMonth(), 1).getFullYear();
-var my1=m1+"-"+y1;
-var m2=monthNames[new Date(mdat.getFullYear(), mdat.getMonth() - 1, 1).getMonth()];
-var y2=new Date(mdat.getFullYear(), mdat.getMonth() - 1, 1).getFullYear();
-var my2=m2+"-"+y2;
-var m3=monthNames[new Date(mdat.getFullYear(), mdat.getMonth() - 2, 1).getMonth()];
-var y3=new Date(mdat.getFullYear(), mdat.getMonth() - 2, 1).getFullYear();
-var my3=m3+"-"+y3;
-var m4=monthNames[new Date(mdat.getFullYear(), mdat.getMonth() - 3, 1).getMonth()];
-var y4=new Date(mdat.getFullYear(), mdat.getMonth() - 3, 1).getFullYear();
-var my4=m4+"-"+y4;
-var m5=monthNames[new Date(mdat.getFullYear(), mdat.getMonth()- 4, 1).getMonth()];
-var y5=new Date(mdat.getFullYear(), mdat.getMonth() - 4, 1).getFullYear();
-var my5=m5+"-"+y5;
-var m6=monthNames[new Date(mdat.getFullYear(), mdat.getMonth() - 5, 1).getMonth()];
-var y6=new Date(mdat.getFullYear(), mdat.getMonth() - 5, 1).getFullYear();
-var my6=m6+"-"+y6;
-var m7=monthNames[new Date(mdat.getFullYear(), mdat.getMonth() - 6, 1).getMonth()];
-var y7=new Date(mdat.getFullYear(), mdat.getMonth() - 6, 1).getFullYear();
-var my7=m7+"-"+y7;
-var m8=monthNames[new Date(mdat.getFullYear(), mdat.getMonth() - 7, 1).getMonth()];
-var y8=new Date(mdat.getFullYear(), mdat.getMonth() - 7, 1).getFullYear();
-var my8=m8+"-"+y8;
-var m9=monthNames[new Date(mdat.getFullYear(), mdat.getMonth() - 8, 1).getMonth()];
-var y9=new Date(mdat.getFullYear(), mdat.getMonth() - 8, 1).getFullYear();
-var my9=m9+"-"+y9;
-var m10=monthNames[new Date(mdat.getFullYear(), mdat.getMonth() - 9, 1).getMonth()];
-var y10=new Date(mdat.getFullYear(), mdat.getMonth() - 9, 1).getFullYear();
-var my10=m10+"-"+y10;
-var m11=monthNames[new Date(mdat.getFullYear(), mdat.getMonth() - 10, 1).getMonth()];
-var y11=new Date(mdat.getFullYear(), mdat.getMonth() - 10, 1).getFullYear();
-var my11=m11+"-"+y11;
-var m12=monthNames[new Date(mdat.getFullYear(), mdat.getMonth() - 11, 1).getMonth()];
-var y12=new Date(mdat.getFullYear(), mdat.getMonth() - 11, 1).getFullYear();
-var my12=m12+"-"+y12;
-//console.log(my1,my2,my3,my4,my5,my6,my7,my8,my9,my10,my11,my12);
-
-
+var my1=new Date(mdat.getFullYear(), mdat.getMonth(), 1).getTime();
+var my2=new Date(mdat.getFullYear(), mdat.getMonth() - 1, 1).getTime();
+var my3=new Date(mdat.getFullYear(), mdat.getMonth() - 2, 1).getTime();
+var my4=new Date(mdat.getFullYear(), mdat.getMonth() - 3, 1).getTime();
+var my5=new Date(mdat.getFullYear(), mdat.getMonth() - 4, 1).getTime();
+var my6=new Date(mdat.getFullYear(), mdat.getMonth() - 5, 1).getTime();
+var my7=new Date(mdat.getFullYear(), mdat.getMonth() - 6, 1).getTime();
+var my8=new Date(mdat.getFullYear(), mdat.getMonth() - 7, 1).getTime();
+var my9=new Date(mdat.getFullYear(), mdat.getMonth() - 8, 1).getTime();
+var my10=new Date(mdat.getFullYear(), mdat.getMonth() - 9, 1).getTime();
+var my11=new Date(mdat.getFullYear(), mdat.getMonth() - 10, 1).getTime();
+var my12=new Date(mdat.getFullYear(), mdat.getMonth() - 11, 1).getTime();
 
 
 $scope.prodgraphmonthly_options = {
     chart: {
-        type: 'multiBarChart',
-        height: 500,
+        type: 'lineChart',
+        height: 370,
        margin : {
             top: 20,
             right: 20,
-            bottom: 80,
+            bottom:50,
             left:100
         },
 
-        x: function(d){ return d[0]; },
-        y: function(d){ return d[1] },
+        x: function(d){ return d.date },
+        y: function(d){ return d.value},
         showValues: true,
-        valueFormat: function(d){
-           // return d3.format()(d);
-         // return d + "%"; 
-       return d3.format(',.1f')(d);
-        },
+         color: d3.scale.category10().range(),
+        duration: 300,
+        useInteractiveGuideline: true,
+        clipVoronoi: false,
         duration: 500,
         xAxis: {
             axisLabel: 'Date',
             tickPadding:0,
             rotateLabels: -45,
-           //tickFormat: function(d) {
-           	//console.log(d);
-           //}
+           tickFormat:function(d) {
+           return d3.time.format('%b %Y')(new Date(d))
        },
-        reduceXTicks: false,
+                tickValues: function(values) {
+      return _.map(values[0].values, function(v) {
+      return new Date(v.date);
+      })
+       }
+   },
+        reduceXTicks: true,
         yAxis: {
             axisLabel: 'Number of Cases',
        tickFormat:d3.format()   
         },
-    useInteractiveGuideline: false,
-      tooltip: {
-                contentGenerator: function (e) {
-                  //  console.log(e);
-                  var series = e.series[0];
-                  var date=e.data[0];
-                  if (series.value === null) return;
-                  /**  var rows = 
-                    "<tr>" +
-                      "<td class='key'>" + 'Time: ' + "</td>" +
-                      "<td class='x-value'>" + e.value + "</td>" + 
-                    "</tr>" +
-                    "<tr>" +
-                      "<td class='key'>" + 'Voltage: ' + "</td>" +
-                      "<td class='x-value'><strong>" + (series.value?series.value.toFixed(2):0) + "</strong></td>" +
-                    "</tr>";**/
-
-                  var header = 
-                    "<thead>" + 
-                      "<tr>" +
-                        "<td class='legend-color-guide'><div style='background-color: " + series.color + ";'></div></td>" +
-                        "<td class='key'><strong>" + series.key + "   -   " + series.value + "</strong></td>" +
-                      "</tr>" + 
-                    "</thead>";
-                    
-                  return "<table>" +
-                      header  +
-                      //"<tbody>" + 
-                       // rows + 
-                     // "</tbody>" +
-                    "</table>";
-              //    return series.color + "  " + series.key + "  " + series.value + "%";
-              }
-          }
       },
 
     title: {
         enable: true,
-        text: 'DC Productivity'
+        text: 'DC Productivity - Monthly'
         },
 };
 
@@ -471,14 +395,17 @@ $scope.prodgraphmonthly_data = [
             {
                 key: "Received Cases",
                // mean: 250,
-                values: [ [ my12 , 1600] , [ my11 , 2750] , [ my10 , 3830], [ my9, 1720] , [ my8, 4780],[ my7, 2550] , [ my6 , 5610],[my5,2820],
-                [my4,780],[my3,3450],[my2,4560],[my1,6720] ]
+                values: [ {"date":my12 ,"value":1600},{"date":my11,"value":2750},{"date":my10,"value":3830},{"date": my9,"value":1720} ,
+                 {"date":my8,"value":4780},{"date":my7,"value":2550},{"date": my6 ,"value":5610},{"date":my5,"value":2820},
+               {"date":my4,"value":780},{"date":my3,"value":3450},{"date":my2,"value":4560},{"date":my1,"value":6720} ]
             },
             {
                 key: "Shipped Cases",
               //  mean: -60,
-                  values: [ [ my12 , 1200] , [ my11 , 2340] , [ my10 , 2500], [ my9, 900] , [ my8, 3400],[ my7, 1230] , [ my6 , 4570],
-                  [my5,1300],[my4,600],[my3,3400],[my2,4200],[my1,5600] ]
+                  values: [ {"date":my12,"value":1200}, { "date":my11 ,"value":2340} , {"date":my10 ,"value":2500}, {"date":my9,"value":900},
+                   {"date":my8,"value":3400},{"date": my7, "value":1230},{"date": my6,"value":4570},
+                  {"date":my5,"value":1300},{"date":my4,"value":600},{"date":my3,"value":3400},{"date":my2,"value":4200},
+                  {"date":my1,"value":5600} ]
             },  
 
         ];
@@ -489,21 +416,20 @@ $scope.prodgraphmonthly_data = [
           var  recvm=[];
           var dtm=[];
         for (var i=0;i<$scope.prodgraphmonthly_data[0].values.length;i++) {
-        	//console.log($scope.prodgraphdaily_data[0].values[i]);
-             recvm.push($scope.prodgraphmonthly_data[0].values[i][1]);
-             dtm.push($scope.prodgraphmonthly_data[0].values[i][0])
+             recvm.push($scope.prodgraphmonthly_data[0].values[i].value);
+             dtm.push($scope.prodgraphmonthly_data[0].values[i].date)
         }
 
         var shpm=[];
         for (var i=0;i<$scope.prodgraphmonthly_data[1].values.length;i++) {
-             shpm.push($scope.prodgraphmonthly_data[1].values[i][1]);
+             shpm.push($scope.prodgraphmonthly_data[1].values[i].value);
         }
             
         var totm=[];
 
          for (var j = 0;j<$scope.prodgraphmonthly_data[1].values.length;j++) {
              var val=recvm[j] - shpm[j];
-             totm.push([dtm[j],val]);
+             totm.push({"date":dtm[j],"value":val});
          }
          
          $scope.prodgraphmonthly_data.push({key:"Total Inventory",values:totm})

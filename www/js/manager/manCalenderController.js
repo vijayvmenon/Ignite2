@@ -94,7 +94,7 @@ angular.module('ignite2.managerDashboard')
     /* config object */
     $scope.uiConfig = {
       calendar:{
-        height: 450,
+        height: 400,
         editable: true,
         header:{
           left: 'title',

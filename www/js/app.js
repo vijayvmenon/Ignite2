@@ -6,10 +6,14 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override','ignite2.managerDashboard'])
 
-.run(function($ionicPlatform,$rootScope, $state, $stateParams) {
+.run(function($ionicPlatform,$rootScope, $state, $stateParams,$window) {
 
     $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
+
+  angular.element($window).bind('resize', function () {
+    console.log($window.innerWidth);
+});
   
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -45,7 +49,7 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
     url: '/managerDashboard',
      views: {
       'managerMenuContent': {
-    templateUrl: 'templates/Manager/dashboard.html',
+    templateUrl: window.innerWidth > 320 ?'templates/Manager/dashboard.html' :'templates/Manager/dashboardmob.html',
   //  controller:'manDashboardCntrl'
           }
        }
@@ -116,7 +120,7 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
   }
 }
   })
-        
+
     .state('managerApp.settings', {
     url: '/settings',
          views: {
@@ -177,4 +181,7 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
-});
+})
+
+
+
