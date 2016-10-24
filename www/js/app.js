@@ -6,6 +6,13 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override','ignite2.managerDashboard'])
 
+  // allow DI for use in controllers, unit tests
+  .constant('_', window._)
+  // use in views, ng-repeat="x in _.range(3)"
+  .run(function ($rootScope) {
+     $rootScope._ = window._;
+  })
+
 .run(function($ionicPlatform,$rootScope, $state, $stateParams,$window) {
 
     $rootScope.$state = $state;
