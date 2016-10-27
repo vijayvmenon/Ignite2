@@ -1,5 +1,19 @@
-<ion-view view-title="Dashboards">
+<ion-view>
   <ion-content class="grid-basic-page" overflow-scroll="true">
+       <section class="home-container">
+        <div class="row responsive-sm" style="margin-left:20px;margin-top:10px" ng-controller="manProductivityCntrl">
+           <div class="col">
+            <span class="u10">Supervisor Dashboard</span><span class="u11">&nbsp&nbsp Statistics and Reports</span>
+           </div>
+           <div class="col">
+            <div class="button-bar button-positive button-pill" style="margin-left:-20px;margin-top:-10px;margin-right:5px;max-width:750px">  
+            <div class="button button-positive u12" style="cursor:default;max-width:136px"><img src="../img/warehouse.png" height="30px" width="30px" style="padding-top:5px"/>&nbsp DC #1234</div>
+            <div class="button button-positive u12" style="cursor:default;max-width:168px"><img src="../img/location.png" height="30px" width="30px" style="padding-top:5px"/>&nbspBentonville, AR</div>
+            <div class="button button-positive u12" style="cursor:default;max-width:270px;margin-right:0px"><img src="../img/calendar.png" height="30px" width="30px" style="padding-top:5px"/>&nbsp {{today|date:"MMMM dd, yyyy"}}</div>
+            <div class="button button-positive u12" style="cursor:default;max-width:157px"><img src="../img/clock2.png" height="30px" width="30px" style="padding-top:5px"/>&nbsp {{clock | date:"hh:mm:ss a"}}</div>
+            </div>  
+           </div>
+        </div>
 <div class = "row responsive-sm">
    <div class = "col col-60">Supervisor Graph 1</div>
    <div class = "col">
@@ -19,5 +33,6 @@
    <div class = "col col-30">Chat Widget</div>
    <div class = "col col-40">Side Graph 4</div>
  </div>
+ </section>
   </ion-content>
 </ion-view>

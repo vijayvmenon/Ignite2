@@ -20,79 +20,78 @@ $scope.manSlotSvc.active="PBYL";
 };
 
 
-
-$scope.sstktotal=350;
-
- $scope.sstkempty_data = {label: "EMPTY", value: 210};
-
-$scope.sstkempty_per=Math.round($scope.sstkempty_data.value*100/$scope.sstktotal);
-
- $scope.sstkheld_data = {label: "HELD", value: 64};
-
-$scope.sstkheld_per=Math.round($scope.sstkheld_data.value*100/$scope.sstktotal);
-
- $scope.sstkaudit_data = {label: "AUDITED", value: 34};
-
-$scope.sstkaudit_per=Math.round($scope.sstkaudit_data.value*100/$scope.sstktotal);
-
- $scope.sstkrotate_data = {label: "NOT ROTATED", value: 78 };
-
-$scope.sstkrotate_per=Math.round($scope.sstkrotate_data.value*100/$scope.sstktotal);
-//$scope.sstkgauge_options = {thickness: 15, mode: "gauge", total: 100};
+/**below logic is to get the Slot details from the cfapps website. The http.get returns a promise and $scope.sstkslotdet and pbylslotdet are 
+assigned the result of the promise in the success function **/
 
 
-$scope.pbyltotal=250;
-
- $scope.pbylempty_data = {label: "EMPTY", value: 135};
-
-$scope.pbylempty_per=$scope.pbylempty_data.value*100/$scope.pbyltotal;
-
- $scope.pbylheld_data = {label: "HELD", value: 47};
-
-$scope.pbylheld_per=$scope.pbylheld_data.value*100/$scope.pbyltotal;
-
- $scope.pbylaudit_data ={label: "AUDITED", value: 98};
-
-$scope.pbylaudit_per=$scope.pbylaudit_data.value*100/$scope.pbyltotal;
-
- $scope.pbylrotate_data = {label: "NOT ROTATED", value: 78};
-
-$scope.pbylrotate_per=$scope.pbylrotate_data.value*100/$scope.pbyltotal;
+//Below Function is to sort an array based on key value
+var keysrt =function (key) {
+  return function(a,b){
+   if (a[key] > b[key]) return 1;
+   if (a[key] < b[key]) return -1;
+   return 0;
+  }
+}
 
 
-/**
-            $http.get('http://igniteservices.cfapps.io/slot/EASYPICK').
-        then(function(response) {
-            $scope.greeting = response.data;
-            console.log($scope.greeting);
-        },
-        function (error) {
-          console.log("not working");
-        });
-**/
+$scope.sstkslotdet=[];
+$scope.pbylslotdet=[];
 
-// manSlotSvc.getslot();
- //$scope.slotdet=manSlotSvc.greeting;
-  //$scope.slotdet = manSlotSvc.showpbyl;
- //console.log($scope.slotdet);
+manSlotSvc.sstk_data().success(function(data) {
+  //Sorting the array when http returns it
+  $scope.sstktotal=data.totalSlots;
+  console.log($scope.sstktotal);
+$scope.sstkslotdet = data.slotMetrics.sort(keysrt("slotStatus"));
+console.log($scope.sstkslotdet);
+ $scope.sstkempty_data=$scope.sstkslotdet[1];
+ console.log($scope.sstkempty_data);
+ $scope.sstkempty_per=Math.round($scope.sstkempty_data.count*100/$scope.sstktotal);
+ console.log($scope.sstkempty_per);
+  $scope.sstkfull_data = $scope.sstkslotdet[2];
+$scope.sstkfull_per=Math.round($scope.sstkfull_data.count*100/$scope.sstktotal);
+ $scope.sstkaudit_data = $scope.sstkslotdet[0];
+$scope.sstkaudit_per=Math.round($scope.sstkaudit_data.count*100/$scope.sstktotal);
+ $scope.sstkrotate_data = $scope.sstkslotdet[4];
+$scope.sstkrotate_per=Math.round($scope.sstkrotate_data.count*100/$scope.sstktotal);
+})
+.error(function(data) {
+  console.log('error');
+});
+
+manSlotSvc.pbyl_data().success(function(data) {
+  $scope.pbyltotal=data.totalSlots;
+$scope.pbylslotdet = data.slotMetrics.sort(keysrt("slotStatus"));
+ $scope.pbylempty_data=$scope.pbylslotdet[1];
+ $scope.pbylempty_per=Math.round($scope.pbylempty_data.count*100/$scope.pbyltotal);
+  $scope.pbylfull_data = $scope.pbylslotdet[2];
+$scope.pbylfull_per=Math.round($scope.pbylfull_data.count*100/$scope.pbyltotal);
+ $scope.pbylaudit_data = $scope.pbylslotdet[0];
+$scope.pbylaudit_per=Math.round($scope.pbylaudit_data.count*100/$scope.pbyltotal);
+ $scope.pbylrotate_data = $scope.pbylslotdet[4];
+$scope.pbylrotate_per=Math.round($scope.pbylrotate_data.count*100/$scope.pbyltotal);
+})
+.error(function(data) {
+  console.log('error');
+});
+
+
+
  //console.log(window.innerWidth); 
 
 }])
 
 
-.factory('manSlotSvc', function($http){
+.factory('manSlotSvc', function($http) {
+
   return {
   showsstk:true,
-    showpbyl:false,
-    active:"SSTK"
-   // getslot: function () {
-     // $http.get('http://igniteservices.cfapps.io/slot/EASYPICK').
-       // then(function(response) {
-         //   greeting = response.data;
-        //},
-        //function (error) {
-         // return "not working";
-        //});
- // }
+  showpbyl:false,
+    active:"SSTK",
+      sstk_data: function(){
+        return $http.get('http://igniteservices.cfapps.io/slotstatus/SSTK');
+      },
+      pbyl_data: function(){
+        return $http.get('http://igniteservices.cfapps.io/slotstatus/PBYL');
+      }
 }
 });

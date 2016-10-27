@@ -4,13 +4,13 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override','ignite2.managerDashboard'])
+angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override','ignite2.managerDashboard','ignite2.notificationController'])
 
   // allow DI for use in controllers, unit tests
   .constant('_', window._)
   // use in views, ng-repeat="x in _.range(3)"
   .run(function ($rootScope) {
-     $rootScope._ = window._;
+
   })
 
 .run(function($ionicPlatform,$rootScope, $state, $stateParams,$window) {
@@ -37,6 +37,7 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
   });
 })
 
+
 .config(function($stateProvider, $urlRouterProvider) {
   
   $stateProvider
@@ -46,6 +47,13 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
     templateUrl: 'templates/login.html',
     controller: 'LoginCtrl'
   })
+
+    .state('notification', {
+    url: '/notification',
+    templateUrl: 'templates/notification.html',
+    controller: 'notificationCntrl'
+  })
+
 
     .state('managerApp', {
     url: '/managerMenu',
@@ -131,7 +139,7 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
     .state('managerApp.settings', {
     url: '/settings',
          views: {
-      'managerMenuContent': {
+      'managerMenuSettings': {
     templateUrl: 'templates/Manager/settings.html'
      }
    }
@@ -155,27 +163,13 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
     .state('suprvsrApp.overrideApp', {
       url: '/suprvsrOverride',
            views: {
-      'supMenuContent': {
+      'supOverrideView': {
           templateUrl: 'templates/Supervisor/override.html',
           controller:'overrideCntrl'
         }
       }
     })
 
-     .state('suprvsrApp.overrideApp.detail', {
-      url: '/detail',
-         views: {
-      'supMenuContent@suprvsrApp': {
-          templateUrl: 'templates/Supervisor/overrideDetail.html',
-          controller:'overrideCntrl'
-       }
-     },
-           params: {
-        detailData: null,
-        showpending:false,
-        showapproved:false
-       }
-    })   
 
     .state('suprvsrApp.settings', {
     url: '/settings',
@@ -188,7 +182,9 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
-})
+});
+
+
 
 
 

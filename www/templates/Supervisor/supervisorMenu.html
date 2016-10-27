@@ -1,4 +1,4 @@
-<ion-side-menus enable-menu-with-back-views="false">
+<!--<ion-side-menus enable-menu-with-back-views="false">
   <ion-side-menu-content>
     <ion-nav-bar class="bar custom-bar-color">
       <ion-nav-back-button>
@@ -33,4 +33,30 @@
       </ion-list>
     </ion-content>
   </ion-side-menu>
-</ion-side-menus>
+</ion-side-menus> -->
+
+    <ion-nav-bar class="bar-stable custom-bar-color">
+          <ion-nav-title>
+    <span ng-controller="notificationCntrl"> 
+    <p style="float:left" class="main-header">ignite</p><p style="float:left" class="main-header-number">&nbsp2.0</p>
+    <i class="icon ion-log-out" style="cursor:pointer;float:right;font-size:40px;color:#78B9E7;" ui-sref="login"></i>
+    <i class="icon ion-android-notifications" style="cursor:pointer;float:right;font-size:40px;color:#78B9E7;margin-right:10px" ng-click="toggleGroup()"><span class="badge badge-assertive header-badge">3</span></i>
+    <ion-item class="item-accordion" ng-show="showNotifDetails">
+            {{not_details}}
+    </ion-item> 
+    <i class="icon ion-email" style="cursor:pointer;float:right;font-size:40px;color:#78B9E7;margin-right:10px"><span class="badge badge-assertive header-badge">2</span></i>
+    </span>
+    </ion-nav-title>
+    </ion-nav-bar>
+
+
+      <ion-tabs class="tabs-icon-top tabs-positive">
+        <ion-tab title="Dashboard" icon="ion-home" ui-sref="suprvsrApp.dashboard">
+          <ion-nav-view name="supMenuContent"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="Override App" ng-controller="overrideCntrl" badge="override_count"  badge-style="badge-assertive" icon="ion-ios-information" ui-sref="suprvsrApp.overrideApp">
+          <ion-nav-view name="supOverrideView"></ion-nav-view>
+        </ion-tab>
+      </ion-tabs>
+
