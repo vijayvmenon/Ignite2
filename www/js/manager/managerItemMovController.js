@@ -32,7 +32,7 @@ $scope.topitemmvmtgraph_options = {
                 yAxis: {
                     axisLabel: 'Values',
                     tickFormat: function(d){
-                        return d3.format(',.1f')(d);
+                        return d3.format(',.0f')(d);
                     }
                 },
                 //Below 3 options are to disable Legends, Controls and increase space between bars
@@ -63,7 +63,7 @@ $scope.bottomitemmvmtgraph_options = {
                 yAxis: {
                     axisLabel: 'Values',
                     tickFormat: function(d){
-                        return d3.format(',.1f')(d);
+                        return d3.format(',.0f')(d);
                     }
                 },
                 showLegend: false,

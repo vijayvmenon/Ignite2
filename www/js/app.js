@@ -4,10 +4,29 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override','ignite2.managerDashboard','ignite2.notificationController'])
+angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override','ignite2.managerDashboard','ignite2.notificationController','ignite2.supervisorSearch'])
 
   // allow DI for use in controllers, unit tests
   .constant('_', window._)
+
+//This is a constant defined as an Immediately invoked function execution where "platform" variable is set to the platform returned by 
+//ionic.platform function . This variable is used in the config for states to set templateurl based on routes.
+
+  .constant('platform', (function($ionicPlatform) {
+    var platfrm = ionic.Platform.platform();
+
+  if (platfrm == "android") {
+    platform = "android"
+  }
+    else if (platfrm == "ios") {
+    platform = "ios"
+  }
+   else {
+    platform = "windows"
+   }
+   return platform;
+  })())
+
   // use in views, ng-repeat="x in _.range(3)"
   .run(function ($rootScope) {
 
@@ -18,10 +37,13 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
     $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 
+     console.log(platform);
+
   angular.element($window).bind('resize', function () {
-    console.log($window.innerWidth);
+  //  console.log($window.innerWidth);
 });
-  
+
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -48,13 +70,6 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
     controller: 'LoginCtrl'
   })
 
-    .state('notification', {
-    url: '/notification',
-    templateUrl: 'templates/notification.html',
-    controller: 'notificationCntrl'
-  })
-
-
     .state('managerApp', {
     url: '/managerMenu',
     templateUrl: 'templates/Manager/managerMenu.html',
@@ -64,7 +79,9 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
     url: '/managerDashboard',
      views: {
       'managerMenuContent': {
-    templateUrl: window.innerWidth > 320 ?'templates/Manager/dashboard.html' :'templates/Manager/dashboardmob.html',
+     //The templateurl is set based on the constant "platform" defined in the constant function for module. go to windows template for windows 
+    //else go to mobile template :-)
+    templateUrl: ( platform == 'windows' )? 'templates/Manager/dashboard.html' : 'templates/Manager/dashboardmob.html'
   //  controller:'manDashboardCntrl'
           }
        }
@@ -125,13 +142,13 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
 }
   })
 
-        .state('managerApp.dashboard.calender', {
-    url: '/calender',
+        .state('managerApp.dashboard.trip', {
+    url: '/trip',
     views: {
       'managerMenuContent@managerApp': {
     parent:'managerApp.dashboard',
  //   templateUrl: 'templates/Manager/itemmvmt.html',
-    controller:'manCalenderCntrl'
+    controller:'manTripCntrl'
   }
 }
   })
@@ -151,12 +168,27 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
     templateUrl: 'templates/Supervisor/supervisorMenu.html',
   })
 
-      .state('suprvsrApp.dashboard', {
-      url: '/suprvsrDashboard',
+      .state('suprvsrApp.search', {
+      url: '/suprvsrSearch',
            views: {
-      'supMenuContent': {
-          templateUrl: 'templates/Supervisor/dashboard.html'
+      'supSearchContent': {
+          templateUrl: 'templates/Supervisor/supervisorWiki/supervisorSearch.html',
+          controller:'TypeAheadController',
         }
+      }
+
+     })
+
+            .state('suprvsrApp.search.item', {
+      url: '/itemDetails',
+           views: {
+      'supSearchContent@suprvsrApp': {
+          templateUrl: 'templates/Supervisor/supervisorWiki/itemDetails.html',
+          controller:'itemDetailsController',
+        }
+      },
+      params: {
+        itemnbr:null
       }
      })
 
@@ -183,6 +215,7 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 });
+
 
 
 

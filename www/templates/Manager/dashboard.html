@@ -1,18 +1,11 @@
 <ion-view>
     <ion-content class="grid-basic-page" overflow-scroll="true">
      <section class="home-container">
-        <div class="row responsive-md" style="margin-left:20px;margin-top:20px" ng-controller="manProductivityCntrl">
+        <div class="row responsive-md" style="margin-left:20px;margin-top:20px">
            <div class="col">
             <span class="u10">Manager Dashboard</span><span class="u11">&nbsp&nbsp&nbsp Statistics and Reports</span>
            </div>
-           <div class="col">
-            <div class="button-bar button-positive button-pill" style="margin-left:-20px;margin-top:-10px;margin-right:5px;max-width:750px">  
-            <div class="button button-positive u12" style="cursor:default;max-width:136px"><img src="../img/warehouse.png" height="30px" width="30px" style="padding-top:5px"/>&nbsp DC #1234</div>
-            <div class="button button-positive u12" style="cursor:default;max-width:168px"><img src="../img/location.png" height="30px" width="30px" style="padding-top:5px"/>&nbspBentonville, AR</div>
-            <div class="button button-positive u12" style="cursor:default;max-width:270px;margin-right:0px"><img src="../img/calendar.png" height="30px" width="30px" style="padding-top:5px"/>&nbsp {{today|date:"MMMM dd, yyyy"}}</div>
-            <div class="button button-positive u12" style="cursor:default;max-width:157px"><img src="../img/clock2.png" height="30px" width="30px" style="padding-top:5px"/>&nbsp {{clock | date:"hh:mm:ss a"}}</div>
-            </div>  
-           </div>
+           <div class="col" ng-controller="manProductivityCntrl" ng-include="'templates/headerpill.html'"></div>
         </div>
 
   <div class="row responsive-md" style="margin-left:10px;">  
@@ -39,7 +32,7 @@
                </div> 
 
             <!--Remedy CRQ Statistics HTML -->
-          <div class="col col-40" style="margin-left:15px;margin-right:10px"> 
+          <div class="col col-40" style="margin-left:-5px;margin-right:10px"> 
                   <div class="row row-responsive-md">
                      <div class="col col-15 card card-shadow-border" style="background: #FFCC00;" ng-controller="manRemedyCrqCntrl" >
                        <div class="flip-container" ng-click="flip = !flip" ng-class="{'clicked': flip}">
@@ -81,8 +74,8 @@
                 </div>
         
                    <!--Slot Graph HTML-->
-                <div class="row row-responsive-md card card-shadow-border" style="margin-left:-3px;width:490px"> 
-                  <div class="col col-35" style="margin-left:10px" ng-controller="manSlotCntrl">
+                <div class="row row-responsive-md card card-shadow-border" style="margin-left:18px;width:490px"> 
+                  <div class="col col-35" style="margin-left:-8px" ng-controller="manSlotCntrl">
                     <div class="row responsive-md" style="text-align:center;margin-bottom:10px;margin-left:130px" >
                      <h4 style="vertical-align:middle">Slot Statistics - {{manSlotSvc.active}}</h4>
                     </div>
@@ -173,8 +166,31 @@
         </div>
       </div>
       <!--Calender For Manager -->
-     <div class="col card card-shadow-border" style="margin-right:20px" ng-controller="manCalenderCntrl">
-       <div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources"></div>
+     <div class="col card card-shadow-border" style="margin-right:20px" ng-controller="manTripCntrl">
+       <div class="row responsive-md">
+         <div ng-if="manTripSvc.showCasePick"><nvd3 options="case_options" data="case_data"></nvd3></div>
+         <div ng-if="manTripSvc.showFullPull"><nvd3 options="full_options" data="full_data"></nvd3></div>
+         <div ng-if="manTripSvc.showChase"><nvd3 options="chase_options" data="chase_data"></nvd3></div>
+         <div ng-if="manTripSvc.showRegularPbyl"><nvd3 options="regpbyl_options" data="regpbyl_data"></nvd3></div>
+       </div>
+       <div class="row responsive-md"> 
+          <div class="col col-10"></div> 
+           <div class="col">           
+           <div class="button-bar">
+            <button class="button button-small button-positive" style="max-width:150px" ng-click="showcasefn();">CASEPICK</button>
+            <button class="button button-small button-assertive" style="max-width:150px" ng-click="showfullpullfn();">FULLPULL</button>
+           </div>
+           </div>
+        </div>
+       <div class="row responsive-md"> 
+          <div class="col col-10"></div> 
+           <div class="col">           
+           <div class="button-bar">
+            <button class="button button-small button-positive" style="max-width:150px" ng-click="showchasefn();">CHASE</button>
+            <button class="button button-small button-assertive" style="max-width:150px" ng-click="showregpbylfn();">REG PBYL</button>
+           </div>
+           </div>
+        </div>        
      </div>      
   </div>
 </section>

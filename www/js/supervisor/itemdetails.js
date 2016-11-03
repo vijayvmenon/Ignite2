@@ -1,41 +1,32 @@
-angular.module('ignite2.managerDashboard')
+angular.module('ignite2.supervisorSearch')
 
-.controller('manProductivityCntrl', ['$scope','$http','$timeout','$filter','$ionicPopup','localStorageService', 'manProdSvc','$stateParams', '$state', function($scope,$http,$timeout,$filter,$ionicPopup,localStorageService,manProdSvc,$stateParams,$state){
+.controller('itemDetailsController', ['$scope','$state','$stateParams', 'supItemSvc','dataFactory',function($scope,$state,$stateParams,supItemSvc,dataFactory){
 	
+	$scope.itemnbr=dataFactory.supwikitext[0];
+	console.log('reached item details supervisor');
+	console.log(dataFactory.supwikitext[0]);
 
-//Get the Time and Date to display at the top Bar in Manager Dashboard
-
- $scope.today = new Date();
-     $scope.tickInterval = 1000 //ms
-
-    var tick = function() {
-        $scope.clock = Date.now() // get the current time
-        $timeout(tick, $scope.tickInterval); // reset the timer
-    }
-
-    // Start the timer
-    $timeout(tick, $scope.tickInterval);
 
 
 //Below Logic is to show the Daily, MWeekly, Monthly Graphs based on click of Button
-$scope.manProdSvc=manProdSvc;
+$scope.supItemSvc=supItemSvc;
 
 $scope.showDailyfn=function() {
-$scope.manProdSvc.showDaily=true;
-$scope.manProdSvc.showWeekly=false;
-$scope.manProdSvc.showMonthly=false;
+$scope.supItemSvc.showDaily=true;
+$scope.supItemSvc.showWeekly=false;
+$scope.supItemSvc.showMonthly=false;
 };
 
 $scope.showWeeklyfn=function() {
-$scope.manProdSvc.showDaily=false;
-$scope.manProdSvc.showWeekly=true;
-$scope.manProdSvc.showMonthly=false;
+$scope.supItemSvc.showDaily=false;
+$scope.supItemSvc.showWeekly=true;
+$scope.supItemSvc.showMonthly=false;
 };
 
 $scope.showMonthlyfn=function() {
-$scope.manProdSvc.showDaily=false;
-$scope.manProdSvc.showWeekly=false;
-$scope.manProdSvc.showMonthly=true;
+$scope.supItemSvc.showDaily=false;
+$scope.supItemSvc.showWeekly=false;
+$scope.supItemSvc.showMonthly=true;
 };
 
 //End of Logic above
@@ -124,7 +115,7 @@ $scope.prodgraphdaily_options = {
 
     title: {
         enable: true,
-        text: 'DC Productivity - Daily'
+        text: 'Item Statistics - Daily'
         },
 };
 
@@ -443,7 +434,7 @@ $scope.prodgraphmonthly_data = [
 //The service below is used to Intialize the showDaily variable
 // to true so that when the page is loaded, the daily productivity is shown by default
 
-.factory('manProdSvc', function(){
+.factory('supItemSvc', function(){
 	return {
 	showDaily:true,
     showWeekly:false,
