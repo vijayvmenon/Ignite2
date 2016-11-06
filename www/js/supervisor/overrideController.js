@@ -62,12 +62,14 @@ $scope.generatePendingArray();
 .factory('badgeCountService', ['localStorageService', function(localStorageService){
    var getBadgeCount = function(){
    pendingArr=[];
+    if(localStorage.getItem('gridData') !== null) {
   mainGrid=JSON.parse(localStorage.getItem("gridData"));
   for (var i =0;i<mainGrid.length;i++) {
     if (mainGrid[i].Status == "Waiting for Override") {
           pendingArr.push(mainGrid[i]);
     }
   }
+ }
      return pendingArr.length;
 };
 

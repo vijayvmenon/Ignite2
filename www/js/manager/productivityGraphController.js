@@ -41,6 +41,10 @@ $scope.manProdSvc.showMonthly=true;
 //End of Logic above
 
 
+//*******************************************************************************
+//                    DAILY LOGIC
+//*******************************************************************************
+
 $scope.prodgraphdaily_options = {
     chart: {
         type: 'lineChart',

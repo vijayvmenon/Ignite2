@@ -1,6 +1,17 @@
 
-<div class = "row responsive-sm" ng-controller="poDetailsController">
-  PO Details for PO {{ponbr}}
+<div class = "row responsive-sm" style="margin-top:10px;" ng-controller="poDetailsController">
+    <div class="col" style="width:500px;height:100px;border:1px solid black">
+       <p class="u13">PO Receiving Status</p>
+       <div style="margin-top:10px;margin-bottom:15px" isteven-omni-bar current-value="rcvqty" max-value="totqty">
+         {{rcvqty}} of {{totqty}} received for PO {{ponbr}} 
+       </div>
+    </div>
+    <div class="col col-offset-25" style="width:800px;height:150px;border:1px solid black">
+       <p class="u13">PO Receiving ETA</p>
+       <div>
+           <countdown autostart="true" time="100000" colors="flat-colors-black" finish-callback="finished()"></countdown>
+         </div>
+    </div>
 </div>
 <div class = "row responsive-sm">
  </div>

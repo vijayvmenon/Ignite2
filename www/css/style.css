@@ -6,13 +6,6 @@ border:1px solid black;
 }
 **/
 
-.maxValue {
-    background-color: #ffffff;
-}
-
-.infoText {
-    color: #000000;
-}
 
 /**Below Styling is for angular svg round bar used in remedy crq statistics in manager dashboard  **/
 .progress-wrapper{
@@ -424,7 +417,7 @@ input[type="text"].supsearch-input{
 /**Supervisor Wiki Animations **/
 
 .sup-wiki-animation.ng-enter{
-  animation : slideInRight 2s;
+  animation : zoomIn 2s;
 }
 
 .sup-wiki-animation.ng-enter-stagger{
