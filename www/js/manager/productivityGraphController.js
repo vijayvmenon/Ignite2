@@ -1,6 +1,6 @@
 angular.module('ignite2.managerDashboard')
 
-.controller('manProductivityCntrl', ['$scope','$http','$timeout','$filter','$ionicPopup','localStorageService', 'manProdSvc','$stateParams', '$state', function($scope,$http,$timeout,$filter,$ionicPopup,localStorageService,manProdSvc,$stateParams,$state){
+.controller('manProductivityCntrl', ['$scope','$http','$timeout','$filter','$ionicPopup','localStorageService', 'manProdSvc','$stateParams', '$state','_', function($scope,$http,$timeout,$filter,$ionicPopup,localStorageService,manProdSvc,$stateParams,$state,_){
 	
 
 //Get the Time and Date to display at the top Bar in Manager Dashboard
