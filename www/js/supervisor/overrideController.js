@@ -96,7 +96,7 @@ for (var i=0;i<$scope.podata.length;i++) {
   return {
     getforBadge:function(){
    var pendingArr=[];
-   $http.get('http://receiving.cfapps.io/getallpoinfo')
+   $http.get('https://receiving.cfapps.io/getallpoinfo')
    .success(function(response) {
   servpodata=response; 
   console.log(servpodata);
@@ -120,11 +120,11 @@ badgecount:function() {
 },
 
         getDet:function() {
-      return $http.get('http://receiving.cfapps.io/getallpoinfo');
+      return $http.get('https://receiving.cfapps.io/getallpoinfo');
     },
 
     updDet:function(data) {
-      return $http.put('http://receiving.cfapps.io/updatepoinfo',data,{})
+      return $http.put('https://receiving.cfapps.io/updatepoinfo',data,{})
     }
 
   }    

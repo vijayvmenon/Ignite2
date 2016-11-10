@@ -88,10 +88,10 @@ $scope.pbylrotate_per=Math.round($scope.pbylrotate_data.count*100/$scope.pbyltot
   showpbyl:false,
     active:"SSTK",
       sstk_data: function(){
-        return $http.get('http://igniteservices.cfapps.io/slotstatus/SSTK');
+        return $http.get('https://igniteservices.cfapps.io/slotstatus/SSTK');
       },
       pbyl_data: function(){
-        return $http.get('http://igniteservices.cfapps.io/slotstatus/PBYL');
+        return $http.get('https://igniteservices.cfapps.io/slotstatus/PBYL');
       }
 }
 });
