@@ -1,4 +1,4 @@
-angular.module('ignite2.supervisorSearch', ['LocalStorageModule','nvd3','isteven-omni-bar','angular-svg-round-progressbar','fmp-card','nvd3ChartDirectives','ui.calendar','n3-pie-chart','ui.bootstrap','circle.countdown'])
+angular.module('ignite2.supervisorSearch', ['LocalStorageModule','nvd3','isteven-omni-bar','angular-svg-round-progressbar','fmp-card','nvd3ChartDirectives','n3-pie-chart','circle.countdown','smart-table'])
 
 
 .controller('TypeAheadController', function($scope,$state,$stateParams,dataFactory) { // DI in action

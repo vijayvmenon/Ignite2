@@ -191,7 +191,7 @@ dat9=dat - (oneday*9);
          }
          
          $scope.prodgraphdaily_data.push({key:"Total Inventory",values:tot})
-         console.log($scope.prodgraphdaily_data);
+         //console.log($scope.prodgraphdaily_data);
      // console.log($scope.prodgraphdaily_data);
 
 
@@ -278,7 +278,7 @@ $scope.prodgraphweekly_data = [
          }
          
          $scope.prodgraphweekly_data.push({key:"Total Inventory",values:totw});
-         console.log($scope.prodgraphweekly_data)
+        // console.log($scope.prodgraphweekly_data)
 
 
 $scope.prodgraphweekly_options = {

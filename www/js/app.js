@@ -60,8 +60,11 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
 })
 
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
   
+  //Below line is to show the Tabs on bottom in Mobile
+  $ionicConfigProvider.tabs.position('bottom'); 
+
   $stateProvider
 
     .state('login', {
@@ -87,45 +90,47 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
        }
   })
 
-  .state('managerApp.dashboard.slot', {
-    url: '/slotGraph',
-    views: {
-      'managerMenuContent@managerApp': {
-   parent:'managerApp.dashboard',
-   // templateUrl: 'templates/Manager/slotGraph.html',
-    controller:'manSlotCntrl'
-  }
-}
-  })
-
   .state('managerApp.dashboard.productivity', {
     url: '/productivityGraph',
     views: {
       'managerMenuContent@managerApp': {
     parent:'managerApp.dashboard',
-  //  templateUrl: 'templates/Manager/productivityGraph.html',
+  templateUrl: 'templates/Manager/productivityGraph.html',
     controller:'manProductivityCntrl'
   }
 }
   })
 
-  .state('managerApp.dashboard.remedycrq', {
-    url: '/remedycrq',
+    .state('managerApp.dashboard.remedycrq', {
+    url: '/remedyCrqStats',
     views: {
       'managerMenuContent@managerApp': {
     parent:'managerApp.dashboard',
-//    templateUrl: 'templates/Manager/productivityGraph.html',
+  templateUrl: 'templates/Manager/remedyCrq.html',
     controller:'manRemedyCrqCntrl'
   }
 }
   })
+
+  .state('managerApp.dashboard.slot', {
+    url: '/slotGraph',
+    views: {
+      'managerMenuContent@managerApp': {
+   parent:'managerApp.dashboard',
+   templateUrl: 'templates/Manager/slotGraph.html',
+    controller:'manSlotCntrl'
+  }
+}
+  })
+
+
 
     .state('managerApp.dashboard.palletmvmt', {
     url: '/palletMvmt',
     views: {
       'managerMenuContent@managerApp': {
     parent:'managerApp.dashboard',
- //   templateUrl: 'templates/Manager/palletmvmt.html',
+    templateUrl: 'templates/Manager/palletMvmt.html',
     controller:'manPalletMvmtCntrl'
   }
 }
@@ -136,7 +141,7 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
     views: {
       'managerMenuContent@managerApp': {
     parent:'managerApp.dashboard',
- //   templateUrl: 'templates/Manager/itemmvmt.html',
+     templateUrl: 'templates/Manager/itemMvmt.html',
     controller:'manItemMvmtCntrl'
   }
 }
@@ -147,7 +152,7 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
     views: {
       'managerMenuContent@managerApp': {
     parent:'managerApp.dashboard',
- //   templateUrl: 'templates/Manager/itemmvmt.html',
+    templateUrl: 'templates/Manager/tripStats.html',
     controller:'manTripCntrl'
   }
 }

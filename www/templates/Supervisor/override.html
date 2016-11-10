@@ -1,10 +1,10 @@
 <ion-view>
   <ion-content class="grid-basic-page" overflow-scroll="true">
-          <div class="row responsive-sm" style="margin-left:20px;margin-top:10px">
-           <div class="col">
+          <div class="row responsive-sm" style="margin-left:20px;margin-top:10px;margin-bottom:10px">
+           <div class="col" style="margin-top:10px">
             <span class="u10">Supervisor Override Application</span>
            </div>
-           <div class="col" ng-controller="manProductivityCntrl" ng-include="'templates/headerpill.html'"></div>
+           <div style="margin-right:10px" class="col" ng-controller="manProductivityCntrl" ng-include="'templates/headerpill.html'"></div>
         </div>
 
 <div>    
@@ -14,13 +14,13 @@
      <div class="card card-shadow-border">
       <div style="cursor:pointer;margin-left:20px">
         <div class="row responsive-md">
-          <div class="col col-30"><span class="u13"> Delivery Number : {{pendingitems.DeliveryNo}}</span></div>
-         <div class="col col-30"><span class="u13">PO Number : {{pendingitems.PoNbr}} </span></div>
-         <div class="col col-30"><span class="u13">Item Number : {{pendingitems.ItemNbr}}</span></div>
+          <div class="col col-30"><span class="u13"> Delivery Number : {{pendingitems.deliveryNbr}}</span></div>
+         <div class="col col-30"><span class="u13">PO Number : {{pendingitems.poNbr}} </span></div>
+         <div class="col col-30"><span class="u13">Item Number : {{pendingitems.itemNbr}}</span></div>
          </div>
         <div class="row responsive-md">
-         <div class="col col-30" style="margin-top:10px"><span class="u13">Operator ID : {{pendingitems.UserID}}</span></div>
-         <div class="col col-30" style="margin-top:10px"><span class="u13">Comments:{{pendingitems.Comments}}</span></div>  
+         <div class="col col-30" style="margin-top:10px"><span class="u13">Operator ID : {{pendingitems.userId}}</span></div>
+         <div class="col col-30" style="margin-top:10px"><span class="u13">Comments:{{pendingitems.comment}}</span></div>  
          <div class="col col-30"><div class="button button-positive button-pill" ng-click="approve(pendingitems);" style="max-width:300px">APPROVE</div></div> 
          </div> 
      </div>
@@ -29,16 +29,16 @@
   </div>
 
    <div class="item item-divider">Approved</div>
-    <div class="supervisor-list-animation" ng-repeat="appritems in apprvData">
+    <div class="supervisor-appr-animation" ng-repeat="appritems in apprvData">
       <div class="item">
         <div class="row responsive-md">
-          <div class="col col-30"><span class="u13"> Delivery Number : {{appritems.DeliveryNo}}</span></div>
-         <div class="col col-30"><span class="u13">PO Number : {{appritems.PoNbr}} </span></div>
-         <div class="col col-30"><span class="u13">Item Number : {{appritems.ItemNbr}}</span></div>
+          <div class="col col-30"><span class="u13"> Delivery Number : {{appritems.deliveryNbr}}</span></div>
+         <div class="col col-30"><span class="u13">PO Number : {{appritems.poNbr}} </span></div>
+         <div class="col col-30"><span class="u13">Item Number : {{appritems.itemNbr}}</span></div>
          </div>
         <div class="row responsive-md">
-         <div class="col col-30"><span class="u13">Operator ID : {{appritems.UserID}}</span></div>
-         <div class="col col-30"><span class="u13">Comments:{{appritems.Comments}}</span></div>  
+         <div class="col col-30"><span class="u13">Operator ID : {{appritems.userId}}</span></div>
+         <div class="col col-30"><span class="u13">Comments:{{appritems.comment}}</span></div>  
          <div class="col col-30"></div>          
          </div> 
       </div>

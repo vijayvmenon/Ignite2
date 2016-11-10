@@ -1,40 +1,3 @@
-<!--<ion-side-menus enable-menu-with-back-views="false">
-  <ion-side-menu-content>
-    <ion-nav-bar class="bar custom-bar-color">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
-
-      <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-        </button>
-      </ion-nav-buttons>
-    </ion-nav-bar>
-    <ion-nav-view name="supMenuContent"></ion-nav-view>
-  </ion-side-menu-content>
-
-  <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
-      <h1 class="title">Suprvsr Menu</h1>
-    </ion-header-bar>
-    <ion-content>
-      <ion-list>
-        <ion-item menu-close style="cursor: pointer" ui-sref="suprvsrApp.dashboard">
-          Dashboard
-        </ion-item>
-        <ion-item menu-close style="cursor: pointer" ui-sref="suprvsrApp.overrideApp">
-          Override App
-        </ion-item>
-        <ion-item menu-close style="cursor: pointer" ui-sref="suprvsrApp.settings">
-          Settings
-        </ion-item>        
-        <ion-item menu-close ui-sref="login">
-          Logout
-        </ion-item>        
-      </ion-list>
-    </ion-content>
-  </ion-side-menu>
-</ion-side-menus> -->
-
 <ion-view>
     <ion-nav-bar class="bar-stable custom-bar-color">
         <ion-nav-back-button>
@@ -50,13 +13,13 @@
     </ion-nav-bar>
 
 
-      <ion-tabs class="tabs-icon-top tabs-positive">
+      <ion-tabs class="tabs-icon-bottom tabs-positive">
         <ion-tab title="Dashboard" icon="ion-home" ui-sref="suprvsrApp.search">
           <ion-nav-view animation="slide-left-right" name="supSearchContent"></ion-nav-view>
         </ion-tab>
        
        <div ng-controller="overrideCntrl">
-    <ion-tab title="Override App" badge="getbadge()"  badge-style="badge-assertive" icon="ion-ios-information" ui-sref="suprvsrApp.overrideApp">
+    <ion-tab title="Override App" badge="getbadge"  badge-style="badge-assertive" icon="ion-ios-information" ui-sref="suprvsrApp.overrideApp">
           <ion-nav-view animation="slide-left-right" name="supOverrideView"></ion-nav-view>
         </ion-tab>
         </div>

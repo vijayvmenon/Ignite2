@@ -1,8 +1,48 @@
-<ion-view view-title="Dashboards">
+<ion-view>
     <ion-content class="grid-basic-page" overflow-scroll="true">
-        <div class="row responsive-sm">       
-         <h2>TEST ROW FOR MOBILE</h2>
-          </div>
+     <section class="home-container">
+        <div class="row responsive-md" style="margin-top:20px">
+            <div class="u10">Manager Dashboard</div><div style="margin-top:15px" class="u11">&nbsp&nbsp&nbsp Statistics and Reports</div>
+         </div>
+         <div class="row responsive-md" style="margin-top:15px">
+           <span ng-controller="manProductivityCntrl" ng-include="'templates/headerpillmob.html'"></div>
+        </div>
+
+  <div class="row row-responsive-sm">  
+        <!--Productivity Graph-->
+              <div class="col card card-shadow-border">
+               <h4 ui-sref="managerApp.dashboard.productivity"> Productivity Statistics</h4>
+               </div> 
+
+            <!--Remedy CRQ Statistics -->
+               <div class="col card card-shadow-border"> 
+               <h4 ui-sref="managerApp.dashboard.remedycrq"> Remdy CRQ Statistics</h4>
+               </div>    
+  </div> 
+
+  <div class="row row-responsive-sm"> 
+                     <!--Slot Graph-->
+              <div class="col card card-shadow-border" ng-controller="manSlotCntrl">
+               <h4 ui-sref="managerApp.dashboard.slot"> Slot Statistics</h4>
+             </div>
+                   <!--Pallet Movment Graph-->
+             <div class="col card card-shadow-border" ng-controller="manPalletMvmtCntrl">
+               <h4 ui-sref="managerApp.dashboard.palletmvmt"> Pallet Movement Statistics</h4>
+             </div>
+   </div>
+
+  <div class="row row-responsive-sm"> 
+        <!--Item Movement-->
+              <div class="col card card-shadow-border" ng-controller="manItemMvmtCntrl">
+               <h4 ui-sref="managerApp.dashboard.itemmvmt"> Item movement Statistics</h4>
+             </div>
+                   <!--Trip Stats-->
+             <div class="col card card-shadow-border" ng-controller="manTripCntrl">
+               <h4 ui-sref="managerApp.dashboard.trip"> Trip Statistics</h4>
+             </div>
+   </div>
+  
+</section>
   </ion-content>
 </ion-view>
 

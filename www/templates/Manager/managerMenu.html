@@ -1,48 +1,7 @@
-<!--<ion-side-menus enable-menu-with-back-views="false">
-  <ion-side-menu-content>
+<ion-view>
     <ion-nav-bar class="bar-stable custom-bar-color">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
-
-      <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-        </button>
-      </ion-nav-buttons>
-          <ion-nav-title>
-    <span ng-controller="notificationCntrl"> 
-    <p style="float:left" class="main-header">ignite</p><p style="float:left" class="main-header-number">&nbsp2.0</p>
-    <i class="icon ion-log-out" style="cursor:pointer;float:right;font-size:40px;color:#78B9E7;" ui-sref="login"></i>
-    <i class="icon ion-android-notifications" style="cursor:pointer;float:right;font-size:40px;color:#78B9E7;margin-right:10px" ng-click="toggleGroup()"><span class="badge badge-assertive header-badge">3</span></i>
-    <ion-item class="item-accordion" ng-show="showNotifDetails">
-            {{not_details}}
-    </ion-item> 
-    <i class="icon ion-email" style="cursor:pointer;float:right;font-size:40px;color:#78B9E7;margin-right:10px"><span class="badge badge-assertive header-badge">2</span></i>
-    </span>
-    </ion-nav-title>
-    </ion-nav-bar>
-    <ion-nav-view name="managerMenuContent"></ion-nav-view>
-  </ion-side-menu-content>
-
-  <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
-      <h1 class="title">Manager Menu</h1>
-    </ion-header-bar>
-    <ion-content>
-      <ion-list>
-        <ion-item menu-close style="cursor: pointer" ui-sref="managerApp.dashboard">
-          Dashboard
-        </ion-item>
-        <ion-item menu-close style="cursor: pointer" ui-sref="managerApp.settings">
-          Settings
-        </ion-item>
-        <ion-item menu-close style="cursor: pointer" ui-sref="login">
-          Logout
-        </ion-item>        
-      </ion-list>
-    </ion-content>
-  </ion-side-menu>
-</ion-side-menus> -->
-    <ion-nav-bar class="bar-stable custom-bar-color">
+            <ion-nav-back-button style="color:white">
+    </ion-nav-back-button>
           <ion-nav-title>
     <span> 
     <p style="float:left" class="main-header">ignite</p><p style="float:left" class="main-header-number">&nbsp2.0</p>
@@ -54,27 +13,12 @@
     </ion-nav-bar>
 
 
-    <ion-tabs class="tabs-icon-top tabs-positive tabs-item-hide">
+    <ion-tabs class="tabs-icon-bottom tabs-positive tabs-item-hide">
         <ion-tab title="Dashboard" icon="ion-home" ui-sref="managerApp.dashboard">
           <ion-nav-view name="managerMenuContent"></ion-nav-view>
         </ion-tab>
       </ion-tabs>
+      </ion-view>
 
 
-
-
-
-<!--
-
-      <ion-tabs class="tabs-icon-top tabs-positive tabs-bottom">
-
-       <ion-tab title="Dashboard" icon="icon ion-home" ui-sref="managerApp.dashboard">  
-        <ion-view name="managerMenuContent"></ion-view>
-    </ion-tab>
-       <ion-tab title="Settings" icon="icon ion-gear-b" ui-sref="managerApp.settings">
-               <ion-view name="managerMenuSettings"></ion-view>
-    </ion-tab>
-
-    </ion-tabs>
--->
 

@@ -4,7 +4,7 @@ angular.module('circle.countdown', [])
     return {
         // scope: {}, // {} = isolate, true = child, false/undefined = no change
         scope: {
-            time: '=time',
+            time: "=time",
             finishCallback: '&callback',
         },
         restrict: 'EA', // E = Element, A = Attribute, C = Class, M = Comment
@@ -27,7 +27,7 @@ angular.module('circle.countdown', [])
                         '</div>' +
                     '</div>',
         replace: false,
-        controller: function($scope, $element, $attrs, $transclude) {
+        controller: function($scope, $element, $attrs, $transclude,dataFactory) {
             
             var el = $($element); 
 
@@ -151,7 +151,23 @@ angular.module('circle.countdown', [])
             var secondsLeft;
             var isFired = false;
 
-            secondsLeft = parseInt($scope.time);
+          // secondsLeft = parseInt($scope.time);
+
+           $scope.ponbr=dataFactory.supwikitext[0];
+           console.log($scope.ponbr);
+      dataFactory.get('templates/Supervisor/supervisorWiki/searchinput.json').then(function(data) {
+           $scope.items= data;
+           console.log($scope.items);
+
+      for (var i=0;i<$scope.items.length;i++) {
+        if($scope.items[i].id == $scope.ponbr) {
+            $scope.cancel_date=$scope.items[i].cancel_date;
+            console.log($scope.cancel_date);
+        }
+      }
+      secondsLeft=Math.floor((new Date($scope.cancel_date).getTime() - new Date().getTime())/1000);
+     console.log(secondsLeft);
+       });  
 
             $scope.secondsToDHMS = function() {
                 DaysLeft = Math.floor(secondsLeft / 86400);
@@ -842,7 +858,6 @@ angular.module('circle.countdown', [])
                         };
                 }
             }
-
         }
     };
 }]);

@@ -229,6 +229,7 @@ border:1px solid black;
 	height: 16px;
     font-family: 'Roboto Medium', 'Roboto Regular', 'Roboto';
     font-size: 15px;
+    color: #ffffff;
 }
 
 .u13 {
@@ -236,6 +237,14 @@ border:1px solid black;
 	font-weight: bold;
     font-style: normal;
     font-size: 15px;
+}
+
+/**Mobile **/
+.u14 {
+    font-family: 'Roboto Bold', 'Roboto Regular', 'Roboto';
+    font-size: 15px;
+    font-weight: bold;
+    color: #ffffff;
 }
 
 
@@ -333,6 +342,12 @@ button > * {
   animation-duration:0;
 }
 
+.supervisor-appr-animation.ng-enter {
+      -webkit-animation: slideInUp 1s;
+    animation: slideInUp 1s;
+}
+
+
 
 .slot-graph-class.ng-enter{
   animation : rollIn 2s;
@@ -425,3 +440,45 @@ input[type="text"].supsearch-input{
   animation-delay: 2s;
     transition-duration: 0s;
 }
+
+/**below styling is for smart-table in supervisor wiki po details**/
+
+  .st-sort-ascent:before{
+    content: '\25B2';
+  }
+
+  .st-sort-descent:before{
+    content: '\25BC';
+  }
+
+ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+
+ul.pagination li {display: inline;
+  margin-left:5px;
+  margin-right:5px;
+  padding-left:5px;
+  padding-right:3px;
+  cursor:pointer;
+  border: 1px solid black;
+  font-weight: bold;
+}
+
+
+/**
+ul.pagination li a {
+    float: left;
+    padding: 8px 16px;
+    border: 1px solid black;
+}
+
+/**
+
+ul.pagination li a:hover:not(.active) {background-color: #ddd;cursor:pointer;}
+
+**/
+/**End of styling **/

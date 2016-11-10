@@ -22,7 +22,7 @@ angular.module('ignite2.notificationController', [])
 
 
 .controller('supNotificationCntrl',function ($scope,$ionicPopover,notificationService) {
-   console.log('reached notif controller');
+  // console.log('reached notif controller');
    $scope.supNotif=notificationService.supNotifications;
    $scope.supNotifCount=$scope.supNotif.length;
   $ionicPopover.fromTemplateUrl('templates/Supervisor/notification.html', {
