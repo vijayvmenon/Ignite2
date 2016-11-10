@@ -36,6 +36,7 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
 
     $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
+   $rootScope._ = window._;
 
      console.log(platform);
 
