@@ -482,3 +482,15 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;cursor:pointer;}
 
 **/
 /**End of styling **/
+
+
+    #target {
+      width: 500px;
+      height: 400px;
+      background-color: gray;
+      margin: 200px
+    }
+
+    .disabled {
+      opacity: .3
+    }

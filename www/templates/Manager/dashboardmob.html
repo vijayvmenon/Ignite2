@@ -10,17 +10,66 @@
 
   <div class="row row-responsive-sm">  
         <!--Productivity Graph-->
-              <div class="col card card-shadow-border">
-               <h4 ui-sref="managerApp.dashboard.productivity"> Productivity Statistics</h4>
-               </div> 
+              <div class="col card card-shadow-border exception" ng-controller="manProductivityCntrl" ui-sref="managerApp.dashboard.productivity">
+                 <h4 style="text-align:center" > DC Productivity</h4>
+          <div class="row" style="margin-top:-20px;">
+          <div clas="col col-50" style="margin-top:-20px;margin-left:-10px;">
+         <div justgage
+         title="{{title}}" title-font-color="{{titleFontColor}}"
+         value="{{recvgaugevalue}}" value-font-color="{{valueFontColor}}"
+         width="{{width}}" height="{{height}}" relative-gauge-size="{{relativeGaugeSize}}"
+         value-min-font-size="{{valueMinFontSize}}" title-min-font-size="{{titleMinFontSize}}"
+         label-min-font-size="{{labelMinFontSize}}" min-label-min-font-size="{{minLabelMinFontSize}}"
+         maxLabelMinFontSize="{{maxLabelMinFontSize}}"
+         min="{{min}}" max="{{max}}"
+         hide-min-max="{{hideMinMax}}" hide-value="{{hideValue}}" hide-inner-shadow="{{hideInnerShadow}}"
+         gauge-width-scale="{{gaugeWidthScale}}" gauge-color="{{gaugeColor}}"
+         show-inner-shadow="{{showInnerShadow}}" shadow-opacity="{{shadowOpacity}}"
+         shadow-size="{{shadowSize}}" shadow-vertical-offset="{{shadowVerticalOffset}}"
+         level-colors="{{levelColors}}"  level-colors-gradient="{{levelColorsGradient}}"
+         label="{{label}}" label-font-color="{{labelFontColor}}"
+         start-animation-time="{{startAnimationTime}}" start-animation-type="{{startAnimationType}}"
+         refresh-animation-time="{{refreshAnimationTime}}" refresh-animation-type="{{refreshAnimationType}}"
+         counter="{{counter}}" decimals="{{decimals}}" symbol="{{symbol}}" format-number="{{formatNumber}}"
+         human-friendly="{{humanFriendly}}" human-friendly-decimal="{{humanFriendlyDecimal}}"
+         text-renderer="textRendererrcv">
+         </div>
+         </div>
+        <div class="col col-50" style="margin-top:-27px;margin-right:10px;margin-left:-10px">
+         <div justgage
+         title="{{shptitle}}" title-font-color="{{titleFontColor}}"
+         value="{{shpgaugevalue}}" value-font-color="{{valueFontColor}}"
+         width="{{width}}" height="{{height}}" relative-gauge-size="{{relativeGaugeSize}}"
+         value-min-font-size="{{valueMinFontSize}}" title-min-font-size="{{titleMinFontSize}}"
+         label-min-font-size="{{labelMinFontSize}}" min-label-min-font-size="{{minLabelMinFontSize}}"
+         maxLabelMinFontSize="{{maxLabelMinFontSize}}"
+         min="{{min}}" max="{{max}}"
+         hide-min-max="{{hideMinMax}}" hide-value="{{hideValue}}" hide-inner-shadow="{{hideInnerShadow}}"
+         gauge-width-scale="{{gaugeWidthScale}}" gauge-color="{{gaugeColor}}"
+         show-inner-shadow="{{showInnerShadow}}" shadow-opacity="{{shadowOpacity}}"
+         shadow-size="{{shadowSize}}" shadow-vertical-offset="{{shadowVerticalOffset}}"
+         level-colors="{{levelColorsShip}}"  level-colors-gradient="{{levelColorsGradient}}"
+         label="{{label}}" label-font-color="{{labelFontColor}}"
+         start-animation-time="{{startAnimationTime}}" start-animation-type="{{startAnimationType}}"
+         refresh-animation-time="{{refreshAnimationTime}}" refresh-animation-type="{{refreshAnimationType}}"
+         counter="{{counter}}" decimals="{{decimals}}" symbol="{{symbol}}" format-number="{{formatNumber}}"
+         human-friendly="{{humanFriendly}}" human-friendly-decimal="{{humanFriendlyDecimal}}"
+         text-renderer="textRenderershp">
+         </div>
+         </div>
+         </div>
+        </div> 
 
-            <!--Remedy CRQ Statistics -->
-               <div class="col card card-shadow-border"> 
-               <h4 ui-sref="managerApp.dashboard.remedycrq"> Remdy CRQ Statistics</h4>
-               </div>    
   </div> 
 
+
+
+
   <div class="row row-responsive-sm"> 
+              <!--Remedy CRQ Statistics -->
+               <div class="col card card-shadow-border"> 
+               <h4 style="text-align:center" ui-sref="managerApp.dashboard.remedycrq"> Remedy CRQ Stats</h4>
+               </div>    
                      <!--Slot Graph-->
               <div class="col card card-shadow-border" ng-controller="manSlotCntrl">
                <h4 ui-sref="managerApp.dashboard.slot"> Slot Statistics</h4>

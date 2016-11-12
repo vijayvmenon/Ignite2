@@ -40,13 +40,13 @@ $scope.pbylslotdet=[];
 manSlotSvc.sstk_data().success(function(data) {
   //Sorting the array when http returns it
   $scope.sstktotal=data.totalSlots;
-  console.log($scope.sstktotal);
+ // console.log($scope.sstktotal);
 $scope.sstkslotdet = data.slotMetrics.sort(keysrt("slotStatus"));
-console.log($scope.sstkslotdet);
+//console.log($scope.sstkslotdet);
  $scope.sstkempty_data=$scope.sstkslotdet[1];
- console.log($scope.sstkempty_data);
+// console.log($scope.sstkempty_data);
  $scope.sstkempty_per=Math.round($scope.sstkempty_data.count*100/$scope.sstktotal);
- console.log($scope.sstkempty_per);
+// console.log($scope.sstkempty_per);
   $scope.sstkfull_data = $scope.sstkslotdet[2];
 $scope.sstkfull_per=Math.round($scope.sstkfull_data.count*100/$scope.sstktotal);
  $scope.sstkaudit_data = $scope.sstkslotdet[0];

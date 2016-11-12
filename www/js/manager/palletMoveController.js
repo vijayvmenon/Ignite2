@@ -176,7 +176,7 @@ var h = new Date(new Date().getTime() - (60 * 60 * 1000));
 var h25=$scope.formatAMPM(h);
 
 **/
-console.log(h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,h17,h18,h19,h20,h21,h22,h23,h24,h25);
+//console.log(h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,h17,h18,h19,h20,h21,h22,h23,h24,h25);
 
  $scope.palletmvmtgraph_data = [
             {
@@ -205,7 +205,7 @@ console.log(h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,h17,h18,h19,h
             } 
         ];
 
-console.log($scope.palletmvmtgraph_data);
+//console.log($scope.palletmvmtgraph_data);
 
         //Below Logic is to add a new object to the prodgraphdaily_data array with the total inventory which is received - shipped cases
    /**     

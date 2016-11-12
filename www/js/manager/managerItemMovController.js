@@ -125,7 +125,7 @@ $scope.bottomitemmvmtgraph_options = {
                 }
          ]   ;           
 
-console.log($scope.topitem_data,$scope.bottomitem_data);
+//console.log($scope.topitem_data,$scope.bottomitem_data);
 
 }])
 
