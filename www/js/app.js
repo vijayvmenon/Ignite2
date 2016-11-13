@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override','ignite2.managerDashboard','ignite2.notificationController','ignite2.supervisorSearch'])
+angular.module('ignite2', ['ionic','ngCordova','ignite2.loginController','ignite2.override','ignite2.managerDashboard','ignite2.notificationController','ignite2.supervisorSearch'])
 
   // allow DI for use in controllers, unit tests
   .constant('_', window._)
@@ -57,6 +57,18 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+//Below is for local notifications
+           window.plugin.notification.local.onadd = function (id, state, json) {
+            var notification = {
+                id: id,
+                state: state,
+                json: json
+            };
+            $timeout(function() {
+                $rootScope.$broadcast("$cordovaLocalNotification:added", notification);
+            });
+        };
   });
 })
 
@@ -220,7 +232,34 @@ angular.module('ignite2', ['ionic','ignite2.loginController','ignite2.override',
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
+})
+
+.controller("ExampleController", function($scope, $rootScope,$cordovaLocalNotification) {
+
+    $scope.add = function() {
+        var alarmTime = new Date();
+        alarmTime.setMinutes(alarmTime.getMinutes() + 1);
+        $cordovaLocalNotification.add({
+            id: "1234",
+            date: alarmTime,
+            message: "This is a message",
+            title: "This is a title",
+            autoCancel: true,
+            sound: null
+        }).then(function () {
+            console.log("The notification has been set");
+        });
+    };
+ 
+    $scope.isScheduled = function() {
+        $cordovaLocalNotification.isScheduled("1234").then(function(isScheduled) {
+            alert("Notification 1234 Scheduled: " + isScheduled);
+        });
+    }
+ 
 });
+
+
 
 
 

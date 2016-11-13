@@ -1,7 +1,8 @@
 angular.module('ignite2.supervisorSearch', ['LocalStorageModule','nvd3','isteven-omni-bar','angular-svg-round-progressbar','fmp-card','nvd3ChartDirectives','n3-pie-chart','circle.countdown','smart-table'])
 
 
-.controller('TypeAheadController', function($scope,$state,$stateParams,dataFactory) { // DI in action
+.controller('TypeAheadController', function($scope,$rootScope,$interval,$state,$stateParams,dataFactory) { // DI in action
+  $interval.cancel($rootScope.supOverrideInterval);
   dataFactory.get('templates/Supervisor/supervisorWiki/searchinput.json').then(function(data) {
     $scope.items = data;
   });

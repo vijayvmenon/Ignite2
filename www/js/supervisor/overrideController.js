@@ -1,6 +1,6 @@
 angular.module('ignite2.override', ['LocalStorageModule'])
 
-.controller('overrideCntrl', ['$scope','$http','overrideService','$ionicPopup', '$stateParams', '$state', function($scope,$http,overrideService,$ionicPopup,$stateParams,$state){
+.controller('overrideCntrl', ['$scope','$http','$rootScope','$interval','$ionicPlatform','$cordovaLocalNotification','overrideService','$ionicPopup', '$stateParams', '$state', function($scope,$http,$rootScope,$interval,$ionicPlatform,$cordovaLocalNotification,overrideService,$ionicPopup,$stateParams,$state){
 
 $scope.podata=[];  
 $scope.suprvsrArr=[];
@@ -15,21 +15,84 @@ $scope.apprvData=[];
 .success(function(response) {
   console.log(response);
  $scope.podata=response; 
+  var count=0; 
  for (var i=0;i<$scope.podata.length;i++) {
   if($scope.podata[i].poStatus == "Waiting for Override") {
     console.log('reached here');
     $scope.suprvsrArr.push($scope.podata[i]);
+    count++;
   }
   if($scope.podata[i].overrideStatus == "Y") {
     $scope.apprvData.push($scope.podata[i]);
   }  
  } 
-//$scope.badgecount=$scope.suprvsrArr.length;
 })
 .error(function() {
   console.log("error!!");
 });
 };
+
+//This function is to monitor th override count evry x seconds and is called by interva function below
+$scope.getintervaldata = function() {
+  overrideService.getDet()
+.success(function(response) {
+ $scope.podata=response; 
+ console.log('interval running');
+  var count=0; 
+  var tempArr=[];
+ for (var i=0;i<$scope.podata.length;i++) {
+  if($scope.podata[i].poStatus == "Waiting for Override") {
+    count++;
+    tempArr=$scope.podata[i];
+  }
+ } 
+ console.log(count);
+if(typeof tempcount == 'undefined') {
+  tempcount = count;
+ }
+ else {
+  if ( count > tempcount ) {
+    //This is the code to send a Local Notification on Mobile webview
+    $ionicPlatform.ready(function () {
+          if (ionic.Platform.isWebView()) {
+            var random_id=Math.floor(Math.random() * 100);
+      $cordovaLocalNotification.schedule({
+      id: random_id,
+      text: '1 New Override Request',
+      title: 'Manager Override'
+     // icon:null,
+     // sound:null
+    }).then(function () {
+      console.log("Instant Notification set");
+    });
+         cordova.plugins.notification.local.on("click", function (notification, state) {
+          $state.go('suprvsrApp.overrideApp');
+      }, this)
+  }
+  });
+    console.log('new notification created');
+       $scope.getbadge=count;
+     $state.reload('suprvsrApp.overrideApp');
+    console.log($scope.suprvsrArr);
+    tempcount = count;
+  }
+  if(count < tempcount) {
+      $scope.getbadge=count;
+      console.log('reached count less than temp countxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+     $state.reload('suprvsrApp.overrideApp');
+    console.log($scope.suprvsrArr);
+    tempcount = count;
+  }
+  if( count == tempcount ) {
+    tempcount = count;
+  }
+ }
+})
+.error(function() {
+  console.log("error!!");
+});
+};
+
 
 
 //Run the getforBadge() in Service. Then when the broadcast is sent, capture it using $scope.on and then assign scope variable for the badge count
@@ -39,9 +102,20 @@ overrideService.getforBadge();
 $scope.$on('overrideService:getDataSuccess',function() {
   console.log('reached broadcast'); 
   $scope.getbadge=overrideService.badgecount();
-
 });
+
+
 $scope.getdata();
+
+$rootScope.supOverrideInterval=$interval(function() {
+  $scope.getintervaldata();
+},4000)
+
+
+//$scope.$on('$destroy',function(){
+//$interval.cancel($rootScope.supOverrideInterval);
+//console.log('interval cancelled');
+//});
 
 
 

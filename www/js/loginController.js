@@ -2,7 +2,7 @@ angular.module('ignite2.loginController', [])
 
 
 //This is the Controller that controls login to the Application
-.controller('LoginCtrl', ['$scope','LoginService','$ionicPopup','$state', function($scope,LoginService,$ionicPopup, $state) {
+.controller('LoginCtrl', ['$scope','LoginService','$rootScope','$interval','$ionicPopup','$state', function($scope,LoginService,$rootScope,$interval,$ionicPopup, $state) {
   
    $scope.data = {};
  
