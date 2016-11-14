@@ -1,41 +1,16 @@
-     <ion-view> 
-                  <div class="row row-responsive-md">
-                     <div class="col col-15 card card-shadow-border" style="background: #FFCC00;" ng-controller="manRemedyCrqCntrl" >
-                       <div class="flip-container" ng-click="flip = !flip" ng-class="{'clicked': flip}">
-                          <div class="flipper">
-                             <div class="front">
-                               <p id="remcrqfronttextheader">Open Ticket's</p>
-                               <br>
-                               <p id="remcrqfronttext">{{opentickets}}/{{totaltickets}}</p>
-                               <p id="remcrqfrontanchor">CLICK FOR DETAILS</p>
-                             </div>
-                             <div class="back">
-                              <p id="remcrqbacktextheader">DETAILS</p>
-                              <br>
-                              <p id="remcrqbacktext">RECEIVING:{{recvticketcount}}<br>SHIPPING:{{shipticketcount}}<br>QUALITY ASSURANCE:{{qaticketcount}}<br>
-                               ORDER PROCESSING:{{opticketcount}}</p>
-                              <p id="remcrqbackanchor">GO BACK</p>
-                             </div>
-                          </div>
-                       </div>
-                     </div>
-                     <div class="col col-15 card card-shadow-border" style="background: #76C043;" ng-controller="manRemedyCrqCntrl">
-                        <div class="flip-container" ng-click="flip = !flip" ng-class="{'clicked': flip}">
-                           <div class="flipper">
-                             <div class="front">
-                               <p id="remcrqfronttextheader">Open CRQ's</p>
-                               <br>
-                               <p id ="remcrqfronttext">{{opencrqs}}/{{totalcrqs}}</p>
-                               <p id="remcrqfrontanchor">CLICK FOR DETAILS</p>
-                             </div>
-                             <div class="back">
-                               <p id="remcrqbacktextheader">DETAILS</p>
-                               <br>
-                               <p id="remcrqbacktext">NETWORKING:{{networkcrqcount}}<br>UNIX ADMIN:{{unixcrqcount}}<br>GLS:{{glscrqcount}}<br>ORDER PROCESSING:{{opticketcount}}</p>
-                               <p id="remcrqbackanchor">GO BACK</p>               
-                             </div>
-                           </div>
-                        </div>
+ <ion-view>
+ <ion-content>
+ <div class="col">
+                  <div class="row" style="margin-top:60px"><p style="text-align:center">Remedy Ticket Details</p></div>
+                    <div class="row" style="margin-top:-40px">
+                      <nvd3 options="ticket_options" data="ticket_data"></nvd3>
                     </div>
-                </div>
-          </ion-view>
+                  </div>
+                  <div class="row row-responsive-sm">
+                  <p style="text-align:center">CRQ Details</p>
+                  <div><nvd3 options="crq_options" data="crq_data"></nvd3></div>
+                  </div>                  
+                  <div class="row row-responsive-sm">
+    </div>
+    </ion-content>
+    </ion-view>

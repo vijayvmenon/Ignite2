@@ -229,12 +229,12 @@ $scope.prodgraphdailymob_options = {
           zoom: {
         //NOTE: All attributes below are optional
         enabled: true,
-        scaleExtent: [1, 10],
+        scaleExtent: [1, 50],
         translate: [0, 0],
         useFixedDomain: false,
-        useNiceScale: false,
+        useNiceScale: true,
         horizontalOff: false,
-        verticalOff: false,
+        verticalOff: true,
       /**  zoomed: function(xDomain, yDomain) {
             var domains = {x1: 0, x2: 0, y1: 1, y2: 1};
             return domains;

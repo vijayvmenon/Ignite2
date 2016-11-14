@@ -33,21 +33,33 @@
 
             <!--Remedy CRQ Statistics HTML -->
           <div class="col col-40" style="margin-left:-5px;margin-right:10px"> 
-                  <div class="row row-responsive-md">
+                   <div class="row row-responsive-md">
                      <div class="col col-15 card card-shadow-border" style="background: #FFCC00;" ng-controller="manRemedyCrqCntrl" >
                        <div class="flip-container" ng-click="flip = !flip" ng-class="{'clicked': flip}">
                           <div class="flipper">
                              <div class="front">
                                <p id="remcrqfronttextheader">Open Ticket's</p>
                                <br>
-                               <p id="remcrqfronttext">{{opentickets}}/{{totaltickets}}</p>
+                               <p id="remcrqfronttext">{{opentickets}}</p>
                                <p id="remcrqfrontanchor">CLICK FOR DETAILS</p>
                              </div>
                              <div class="back">
-                              <p id="remcrqbacktextheader">DETAILS</p>
-                              <br>
-                              <p id="remcrqbacktext">RECEIVING:{{recvticketcount}}<br>SHIPPING:{{shipticketcount}}<br>QUALITY ASSURANCE:{{qaticketcount}}<br>
-                               ORDER PROCESSING:{{opticketcount}}</p>
+                              <table style="border:1px solid black">
+                                <thead>
+                                <tr style="border:1px solid black">
+                                <td>DEPARTMENT</td>
+                                <td>COUNT</td>
+                                <td>CRITICAL</td>
+                                </tr>
+                                </thead>
+                                <tbody ng-repeat="tickets in ticket_data">
+                                <tr style="border:1px solid black">
+                                <td>{{tickets.key}}</td>
+                                <td>{{tickets.value}}</td>
+                                <td>{{tickets.critical}}</td>
+                                </tr>
+                                </tbody>
+                               </table>
                               <p id="remcrqbackanchor">GO BACK</p>
                              </div>
                           </div>
@@ -59,20 +71,32 @@
                              <div class="front">
                                <p id="remcrqfronttextheader">Open CRQ's</p>
                                <br>
-                               <p id ="remcrqfronttext">{{opencrqs}}/{{totalcrqs}}</p>
+                               <p id ="remcrqfronttext">{{opencrq}}</p>
                                <p id="remcrqfrontanchor">CLICK FOR DETAILS</p>
                              </div>
                              <div class="back">
-                               <p id="remcrqbacktextheader">DETAILS</p>
-                               <br>
-                               <p id="remcrqbacktext">NETWORKING:{{networkcrqcount}}<br>UNIX ADMIN:{{unixcrqcount}}<br>GLS:{{glscrqcount}}<br>ORDER PROCESSING:{{opticketcount}}</p>
+                              <table style="border:1px solid black">
+                                <thead>
+                                <tr style="border:1px solid black">
+                                <td>DEPARTMENT</td>
+                                <td>COUNT</td>
+                                <td>CRITICAL</td>
+                                </tr>
+                                </thead>
+                                <tbody ng-repeat="tickets in crq_data">
+                                <tr style="border:1px solid black">
+                                <td>{{tickets.key}}</td>
+                                <td>{{tickets.value}}</td>
+                                <td>{{tickets.critical}}</td>
+                                </tr>
+                                </tbody>
+                               </table>
                                <p id="remcrqbackanchor">GO BACK</p>               
                              </div>
                            </div>
                         </div>
                     </div>
                 </div>
-        
                    <!--Slot Graph HTML-->
                 <div class="row row-responsive-md card card-shadow-border" style="margin-left:18px;width:490px"> 
                   <div class="col col-35" style="margin-left:-8px" ng-controller="manSlotCntrl">

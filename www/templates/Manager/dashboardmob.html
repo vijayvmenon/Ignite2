@@ -67,21 +67,24 @@
 
   <div class="row row-responsive-sm"> 
               <!--Remedy CRQ Statistics -->
-               <div class="col card card-shadow-border"> 
-               <h4 style="text-align:center" ui-sref="managerApp.dashboard.remedycrq"> Remedy CRQ Stats</h4>
+               <div class="col card card-shadow-border" ng-controller="manRemedyCrqCntrl" ui-sref="managerApp.dashboard.remedycrq"> 
+               <h4 style="text-align:center" > Remedy CRQ Stats</h4>
+                  <p>Open Tickets :{{opentickets}}</p>
+                  <p>Open CRQ's   : {{opencrq}}</p>
                </div>    
                      <!--Slot Graph-->
               <div class="col card card-shadow-border" ng-controller="manSlotCntrl">
                <h4 ui-sref="managerApp.dashboard.slot"> Slot Statistics</h4>
              </div>
-                   <!--Pallet Movment Graph-->
-             <div class="col card card-shadow-border" ng-controller="manPalletMvmtCntrl">
-               <h4 ui-sref="managerApp.dashboard.palletmvmt"> Pallet Movement Statistics</h4>
-             </div>
+
    </div>
 
   <div class="row row-responsive-sm"> 
-        <!--Item Movement-->
+             <!--Pallet Movment Graph-->
+            <div class="col card card-shadow-border" ng-controller="manPalletMvmtCntrl">
+               <h4 ui-sref="managerApp.dashboard.palletmvmt"> Pallet Movement Statistics</h4>
+             </div>
+                     <!--Item Movement-->      
               <div class="col card card-shadow-border" ng-controller="manItemMvmtCntrl">
                <h4 ui-sref="managerApp.dashboard.itemmvmt"> Item movement Statistics</h4>
              </div>
