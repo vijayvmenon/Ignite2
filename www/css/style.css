@@ -27,6 +27,21 @@ border:1px solid black;
     font-size: 20px;
 }
 
+.progress-wrapper .text_mob{
+    position: absolute;
+    top: 42%;
+    left: -5%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+    font-family: 'Roboto Bold', 'Roboto Regular', 'Roboto';
+    font-weight: 700;
+    font-style: bold;
+    font-size: 20px;
+}
+
 .progress-wrapper .bottom_text {
     font-family: 'Roboto Bold', 'Roboto Regular', 'Roboto';
     font-weight: 700;
@@ -34,6 +49,15 @@ border:1px solid black;
     font-size: 15px;
 
 }
+
+.progress-wrapper .bottom_text_mob {
+    font-family: 'Roboto Bold', 'Roboto Regular', 'Roboto';
+    font-weight: 700;
+    font-style: bold;
+    font-size: 20px;
+
+}
+
 
  /** End od Angular svg round styling **/
 
@@ -350,7 +374,7 @@ button > * {
 
 
 .slot-graph-class.ng-enter{
-  animation : rollIn 2s;
+  animation : zoomIn 3s;
 }
 
 .slot-graph-class.ng-enter-stagger{

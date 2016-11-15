@@ -62,36 +62,56 @@
 
   </div> 
 
-
-
-
   <div class="row row-responsive-sm"> 
-              <!--Remedy CRQ Statistics -->
+                <!--Remedy CRQ Statistics -->
                <div class="col card card-shadow-border" ng-controller="manRemedyCrqCntrl" ui-sref="managerApp.dashboard.remedycrq"> 
                <h4 style="text-align:center" > Remedy CRQ Stats</h4>
-                  <p>Open Tickets :{{opentickets}}</p>
-                  <p>Open CRQ's   : {{opencrq}}</p>
-               </div>    
-                     <!--Slot Graph-->
-              <div class="col card card-shadow-border" ng-controller="manSlotCntrl">
-               <h4 ui-sref="managerApp.dashboard.slot"> Slot Statistics</h4>
-             </div>
-
+                  <p><b>Open Tickets</b>&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp<span count-to="{{opentickets}}" value="0" duration="2"></span></p>
+                  <p><b>Open CRQ's</b>&nbsp&nbsp&nbsp&nbsp :&nbsp&nbsp&nbsp<span count-to="{{opencrq}}" value="0" duration="2"></span></p>
+               </div>  
+                  <!--Trip Stats-->
+             <div class="col card card-shadow-border"  ui-sref="managerApp.dashboard.trip" ng-controller="manTripCntrl">
+               <h4 style="text-align:center"> Trip Statistics</h4>
+                  <!--<div isteven-omni-bar current-value="unassign_per" max-value="100"> -->
+                  <div>
+                   <p><b>Unassigned &nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp</b><span count-to="{{unassign_per}}" value="0" duration="2"></span>%</p>
+                  </div>
+                  <div>
+                <!--  <div isteven-omni-bar current-style="emptyStyle" current-value="hold_per" max-value="100"> -->
+                     <p><b>Held &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp&nbsp</b><span count-to="{{hold_per}}" value="0" duration="2"></span>%</p>
+                  </div>
+             </div>               
    </div>
+               
 
-  <div class="row row-responsive-sm"> 
+
+      <div class="row row-responsive-sm"> 
+                     <!--Item Movement-->      
+              <div class="col card card-shadow-border" ng-controller="manItemMvmtCntrl">
+               <h4 ui-sref="managerApp.dashboard.itemmvmt">Item movement Statistics</h4>
+             </div>
              <!--Pallet Movment Graph-->
             <div class="col card card-shadow-border" ng-controller="manPalletMvmtCntrl">
                <h4 ui-sref="managerApp.dashboard.palletmvmt"> Pallet Movement Statistics</h4>
+             </div>             
+        </div>
+
+
+     <div class="row row-responsive-sm">   
+                     <!--Slot Graph-->
+              <div class="col card card-shadow-border" ui-sref="managerApp.dashboard.slot" ng-controller="manSlotCntrl">
+               <h4 style="text-align:center"> Slot Statistics</h4>
+                      <div isteven-omni-bar current-value="tot_partial_per" max-value="100">
+                     Partial Slots in the DC - {{tot_partial_per}}% 
+                  </div>
+                  <div isteven-omni-bar current-style="emptyStyle" current-value="tot_empty_per" max-value="100">
+                     Empty Slots in the DC - {{tot_empty_per}}% 
+                  </div>
+                  <div isteven-omni-bar current-style="fullStyle" current-value="tot_full_per" max-value="100">
+                     Full Slots in the DC - {{tot_full_per}}% 
+                  </div>
              </div>
-                     <!--Item Movement-->      
-              <div class="col card card-shadow-border" ng-controller="manItemMvmtCntrl">
-               <h4 ui-sref="managerApp.dashboard.itemmvmt"> Item movement Statistics</h4>
-             </div>
-                   <!--Trip Stats-->
-             <div class="col card card-shadow-border" ng-controller="manTripCntrl">
-               <h4 ui-sref="managerApp.dashboard.trip"> Trip Statistics</h4>
-             </div>
+
    </div>
   
 </section>
