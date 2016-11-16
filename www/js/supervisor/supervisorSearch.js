@@ -3,9 +3,20 @@ angular.module('ignite2.supervisorSearch', ['LocalStorageModule','nvd3','isteven
 
 .controller('TypeAheadController', function($scope,$rootScope,$interval,$state,$stateParams,dataFactory) { // DI in action
 
+$scope.showclear=dataFactory.showclear;
+
     var getRandomInt=function(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+
+$scope.styleonLoad= function() {
+  if ( $scope.showclear) 
+  styl = {"width":'80%'};  
+else 
+  styl = {"width":'100%'};  
+return styl;
+}
+
 
 
 $scope.url_param=getRandomInt(1,1000);
@@ -42,6 +53,7 @@ $scope.url_param=getRandomInt(1,1000);
 
 
 $scope.clickedMethod = function(callback) {
+  $scope.showclear=true;
     console.log(dataFactory.supwikitext);
    $scope.name=[callback.item.split(':')[0].slice(0,-1),callback.item.split(':')[1].slice(1)];
     dataFactory.supwikitext=$scope.name;
@@ -65,6 +77,7 @@ $scope.clickedMethod = function(callback) {
 };
   
   $scope.onItemSelected = function() { // this gets executed when an item is selected
+      $scope.showclear=true;
   	  dataFactory.supwikitext=$scope.name;
      console.log('selected=' + dataFactory.supwikitext[0] + dataFactory.supwikitext[1]);
      if ( $scope.name[1] == "item") {
@@ -98,7 +111,8 @@ $scope.clickedMethod = function(callback) {
     supwikitext:null,
     showitem:false,
     showpo:false,
-    showuser:false
+    showuser:false,
+    showclear:false
   };
 })
 
