@@ -1,7 +1,11 @@
 angular.module('ignite2.managerDashboard')
 
-.controller('manItemMvmtCntrl', ['$scope','$http','$filter','$ionicPopup','localStorageService', 'manItemSvc','$stateParams', '$state', function($scope,$http,$filter,$ionicPopup,localStorageService,manItemSvc,$stateParams,$state){
+.controller('manItemMvmtCntrl', ['$scope','$http','$filter','$location','$ionicPopup','localStorageService', 'manItemSvc','$stateParams', '$state', function($scope,$http,$filter,$location,$ionicPopup,localStorageService,manItemSvc,$stateParams,$state){
 
+
+$scope.goToDetail = function() {
+$state.go('managerApp.dashboard.itemmvmt',{notify:false,reload:false});
+};
 
  $scope.manItemSvc=manItemSvc;
 
@@ -15,13 +19,72 @@ $scope.manItemSvc.showtop=false;
 $scope.manItemSvc.showbottom=true;
 };
 
+var getRandomInt=function(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+};
 
-$scope.topitemmvmtgraph_options = {
+var randElemsWithoutReplace = function (ls_, n) {
+  var ls = ls_.slice();
+  var selections = [];
+  for (var i = 0; i < n; i++) {
+    selections.push(ls.splice(Math.floor(Math.random()*ls.length), 1)[0]);
+  }
+  return selections;
+};
+
+var item_desc_temp=[];
+var item_desc_distinct=[];
+$http.get('js/manager/item_desc.json').success(function(data) {
+item_desc_temp=data;
+//var rand_item_desc = item_desc_temp[Math.floor(Math.random() * item_desc_temp.length)];
+item_desc_distinct=randElemsWithoutReplace(item_desc_temp,200);
+console.log(item_desc_distinct);
+//JSOn Array with all items 
+ var item_data = [];
+ for (var i=0;i<200;i++) {
+   var itm={"id":getRandomInt(100000,999999),"description":item_desc_distinct[i],"qty":getRandomInt(500,9999)};
+   item_data.push(itm);
+ }
+
+//Logic to get the top 10 Items from above JSON
+   var topitems = item_data.sort(function(a, b) { return a.qty < b.qty ? 1 : -1; })
+                .slice(0, 10); 
+
+//The top item in the DC
+   $scope.top_item=topitems.slice(-1)[0].description;             
+
+//Logic to get bottom 10 Items from ABove array
+    var bottomitems= item_data.sort(function(a, b) { return a.qty < b.qty ? 1 : -1; })
+                .slice(item_data.length-10);  
+
+//Last item in the DC
+$scope.last_item=bottomitems.slice(0)[0].description;
+
+ $scope.topitem_data= [
+            {
+                "key":"Top10",
+                "color": "#1f77b4",
+                "values": topitems
+                }
+         ] ;
+
+ $scope.bottomitem_data= [
+            {
+                "key":"bottom10",
+                "color": "#d62728",
+                "values": bottomitems
+                }
+         ]   ;   
+
+
+ //Define the NVD3 graph options in the same http success function
+ 
+ $scope.topitemmvmtgraph_options = {
     chart: {
          type: 'multiBarHorizontalChart',
                 height: 400,
                 width: 380,
-                x: function(d){return d.description;},
+                x: function(d){return d.id;},
                 y: function(d){return d.qty;},
                 showControls: true,
                 showValues: true,
@@ -38,7 +101,38 @@ $scope.topitemmvmtgraph_options = {
                 //Below 3 options are to disable Legends, Controls and increase space between bars
                 showLegend: false,
                 showControls:false,
-                groupSpacing:0.5
+                groupSpacing:0.5,
+                useInteractiveGuideline:false,
+                     tooltip: {
+                contentGenerator: function (e) {
+                 //  console.log(e);
+                  var series = e.series[0];
+                  var data=e.data;
+                 // console.log(data);
+                  if (series.value === null) return;
+                  var rows = 
+                    "<tr>" +
+                      "<td class='x-value'>" + "<b>" + "Item Number" +  "</td>" +
+                    "</tr>"+
+                    "<tr>" +
+                      "<td class='x-value'>" + data.id +  "</td>" +
+                    "</tr>"+                    
+                    "<tr>" +
+                      "<td class='x-value'>" + "<b>" + "Item Description" +  "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                      "<td class='x-value'>" + data.description +  "</td>" +
+                    "</tr>";
+                    
+                  return "<table>" +
+                   //   header  +
+                      "<tbody>" + 
+                        rows + 
+                      "</tbody>" +
+                    "</table>";
+              //    return series.color + "  " + series.key + "  " + series.value + "%";
+              }
+          }
             },
 
     title: {
@@ -52,7 +146,7 @@ $scope.bottomitemmvmtgraph_options = {
                 type: 'multiBarHorizontalChart',
                 height: 400,
                 width:380,
-                x: function(d){return d.description;},
+                x: function(d){return d.id;},
                 y: function(d){return d.qty;},
                 showControls: true,
                 showValues: true,
@@ -68,64 +162,51 @@ $scope.bottomitemmvmtgraph_options = {
                 },
                 showLegend: false,
                 showControls:false,
-                groupSpacing:0.5
-            },
+                groupSpacing:0.5,
+                  useInteractiveGuideline:false,
+                     tooltip: {
+                contentGenerator: function (e) {
+                 //  console.log(e);
+                  var series = e.series[0];
+                  var data=e.data;
+                 // console.log(data);
+                  if (series.value === null) return;
+                  var rows = 
+                   "<tr>" +
+                      "<td class='x-value'>" + "<b>" + "Item Number" +  "</td>" +
+                    "</tr>"+
+                    "<tr>" +
+                      "<td class='x-value'>" + data.id +  "</td>" +
+                    "</tr>"+                    
+                    "<tr>" +
+                      "<td class='x-value'>" + "<b>" + "Item Description" +  "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                      "<td class='x-value'>" + data.description +  "</td>" +
+                    "</tr>";
+                    
+                  return "<table>" +
+                   //   header  +
+                      "<tbody>" + 
+                        rows + 
+                      "</tbody>" +
+                    "</table>";
+              //    return series.color + "  " + series.key + "  " + series.value + "%";
+              },
+            distance: 30,
+          id: "nvtooltip-bottom-item"
+          }
+    },
 
     title: {
         enable: true,
         text: 'Lowest 10 Moving Items'
         },
-};
+};        
+
+})
 
 
-
-//JSOn Array with all items 
- var item_data = [
-                {"id":1,"description":"Item1","qty":1200},{"id":2,"description":"Item2","qty":1200},{"id":3,"description":"Item3","qty":1200},
-                {"id":4,"description":"Item4","qty":4500},{"id":5,"description":"Item5","qty":3450},{"id":6,"description":"Item6","qty":7000},
-                {"id":7,"description":"Item7","qty":2300},{"id":8,"description":"Item8","qty":4510},{"id":9,"description":"Item9","qty":6590},
-                {"id":10,"description":"Item10","qty":7240},{"id":11,"description":"Item11","qty":6780},{"id":12,"description":"Item12","qty":2300},
-                {"id":13,"description":"Item13","qty":3400},{"id":14,"description":"Item14","qty":4120},{"id":15,"description":"Item15","qty":2100},
-                {"id":16,"description":"Item16","qty":8390},{"id":17,"description":"Item17","qty":7850},{"id":18,"description":"Item18","qty":6500},
-                {"id":19,"description":"Item19","qty":5200},{"id":20,"description":"Item20","qty":1980},{"id":21,"description":"Item21","qty":820},
-                {"id":22,"description":"Item22","qty":1300},{"id":23,"description":"Item23","qty":3120},{"id":24,"description":"Item24","qty":2150},
-                {"id":25,"description":"Item25","qty":1100},{"id":26,"description":"Item26","qty":540},{"id":27,"description":"Item27","qty":1890},
-                {"id":28,"description":"Item28","qty":4520},{"id":29,"description":"Item29","qty":4310},{"id":30,"description":"Item30","qty":320},
-                {"id":31,"description":"Item31","qty":2400},{"id":32,"description":"Item32","qty":1460},{"id":33,"description":"Item33","qty":1100},
-                {"id":34,"description":"item34","qty":3200},{"id":35,"description":"item35","qty":4120},{"id":36,"description":"Item36","qty":1730},
-                {"id":37,"description":"Item37","qty":940},{"id":38,"description":"Item38","qty":470},{"id":39,"description":"item39","qty":1200},
-                {"id":40,"description":"Item40","qty":3200},{"id":41,"description":"Item41","qty":1500},{"id":42,"description":"Item42","qty":230},
-                {"id":43,"description":"Item43","qty":670},{"id":44,"description":"Item44","qty":1300},{"id":45,"description":"Item45","qty":420},                                
-                {"id":46,"description":"Item46","qty":3170},{"id":47,"description":"Item47","qty":2800},{"id":48,"description":"Item48","qty":190},
-                {"id":49,"description":"Item49","qty":4960},{"id":50,"description":"Item50","qty":1570}             
-              ]
-
-
-//Logic to get the top 10 Items from above JSON
-   var topitems = item_data.sort(function(a, b) { return a.qty < b.qty ? 1 : -1; })
-                .slice(0, 10); 
-
-//Logic to get bottom 10 Items from ABove array
-    var bottomitems= item_data.sort(function(a, b) { return a.qty < b.qty ? 1 : -1; })
-                .slice(item_data.length-10);  
-
- $scope.topitem_data= [
-            {
-                "key":"Top10",
-                "color": "#d62728",
-                "values": topitems
-                }
-         ] ;
-
- $scope.bottomitem_data= [
-            {
-                "key":"bottom10",
-                "color": "#1f77b4",
-                "values": bottomitems
-                }
-         ]   ;           
-
-//console.log($scope.topitem_data,$scope.bottomitem_data);
 
 }])
 

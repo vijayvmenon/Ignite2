@@ -155,7 +155,7 @@ angular.module('ignite2', ['ionic','ngCordova','ignite2.loginController','ignite
       'managerMenuContent@managerApp': {
     parent:'managerApp.dashboard',
      templateUrl: 'templates/Manager/itemMvmt.html',
-    controller:'manItemMvmtCntrl'
+     controller:'manItemMvmtCntrl'
   }
 }
   })
@@ -190,7 +190,7 @@ angular.module('ignite2', ['ionic','ngCordova','ignite2.loginController','ignite
       url: '/suprvsrSearch',
            views: {
       'supSearchContent': {
-          templateUrl: 'templates/Supervisor/supervisorWiki/supervisorSearch.html',
+            templateUrl: ( platform == 'windows' )? 'templates/Supervisor/supervisorWiki/supervisorSearch.html' : 'templates/Supervisor/supervisorWiki/supervisorSearchmob.html',
           controller:'TypeAheadController',
         }
       }

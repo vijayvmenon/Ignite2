@@ -518,3 +518,7 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;cursor:pointer;}
     .disabled {
       opacity: .3
     }
+
+    div#nvtooltip-4634.nvtooltip.xy-tooltip {
+      margin-left: 100px;
+    }

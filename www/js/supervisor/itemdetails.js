@@ -1,7 +1,7 @@
 angular.module('ignite2.supervisorSearch')
 
-.controller('itemDetailsController', ['$scope','$state','$stateParams', 'supItemSvc','dataFactory',function($scope,$state,$stateParams,supItemSvc,dataFactory){
-	
+.controller('itemDetailsController', ['$scope','$state','$stateParams','supItemSvc','dataFactory',function($scope,$state,$stateParams,supItemSvc,dataFactory){
+
 	$scope.itemnbr=dataFactory.supwikitext[0];
 	console.log('reached item details supervisor');
 	console.log(dataFactory.supwikitext[0]);

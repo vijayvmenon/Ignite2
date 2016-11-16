@@ -1,19 +1,72 @@
-angular.module('ignite2.supervisorSearch', ['LocalStorageModule','nvd3','isteven-omni-bar','angular-svg-round-progressbar','fmp-card','nvd3ChartDirectives','n3-pie-chart','circle.countdown','smart-table'])
+angular.module('ignite2.supervisorSearch', ['LocalStorageModule','nvd3','isteven-omni-bar','angular-svg-round-progressbar','fmp-card','nvd3ChartDirectives','n3-pie-chart','circle.countdown','smart-table','ion-autocomplete'])
 
 
 .controller('TypeAheadController', function($scope,$rootScope,$interval,$state,$stateParams,dataFactory) { // DI in action
-  $interval.cancel($rootScope.supOverrideInterval);
-  dataFactory.get('templates/Supervisor/supervisorWiki/searchinput.json').then(function(data) {
-    $scope.items = data;
-  });
-  
-  $scope.showitem=dataFactory.showitem;
+
+    var getRandomInt=function(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+
+$scope.url_param=getRandomInt(1,1000);
+ // $interval.cancel($rootScope.supOverrideInterval);
+ $scope.items=[];
+ var returneditems=[];
+   $scope.name =[]; // This will hold the selected item
+
+   $scope.showitem=dataFactory.showitem;
     $scope.showpo=dataFactory.showpo;
     $scope.showuser=dataFactory.showuser;
-  $scope.name =[]; // This will hold the selected item
+
+  dataFactory.get('templates/Supervisor/supervisorWiki/searchinput.json').then(function(data) {
+    returneditems = data;  //this is used for mobile screen
+      $scope.items = data;  //this is used for typeahead directive angularjs in web screen
+  });
+
+  $scope.getItemPoUser = function(query) {
+    //console.log(returneditems);
+    if (query) {
+      $scope.mobitems=[];
+    for (var i=0;i<returneditems.length;i++) {
+          if (returneditems[i].id.toString().indexOf(query.toString()) !== -1) {
+            $scope.mobitems.push(returneditems[i].id + " : " + returneditems[i].category);
+           // console.log($scope.items);
+          }
+        }
+          return {
+          items: $scope.mobitems
+              };
+    }
+  return {items: []};
+  };
+
+
+$scope.clickedMethod = function(callback) {
+    console.log(dataFactory.supwikitext);
+   $scope.name=[callback.item.split(':')[0].slice(0,-1),callback.item.split(':')[1].slice(1)];
+    dataFactory.supwikitext=$scope.name;
+    console.log(dataFactory.supwikitext);
+   //console.log('selected=' + $scope.name[0] + $scope.name[1]);
+     if ( $scope.name[1] == "item") {
+         $scope.showitem=true;
+         $scope.showpo=false;
+         $scope.showuser=false;         
+     }
+     if ( $scope.name[1] == "po") {
+         $scope.showitem=false;
+         $scope.showpo=true;
+         $scope.showuser=false;         
+     }
+     if ( $scope.name[1] == "user") {
+         $scope.showitem=false;
+         $scope.showpo=false;
+         $scope.showuser=true;         
+     }   
+};
+  
   $scope.onItemSelected = function() { // this gets executed when an item is selected
   	  dataFactory.supwikitext=$scope.name;
-     console.log('selected=' + $scope.name[0] + $scope.name[1]);
+     console.log('selected=' + dataFactory.supwikitext[0] + dataFactory.supwikitext[1]);
      if ( $scope.name[1] == "item") {
          $scope.showitem=true;
          $scope.showpo=false;

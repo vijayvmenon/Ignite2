@@ -109,7 +109,7 @@ $scope.getdata();
 
 $rootScope.supOverrideInterval=$interval(function() {
   $scope.getintervaldata();
-},4000)
+},10000000)
 
 
 //$scope.$on('$destroy',function(){
