@@ -341,10 +341,10 @@ button > * {
   display: block !important;
 }
 
-.header-badge{
-  top: -7px !important;
-  left: -11px !important;
+.badge-container{
+      position: relative;
 }
+
 
 
 .supervisor-list-animation.ng-enter {
@@ -522,3 +522,8 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;cursor:pointer;}
     div#nvtooltip-4634.nvtooltip.xy-tooltip {
       margin-left: 100px;
     }
+
+
+iframe{
+    overflow:hidden;
+}    

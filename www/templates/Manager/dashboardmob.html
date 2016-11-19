@@ -2,8 +2,9 @@
     <ion-content class="grid-basic-page" overflow-scroll="false">
      <section class="home-container">
         <div class="row responsive-md" style="margin-top:20px">
-            <div class="u10">Manager Dashboard</div><div style="margin-top:15px" class="u11">&nbsp&nbsp&nbsp Statistics and Reports</div>
-            <span <button class="button button-small button-positive" ui-sref="managerApp.dashboard" ui-sref-opts="{reload: true}">Randomize</button></span>
+            <div class="u10">Manager Dashboard</div><div style="margin-top:15px" class="u11">&nbsp&nbsp&nbsp Statistics and Reports
+            <button style="width:100px;margin-left:20px" class="button button-small button-positive" ui-sref="managerApp.dashboard" ui-sref-opts="{reload: true}">Randomize</button></div>
+            
          </div>
          <div class="row responsive-md" style="margin-top:15px">
            <span ng-controller="manProductivityCntrl" ng-include="'templates/headerpillmob.html'"></div>
@@ -88,7 +89,7 @@
 
       <div class="row row-responsive-sm"> 
                      <!--Item Movement-->      
-  <div class="col card card-shadow-border" ng-click="goToDetail()" ng-controller="manItemMvmtCntrl">
+  <div class="col card card-shadow-border" ui-sref="managerApp.dashboard.itemmvmt" ng-controller="manItemMvmtCntrl">
                <h4 style="text-align:center">Item Mov Stats</h4>
                   <div>
                    <p><b>Top Moving item</b></p>

@@ -18,7 +18,11 @@
          {"appt_nbr":651234,"status":"Delivered"},
          {"appt_nbr":781234,"status":"Scheduled"},
          {"appt_nbr":912376,"status":"Arrived"},
-         {"appt_nbr":812345,"status":"Completed"}
+         {"appt_nbr":812345,"status":"Completed"},
+         {"appt_nbr":782345,"status":"Pending"},
+         {"appt_nbr":812367,"status":"Closed"},
+         {"appt_nbr":349802,"status":"Cancelled"},
+         {"appt_nbr":450921,"status":"Delivered"}
         ],
         "items" : [
           {"item_nbr":3456782,"desc":"Google Pixel","totqty":200,"dueqty":23},
@@ -53,5 +57,5 @@
         "cancel_date":"",
         "appointments":[],
         "items":[]
-    }        
+    }       
 ]

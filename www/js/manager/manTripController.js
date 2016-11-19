@@ -217,18 +217,18 @@ $scope.total_trips=getArrSum($scope.regpbyl_data)+getArrSum($scope.full_data)+ge
 $scope.total_unassign=getAssgnHoldSum($scope.regpbyl_data)[0]+getAssgnHoldSum($scope.full_data)[0]+getAssgnHoldSum($scope.chase_data)[0]+getAssgnHoldSum($scope.case_data)[0];
 $scope.total_hold=getAssgnHoldSum($scope.regpbyl_data)[1]+getAssgnHoldSum($scope.full_data)[1]+getAssgnHoldSum($scope.chase_data)[1]+getAssgnHoldSum($scope.case_data)[1];
 
-console.log($scope.case_data);
-console.log($scope.full_data);
-console.log($scope.chase_data);
-console.log($scope.regpbyl_data);
-console.log($scope.total_trips);
-console.log($scope.total_unassign);
-console.log($scope.total_hold);
+//console.log($scope.case_data);
+//console.log($scope.full_data);
+//console.log($scope.chase_data);
+//console.log($scope.regpbyl_data);
+//console.log($scope.total_trips);
+//console.log($scope.total_unassign);
+//console.log($scope.total_hold);
 
 $scope.unassign_per=Math.round(($scope.total_unassign*100)/$scope.total_trips);
 $scope.hold_per=Math.round(($scope.total_hold*100)/$scope.total_trips);
-console.log($scope.unassign_per);
-console.log($scope.hold_per);
+//console.log($scope.unassign_per);
+//console.log($scope.hold_per);
 
 $scope.emptyStyle={ 
     backgroundColor: "#4ce600"

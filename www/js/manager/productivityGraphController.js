@@ -637,6 +637,7 @@ if (recvtoday>recvyest) {
  //  $scope.title='RECEIVING ' + $scope.recvgaugevalue+'%'+' HIGHER THAN YESTERDAY';
  $scope.title="RECEIVING";
    $scope.levelColors=['#4ce600'];
+   console.log($scope.levelColors);
           $scope.textRendererrcv = function (value) {
                 return value+'% HIGHER';
           };
@@ -648,6 +649,7 @@ if (recvtoday<recvyest) {
    //$scope.title='RECEIVING ' + $scope.recvgaugevalue+'%'+' LOWER THAN YESTERDAY';
     $scope.title="RECEIVING";
    $scope.levelColors=['#ff3300'];
+      console.log($scope.levelColors);
              $scope.textRendererrcv = function (value) {
                 return value+'% LOWER';
           };
@@ -658,6 +660,7 @@ if (recvtoday==recvyest) {
    //$scope.title='RECEIVING RATE SAME AS YESTERDAY';
     $scope.title="RECEIVING";
    $scope.levelColors=['#4ce600'];
+      console.log($scope.levelColors);
              $scope.textRendererrcv = function (value) {
                 return 'SAME';
           };
@@ -669,6 +672,7 @@ if (shptoday>shpyest) {
     //  $scope.title='SHIPPING ' + $scope.shpgaugevalue + '%' + ' HIGHER THAN YESTERDAY';
        $scope.shptitle="SHIPPING";
          $scope.levelColorsShip=['#4ce600'];
+            console.log($scope.levelColors);
                       $scope.textRenderershp = function (value) {
                 return value+'% HIGHER';
           };
@@ -680,6 +684,7 @@ if (shptoday<shpyest) {
  // $scope.title='SHIPPING ' + $scope.shpgaugevalue + '%' + ' LOWER THAN YESTERDAY';
   $scope.shptitle="SHIPPING";
   $scope.levelColorsShip=['#ff3300'];
+     console.log($scope.levelColors);
                $scope.textRenderershp = function (value) {
                 return value+'% LOWER';
           };
@@ -690,6 +695,7 @@ if (shptoday==shpyest) {
  //     $scope.title='SHIPPING RATE SAME AS YESTERDAY';
   $scope.title="SHIPPING";
       $scope.levelColorsShip=['#4ce600'];
+         console.log($scope.levelColors);
                    $scope.textRenderershp = function (value) {
                 return 'SAME';
           };

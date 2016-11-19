@@ -201,7 +201,7 @@ angular.module('ignite2', ['ionic','ngCordova','ignite2.loginController','ignite
       url: '/itemDetails',
            views: {
       'supSearchContent@suprvsrApp': {
-          templateUrl: 'templates/Supervisor/supervisorWiki/itemDetails.html',
+          templateUrl: ( platform == 'windows' ) ? 'templates/Supervisor/supervisorWiki/itemDetails.html' : 'templates/Supervisor/supervisorWiki/itemDetailsmob.html',
           controller:'itemDetailsController',
         }
       },
@@ -214,12 +214,11 @@ angular.module('ignite2', ['ionic','ngCordova','ignite2.loginController','ignite
       url: '/suprvsrOverride',
            views: {
       'supOverrideView': {
-          templateUrl: 'templates/Supervisor/override.html',
+          templateUrl: ( platform == 'windows' ) ? 'templates/Supervisor/override.html' : 'templates/Supervisor/overridemob.html',
           controller:'overrideCntrl'
         }
       }
     })
-
 
     .state('suprvsrApp.settings', {
     url: '/settings',
@@ -258,11 +257,5 @@ angular.module('ignite2', ['ionic','ngCordova','ignite2.loginController','ignite
     }
  
 });
-
-
-
-
-
-
 
 

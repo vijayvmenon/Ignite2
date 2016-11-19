@@ -6,8 +6,8 @@
     <span> 
     <p style="float:left" class="main-header">ignite</p><p style="float:left" class="main-header-number">&nbsp2.0</p>
     <i class="icon ion-log-out" style="cursor:pointer;float:right;font-size:40px;color:#78B9E7;" ui-sref="login"></i>
-    <i ng-controller="supNotificationCntrl" class="icon ion-android-notifications" style="cursor:pointer;float:right;font-size:40px;color:#78B9E7;margin-right:10px" ng-click="popover.show($event);supNotifCount=null"><span class="badge badge-assertive header-badge">{{supNotifCount}}</span></i>
-    <i ng-controller="supEmailCntrl" class="icon ion-email" style="cursor:pointer;float:right;font-size:40px;color:#78B9E7;margin-right:10px" ng-click="popover.show($event);supEmailCount=null"><span class="badge badge-assertive header-badge">{{supEmailCount}}</span></i>
+    <i ng-controller="supNotificationCntrl" class="icon ion-android-notifications badge-container" style="cursor:pointer;float:right;font-size:40px;color:#78B9E7;margin-right:10px" ng-click="popover.show($event);supNotifCount=null"><span class="badge badge-assertive header-badge">{{supNotifCount}}</span></i>
+    <i ng-controller="supEmailCntrl" class="icon ion-email badge-container" style="cursor:pointer;float:right;font-size:40px;color:#78B9E7;margin-right:10px" ng-click="popover.show($event);supEmailCount=null"><span class="badge badge-assertive header-badge">{{supEmailCount}}</span></i>
     </span>
     </ion-nav-title>
     </ion-nav-bar>
@@ -19,7 +19,7 @@
         </ion-tab>
        
        <div ng-controller="overrideCntrl as overCtrl">
-    <ion-tab title="Override App" badge="getbadge"  badge-style="badge-assertive" icon="ion-ios-information" ui-sref="suprvsrApp.overrideApp">
+    <ion-tab title="Override App" badge="getbadge"  badge-style="badge-assertive" icon="ion-android-alert" ui-sref="suprvsrApp.overrideApp">
           <ion-nav-view animation="slide-left-right" name="supOverrideView"></ion-nav-view>
         </ion-tab>
         </div>

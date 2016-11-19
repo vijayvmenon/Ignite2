@@ -1,12 +1,11 @@
-
 <div ng-controller="poDetailsController">
 <div class="row responsive-sm" style="margin-top:10px;">
-    <div class="col" style="width:500px;height:150px;border:1px solid black">
+    <div class="col" style="width:500px;height:150px;border:1px solid black;">
        <p class="u13">PO Receiving Status</p>
        <div style="margin-top:10px;margin-bottom:15px" isteven-omni-bar current-value="rcvqty" max-value="totqty">
          {{rcvqty}} of {{totqty}} received for PO {{ponbr}} 
        </div>
-       <p style="margin-top:5px" class="u13"><span style="float:left">Total Appointments : {{totappts}}</span><span style="float:right"> Total Items : {{totitems}}</span></p>
+       <p style="margin-top:5px;" class="u13"><span style="float:left">Total Appointments : {{totappts}}</span><span style="float:right"> Total Items : {{totitems}}</span></p>
     </div>
     <div class="col col-offset-25" style="width:800px;height:150px;border:1px solid black">
        <p class="u13">PO Receiving ETA {{etatime}}</p>
@@ -16,6 +15,8 @@
     </div>
 </div>
 
+
+<!--
 <div class ="row responsive-sm" style="margin-top:10px">
 <div class="col">
 <h4 style="text-align:center;background-color:#99e699;border-radius:5px;">APPOINTMENT DETAILS</h4>
@@ -86,5 +87,13 @@
 </table>
 
   </div>
+ </div> -->
+ <div class="row responsive-sm" style="margin-top:10px">
+ <div class="col">
+ <iframe scrolling="no" style="overflow:hidden;position:absolute;background-color: #f2f0ea;border:none;" width=100% 
+ src="templates/Supervisor/supervisorWiki/poDetailsTable.html" ng-iframe-resizer> </iframe>
  </div>
 </div>
+</div>
+
+
