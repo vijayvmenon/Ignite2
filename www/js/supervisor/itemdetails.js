@@ -2,6 +2,8 @@ angular.module('ignite2.supervisorSearch')
 
 .controller('itemDetailsController', ['$scope','$state','$stateParams','dataFactory',function($scope,$state,$stateParams,dataFactory){
 
+console.log(platform);
+
 	$scope.itemnbr=dataFactory.supwikitext[0];
 	console.log('reached item details supervisor');
 	console.log(dataFactory.supwikitext[0]);
@@ -62,15 +64,21 @@ $scope.itemgraphline_options = {
             bottom: 50,
             left:100
         },
+        legend: {
+            margin: {
+                top:5,
+                bottom:15
+            }
+        },
 
         x: function(d){ return d.date},
         y: function(d){ return d.value },
         color: d3.scale.category10().range(),
         duration: 300,
-        useInteractiveGuideline: true,
         clipVoronoi: false,
         xAxis: {
            axisLabel: 'Date',
+
            rotateLabels: -45,
             tickFormat: function(d) {
                         return d3.time.format('%m/%d/%y')(new Date(d))
@@ -81,12 +89,18 @@ $scope.itemgraphline_options = {
         reduceXTicks: false,
         yAxis: {
             axisLabel: 'Number of Cases',
+            axisLabelDistance:5,
              tickFormat: function(d){
            return d3.format(',.f')(d)
            // console.log(d)
         },
-         axisLabelDistance: 20
-     }
+     },
+            useInteractiveGuideline:true,
+            interactiveLayer: {
+              tooltip: {
+                gravity:"s"
+              }
+            }
       },
 
     title: {
@@ -96,6 +110,17 @@ $scope.itemgraphline_options = {
 };
 
 
+        if (platform != "windows") {
+            console.log('reached here');
+            $scope.itemgraphline_options.chart.height=400;
+            $scope.itemgraphline_options.chart.width=400;
+           $scope.itemgraphline_options.chart.margin.left=70;
+              $scope.itemgraphline_options.chart.margin.right=20;  
+             // $scope.itemgraphline_options.chart.margin.top=0;
+              //$scope.itemgraphline_options.chart.margin.bottom=0;
+         }
+
+
 //For web - Pie Chart 
 //*************************************
 //**************************************
@@ -103,18 +128,21 @@ $scope.itemgraphline_options = {
 
         $scope.itemStorePie_data = [{key: "Planned",value: getRandomInt(5,20)},{key: "Orderfilled",value: getRandomInt(5,20)},
         {key: "Billed",value: getRandomInt(5,15)},{key: "Not Released",value: getRandomInt(5,30)},
-        {key: "Released But Not Orderfilled",value: getRandomInt(5,10)},{key: "Orderfilling in Progress",value: getRandomInt(5,25)}];
+        {key: "Released",value: getRandomInt(5,10)},{key: "OF in Progress",value: getRandomInt(5,25)}];
 
          $scope.itemPoPie_data = [{key: "Received",value: getRandomInt(5,20)},{key: "Freight Billed",value: getRandomInt(5,20)},
          {key: "Not Arrived",value: getRandomInt(3,9)}];
 
+
+
+
            $scope.itemStorePie_options = {
             chart: {
                 type: 'pieChart',
-                height: 400,
-                width: 400,
+             //   height: 400,
+               // width: 500,
                 margin : {
-                    left:-20
+                    left:0
                 },
                 x: function(d){return d.key;},
                 y: function(d){return d.value;},
@@ -168,6 +196,39 @@ $scope.itemgraphline_options = {
         text: 'Item-PO Stats - '+$scope.itemnbr
         }
         };
+
+        if (platform == "windows") {
+            $scope.itemStorePie_options.chart.height=400;
+            $scope.itemStorePie_options.chart.width=500;
+             $scope.itemStorePie_options.chart.margin.left=0;
+              $scope.itemStorePie_options.chart.margin.right=0;
+              $scope.itemStorePie_options.chart.margin.top=0;
+              $scope.itemStorePie_options.chart.margin.bottom=0;
+         }
+
+         else {
+            $scope.itemStorePie_options.chart.height=400;
+            $scope.itemStorePie_options.chart.width=400;
+             $scope.itemStorePie_options.chart.margin.left=-20;
+              $scope.itemStorePie_options.chart.margin.right=0;
+              $scope.itemStorePie_options.chart.margin.top=0;
+              $scope.itemStorePie_options.chart.margin.bottom=0;  
+             $scope.itemStorePie_options.chart.legend.margin.left=0;
+              $scope.itemStorePie_options.chart.legend.margin.right=0;
+              $scope.itemStorePie_options.chart.legend.margin.top=10;
+              $scope.itemStorePie_options.chart.legend.margin.bottom=0;   
+
+            $scope.itemPoPie_options.chart.height=400;
+            $scope.itemPoPie_options.chart.width=400;
+             $scope.itemPoPie_options.chart.margin.left=-20;
+              $scope.itemPoPie_options.chart.margin.right=0;
+              $scope.itemPoPie_options.chart.margin.top=0;
+              $scope.itemPoPie_options.chart.margin.bottom=0;  
+             $scope.itemPoPie_options.chart.legend.margin.left=-40;
+              $scope.itemPoPie_options.chart.legend.margin.right=0;
+              $scope.itemPoPie_options.chart.legend.margin.top=10;
+              $scope.itemPoPie_options.chart.legend.margin.bottom=0;            
+         }
        
 //For Web - linePluBar Chart
 //*********************************************
@@ -268,7 +329,7 @@ $scope.itemgraphlinebar_options = {
             },
                 title: {
         enable: true,
-        text: 'Item BOH-WAC Graph'
+        text: 'Item '+$scope.itemnbr+ '- BOH-WAC Graph'
         },
         };
 
@@ -284,7 +345,7 @@ $scope.itemgraphmob_options = {
                 width:450,
                 margin: {
                     top: 30,
-                    right: 90,
+                    right: 95,
                     bottom: 50,
                     left: 35
                 },
@@ -347,7 +408,7 @@ $scope.itemgraphmob_options = {
             },
                 title: {
         enable: true,
-        text: 'Item BOH-WAC Graph'
+        text: 'Item '+$scope.itemnbr+ '- BOH-WAC Graph'
         },
         };  
  

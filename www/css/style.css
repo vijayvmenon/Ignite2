@@ -527,3 +527,17 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;cursor:pointer;}
 iframe{
     overflow:hidden;
 }    
+
+
+/**Below Classes are for Blinking Text in SUpervisor Search PO and Item**/
+
+
+.blink_me {
+  animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0; }
+}
+
+/**End of Styling**/
