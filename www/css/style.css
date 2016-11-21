@@ -286,6 +286,12 @@ border:1px solid black;
     /*color: #ffffff; */
 }
 
+.u15 {
+  font-family: 'Roboto Thin', 'Roboto Regular', 'Roboto';
+  font-weight: normal;
+    font-style: normal;
+    font-size: 17px;
+}
 
 .button-bar > .button.u13 {
 	width: 100px;
@@ -481,7 +487,7 @@ input[type="text"].supsearch-input{
 /**Supervisor Wiki Animations **/
 
 .sup-wiki-animation.ng-enter{
-  animation : fadeInRight 2s;
+  animation : fadeInRight 1s;
 }
 
 .sup-wiki-animation.ng-enter-stagger{

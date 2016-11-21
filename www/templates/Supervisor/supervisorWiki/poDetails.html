@@ -1,4 +1,5 @@
 <div ng-controller="poDetailsController">
+<div ng-if="nopo==false">
 <div class="row responsive-sm" style="margin-top:10px;">
     <div class="col" style="width:450px;height:150px;margin-left:5px;border:1px solid black;">
        <p class="u13">PO Receiving Status</p>
@@ -27,6 +28,10 @@
  <iframe scrolling="no" style="overflow:hidden;position:absolute;background-color: #f2f0ea;border:none;" width=100% 
  src="templates/Supervisor/supervisorWiki/poDetailsTable.html" ng-iframe-resizer> </iframe>
  </div>
+</div>
+</div>
+<div ng-if="nopo">
+<p>No details found for PO {{ponbr}}</p>
 </div>
 </div>
 

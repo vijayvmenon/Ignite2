@@ -2,11 +2,34 @@ angular.module('ignite2.supervisorSearch')
 
 .controller('userDetailsController', ['$scope','$state','$stateParams', 'dataFactory',function($scope,$state,$stateParams,dataFactory){
 	
+    $scope.nouser=true;
+    var returneditems=[];
 	$scope.userid=dataFactory.supwikitext[0];
+
 	$scope.isHigh=false;
 	$scope.isLow=false;
     $scope.userdetails={"UserID":$scope.userid,"Name":"John Doe","Role":"Receiving Associate","Supervisor":"Jane Doe","ActiveDate":"03/15/2016"};
 	console.log(dataFactory.supwikitext[0]);
+
+      dataFactory.get('templates/Supervisor/supervisorWiki/searchinput.json').then(function(data) {
+   returneditems = data;  //this is used for mobile screen
+   console.log(data);
+   // for (var i=0;i<data.length;i++) {
+      //  returneditems.push(data[i].id);
+  //  }
+    console.log(returneditems);
+    console.log($scope.userid);
+   // $scope.userid="erefef12";
+  //  console.log(returneditems.indexOf('$scope.itemnbr') > -1);
+  for (var j=0;j<returneditems.length;j++) {
+    if ( returneditems[j].category == "user" ) {
+    if ($scope.userid == returneditems[j].id || $scope.userid == "returneditems[j].id" ) {
+        console.log($scope.userid+'exists');
+      $scope.nouser=false;
+    }
+  }
+    }
+  });
 
 
 var getRandomInt=function(min, max) {

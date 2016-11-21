@@ -1,5 +1,5 @@
 <div ng-controller="userDetailsController" style="margin-top:10px">
-
+<div ng-show="nouser==false">
 <div class="col" style="margin-left:20px">
 <table style="border:2px solid blue;width:350px"">
    <tr style="border:2px solid blue;height:40px;background:#bbff99">
@@ -95,5 +95,8 @@
 </ion-scroll>
 </div>
 
-
+</div>
+ <div ng-show="nouser==true">
+ <p>User {{userid}} not found</p>
+ </div>
  </div>
