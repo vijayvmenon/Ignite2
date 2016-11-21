@@ -66,7 +66,15 @@ var getRandomInt=function(min, max) {
             },
         title: {
         enable: true,
-        text: 'Trip Stats - Case Pick'
+        text: 'TRIP STATS - CASE PICK',
+        css: {
+            'text-align': 'left',
+            'margin': '10px 13px 0px 7px',
+            'font-size':'16px',
+            'color':'#29B4B6',
+            'font-width':'bold',
+            'font-family':'segoe ui'
+        }
         }
         };
 
@@ -105,7 +113,16 @@ var getRandomInt=function(min, max) {
             },
         title: {
         enable: true,
-        text: 'Trip Stats - Full Pull'
+        text: 'TRIP STATS - FULL PULL',
+        css: {
+            'text-align': 'left',
+            'margin': '10px 13px 0px 7px',
+            'font-size':'16px',
+            'color':'#29B4B6',
+            'font-width':'bold',
+            'font-family':'segoe ui'
+        }
+
         }
         };
 
@@ -144,7 +161,16 @@ var getRandomInt=function(min, max) {
             },
           title: {
         enable: true,
-        text: 'Trip Stats - Chase'
+        text: 'TRIP STATS - CHASE',
+        css: {
+            'text-align': 'left',
+            'margin': '10px 13px 0px 7px',
+            'font-size':'16px',
+            'color':'#29B4B6',
+            'font-width':'bold',
+            'font-family':'segoe ui'
+        }
+
         }
         };
 
@@ -181,7 +207,16 @@ var getRandomInt=function(min, max) {
             },
                 title: {
         enable: true,
-        text: 'Trip Stats - Regular PBYL'
+        text: 'TRIP STATS - REGULAR PBYL',
+        css: {
+            'text-align': 'left',
+            'margin': '10px 13px 0px 7px',
+            'font-size':'16px',
+            'color':'#29B4B6',
+            'font-width':'bold',
+            'font-family':'segoe ui'
+        }
+
         }
         };
 
