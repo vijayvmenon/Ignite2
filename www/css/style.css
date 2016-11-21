@@ -464,7 +464,7 @@ input[type="text"].supsearch-input{
 	font-size: 22px;
 	margin: 0 auto;
 	border-radius: 20px;
-	border: 2px solid #C44741;
+	border: 2px solid #004C91;
 	outline: none;
   height: auto;
   width: 80%;
@@ -492,7 +492,7 @@ input[type="text"].supsearch-input{
 	color: #444;
 }
 .active{
-	background-color: #C44741;
+	/*background-color: #C44741;*/
 	color:#f2f2f2;
 }
 
@@ -597,4 +597,39 @@ background: #c2e59c; /* fallback for old browsers */
 background: -webkit-linear-gradient(to left, #c2e59c , #64b3f4); /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to left, #c2e59c , #64b3f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         
+}
+ion-popover-view.email:before{
+  content: '';
+    height: 0;
+    width: 0;
+    border: 10px solid green;
+    border-color: #fff;
+    margin-left: 65%;
+    display: block;
+    border-left: 9px;
+    margin-top: -3%;
+    -moz-border-radius: 9px !important;
+    /*-webkitborder-radius: 9px !important; */
+    color: transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 0px solid #a04545;
+}
+
+ion-popover-view.notify:before{
+  content: '';
+    height: 0;
+    width: 0;
+    border: 10px solid green;
+    border-color: #fff;
+    margin-left: 84%;
+    display: block;
+    border-left: 9px;
+    margin-top: -3%;
+    -moz-border-radius: 9px !important;
+    /*-webkitborder-radius: 9px !important; */
+    color: transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 0px solid #a04545;
 }
