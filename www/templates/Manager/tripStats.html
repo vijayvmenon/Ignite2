@@ -1,6 +1,6 @@
-<ion-view>
-<ion-content overflow-scroll="false">
-       <div class="row responsive-md">
+   <ion-view>
+    <ion-content>
+    <div class="row responsive-md">
          <div ng-if="manTripSvc.showCasePick" class="slot-graph-class"><nvd3 options="case_options" data="case_data"></nvd3></div>
          <div ng-if="manTripSvc.showFullPull" class="slot-graph-class"><nvd3 options="full_options" data="full_data"></nvd3></div>
          <div ng-if="manTripSvc.showChase" class="slot-graph-class"><nvd3 options="chase_options" data="chase_data"></nvd3></div>
@@ -26,5 +26,5 @@
            </div>
           <div class="col"></div> 
         </div>   
-        </ion-content> 
-   </ion-view>
+        </ion-content>
+        </ion-view>

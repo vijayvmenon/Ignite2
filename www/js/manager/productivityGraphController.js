@@ -201,57 +201,38 @@ $scope.prodgraphdailymob_options = {
             left:35
         },
 
-       x: function(d){ return d.date},
-       y: function(d){ return d.value },
-       color: d3.scale.category10().range(),
-       showValues: true,
+        x: function(d){ return d.date},
+        y: function(d){ return d.value },
+        color: d3.scale.category10().range(),
         duration: 300,
-       clipVoronoi: false,
-    useInteractiveGuideline: true,
-    clipEdge: true,
+        useInteractiveGuideline: true,
+        clipVoronoi: false,
         xAxis: {
            axisLabel: 'Date',
-           tickPadding:0,
-         //  rotateLabels: -45,
+           rotateLabels: -45,
             tickFormat: function(d) {
-                        return d3.time.format('%m/%d - %-I %p')(new Date(d))
+                        return d3.time.format('%m/%d/%y')(new Date(d))
                    },
-      showMaxMin: false
-      },
-       reduceXTicks: false,
+               showMaxMin: false,
+               staggerLabels: true
+        },
+        reduceXTicks: false,
         yAxis: {
             axisLabel: 'Number of Cases',
              tickFormat: function(d){
            return d3.format(',.f')(d)
+           // console.log(d)
         },
-        showMaxMin: false
-      },
-          zoom: {
-        //NOTE: All attributes below are optional
-        enabled: true,
-        scaleExtent: [1, 50],
-        translate: [0, 0],
-        useFixedDomain: false,
-        useNiceScale: true,
-        horizontalOff: false,
-        verticalOff: true,
-      /**  zoomed: function(xDomain, yDomain) {
-            var domains = {x1: 0, x2: 0, y1: 1, y2: 1};
-            return domains;
-        },
-        unzoomed: function(xDomain, yDomain) {
-            var domains = {x1: 0, x2: 0, y1: 0, y2: 0};
-            return domains;
-        },**/
-        unzoomEventType: 'dblclick.zoom'
-    }
-      },
+         axisLabelDistance: 20
+      }
+    },
 
     title: {
         enable: true,
         text: 'DC Productivity - Daily'
         },
 };
+
 
 
 //Generate the array for Daily Data

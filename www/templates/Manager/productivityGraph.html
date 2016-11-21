@@ -1,8 +1,8 @@
  <ion-view> 
- <ion-content overflow-scroll="false">
+ <ion-content>
   <div class="row responsive-md">
       <div class="col" ng-controller="manProductivityCntrl">
-          <div ng-if="manProdSvc.showDaily"><nvd3 options="prodgraphdailymob_options" data="prodgraphdailymob_data"></nvd3></div>
+          <div ng-if="manProdSvc.showDaily"><nvd3 options="prodgraphdailymob_options" data="prodgraphdaily_data"></nvd3></div>
           <div ng-if="manProdSvc.showWeekly"><nvd3 options="prodgraphweekly_options" data="prodgraphweekly_data"></nvd3></div>
           <div ng-if="manProdSvc.showMonthly"><nvd3 options="prodgraphmonthly_options" data="prodgraphmonthly_data"></nvd3></div> 
       </div>
