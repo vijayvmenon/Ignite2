@@ -15,7 +15,16 @@ angular.module('ignite2.managerDashboard')
               },
           title: {
         enable: true,
-        text: 'DC Inventory Cost Summary'
+        text: 'DC INVENTORY COST SUMMARY',
+        css: {
+            'text-align': 'left',
+            'margin': '10px 13px 0px 7px',
+            'font-size':'16px',
+            'color':'#29B4B6',
+            'font-width':'bold',
+            'font-family':'segoe ui'
+        }
+
         }
     };
 

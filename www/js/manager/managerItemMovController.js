@@ -137,8 +137,17 @@ $scope.last_item=bottomitems.slice(0)[0].description;
 
     title: {
         enable: true,
-        text: 'Top 10 Moving Items'
+        text: 'Top 10 MOVING ITEMS',
+        css: {
+            'text-align': 'left',
+            'margin': '10px 13px 0px 7px',
+            'font-size':'16px',
+            'color':'#29B4B6',
+            'font-width':'bold',
+            'font-family':'segoe ui'
         }
+
+       }
 };
 
 $scope.bottomitemmvmtgraph_options = {
@@ -200,7 +209,17 @@ $scope.bottomitemmvmtgraph_options = {
 
     title: {
         enable: true,
-        text: 'Lowest 10 Moving Items'
+        text: 'LOWEST 10 MOVING ITEMS',
+        css: {
+            'text-align': 'left',
+            'margin': '10px 13px 0px 7px',
+            'font-size':'16px',
+            'color':'#29B4B6',
+            'font-width':'bold',
+            'font-family':'segoe ui'
+        }
+
+
         },
 };        
 
