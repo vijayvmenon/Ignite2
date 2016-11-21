@@ -493,6 +493,7 @@ input[type="text"].supsearch-input{
 }
 .active{
 	/*background-color: #C44741;*/
+  background-color: #C44741;
 	color:#f2f2f2;
 }
 
