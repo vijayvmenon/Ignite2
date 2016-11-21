@@ -2,11 +2,35 @@ angular.module('ignite2.supervisorSearch')
 
 .controller('itemDetailsController', ['$scope','$state','$stateParams','dataFactory',function($scope,$state,$stateParams,dataFactory){
 
-console.log(platform);
+$scope.noitem=true;
 
+console.log(platform);
+var returneditems=[];
 	$scope.itemnbr=dataFactory.supwikitext[0];
+
 	console.log('reached item details supervisor');
 	console.log(dataFactory.supwikitext[0]);
+
+      dataFactory.get('templates/Supervisor/supervisorWiki/searchinput.json').then(function(data) {
+   returneditems = data;  //this is used for mobile screen
+   console.log(data);
+    //for (var i=0;i<data.length;i++) {
+    //    returneditems.push(data[i].id);
+   // }
+    console.log(returneditems);
+    console.log($scope.itemnbr);
+  //  $scope.itemnbr=233465436;
+  //  console.log(returneditems.indexOf('$scope.itemnbr') > -1);
+  for (var j=0;j<returneditems.length;j++) {
+        if ( returneditems[j].category == "item" ) {
+    if ($scope.itemnbr == returneditems[j].id || $scope.itemnbr == "returneditems[j].id" ) {
+        console.log($scope.itemnbr+'exists');
+      $scope.noitem=false;
+    }
+  }
+    }
+  });
+
 
 var getRandomInt=function(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;

@@ -1,7 +1,56 @@
 angular.module('ignite2.supervisorSearch', ['LocalStorageModule','nvd3','isteven-omni-bar','angular-svg-round-progressbar','fmp-card','nvd3ChartDirectives','n3-pie-chart','circle.countdown','smart-table','ion-autocomplete','ngIframeResizer'])
 
 
-.controller('TypeAheadController', function($scope,$rootScope,$interval,$state,$stateParams,dataFactory) { // DI in action
+.controller('TypeAheadController', function($scope,$rootScope,$interval,$state,$ionicPopup,$stateParams,dataFactory,$cordovaBarcodeScanner) { // DI in action
+
+
+//Below Logic is for Barcode Scanner for Supervisor Search Mobile Version
+ // $scope.choices = ["item","po","user"];
+
+$scope.scanClick = function() {
+    $scope.choice = {
+    value:'user'
+  };
+
+$scope.selectedradio=null;
+
+$scope.radioFunc= function() {
+ $scope.selectedradio=$scope.choice.value;  
+};
+
+  console.log('reached scan');
+  document.addEventListener("deviceready", function () {
+
+    $cordovaBarcodeScanner
+      .scan()
+      .then(function(barcodeData) {
+
+ $ionicPopup.confirm({
+      templateUrl: 'templates/Supervisor/supervisorWiki/supsearchpopup.html',
+      title: 'Scanned Barcode - ' + barcodeData.text,
+      scope: $scope,
+      buttons: [{
+        text: 'OK',
+        type: 'button-positive',
+        onTap: function (e) {
+          $scope.scanClickedMethod(barcodeData.text,$scope.selectedradio);
+        }
+      }, {
+        text: 'Cancel',
+        type: 'button-default',
+        onTap: function (e) {
+          $state.go('suprvsrApp.search');
+        }
+      }]
+    });
+      }, function(error) {
+        // An error occurred
+      });
+});
+
+}
+//End of Logic
+
 
 $scope.showclear=dataFactory.showclear;
 
@@ -56,6 +105,33 @@ $scope.clickedMethod = function(callback) {
   $scope.showclear=true;
     console.log(dataFactory.supwikitext);
    $scope.name=[callback.item.split(':')[0].slice(0,-1),callback.item.split(':')[1].slice(1)];
+    dataFactory.supwikitext=$scope.name;
+    console.log(dataFactory.supwikitext);
+   //console.log('selected=' + $scope.name[0] + $scope.name[1]);
+     if ( $scope.name[1] == "item") {
+         $scope.showitem=true;
+         $scope.showpo=false;
+         $scope.showuser=false;         
+     }
+     if ( $scope.name[1] == "po") {
+         $scope.showitem=false;
+         $scope.showpo=true;
+         $scope.showuser=false;         
+     }
+     if ( $scope.name[1] == "user") {
+         $scope.showitem=false;
+         $scope.showpo=false;
+         $scope.showuser=true;         
+     }   
+};
+
+//Clicked Method for Scan
+
+
+$scope.scanClickedMethod = function(data,category) {
+  $scope.showclear=true;
+    console.log(dataFactory.supwikitext);
+   $scope.name=[data,category];
     dataFactory.supwikitext=$scope.name;
     console.log(dataFactory.supwikitext);
    //console.log('selected=' + $scope.name[0] + $scope.name[1]);

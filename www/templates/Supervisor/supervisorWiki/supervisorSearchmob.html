@@ -17,6 +17,9 @@
   <button class="button button-calm" ng-style="styleonLoad()" ion-autocomplete type="text" readonly="readonly" class="ion-autocomplete" ng-model="model" items-method="getItemPoUser(query)" items-method-value-key="items" cancel-label="Go back" placeholder="Enter Item, PO or UserID" autocomplete="on" max-selected-items="1" items-clicked-method="clickedMethod(callback)" select-items-label="Select Item, PO or User below">Click to Search</button>
   <button ng-show="showclear" class="button button-balanced" ng-click="showclear=false;" ui-sref="suprvsrApp.search" ui-sref-opts="{reload: true}">Clear</button>
   </div>
+   <div style="display:block;margin-top:8px">
+  <button class="button button-calm" style="width:100%" ng-click="scanClick()">Click to Scan</button>
+  </div>
 <!--  </label>-->
 </div>
 

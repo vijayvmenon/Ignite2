@@ -2,9 +2,11 @@ angular.module('ignite2.supervisorSearch')
 
 .controller('poDetailsController', ['$scope','$state','$rootScope','$stateParams','$interval','dataFactory',function($scope,$state,$rootScope,$stateParams,$interval,dataFactory){
 	
+   $scope.nopo=true;
+   var returneditems=[];
 
-	//$scope.displayedAppointments=[];
 	$scope.ponbr=dataFactory.supwikitext[0];
+
 $scope.text="test iframe";
 $scope.resizeIframe = function (event) {
     console.log("iframe loaded!");
@@ -12,7 +14,23 @@ $scope.resizeIframe = function (event) {
     iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
 };
 
-window.scopeToShare = $scope;
+      dataFactory.get('templates/Supervisor/supervisorWiki/searchinput.json').then(function(data) {
+   returneditems = data;  //this is used for mobile screen
+   console.log(data);
+  //  for (var i=0;i<data.length;i++) {
+   //     returneditems.push(data[i].id);
+   //     categories.push(data[i].category);
+ //   }
+    console.log(returneditems);
+    console.log($scope.ponbr);
+ // $scope.ponbr=233465436;
+  //  console.log(returneditems.indexOf('$scope.itemnbr') > -1);
+  for (var j=0;j<returneditems.length;j++) {
+  	if ( returneditems[j].category == "po" ) {
+    if ($scope.ponbr == returneditems[j].id || $scope.ponbr == "returneditems[j].id") {
+        console.log($scope.ponbr+'exists');
+      $scope.nopo=false;
+      window.scopeToShare = $scope;
 	  dataFactory.get('templates/Supervisor/supervisorWiki/searchinput.json').then(function(data) {
            $scope.items= data;
            console.log($scope.items);
@@ -39,6 +57,13 @@ for (var j =0; j<$scope.poitems.length;j++) {
 $scope.rcvqty=$scope.totqty - $scope.dueqty;
 
   });
+    }
+  }
+  }  
+  });
+
+
+
 
     $scope.finished = function(){
         // Finish callback
