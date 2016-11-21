@@ -98,9 +98,10 @@
                   <p>{{last_item}}</p>
                   </div>              
              </div>
-             <!--Pallet Movment Graph-->
-            <div class="col card card-shadow-border" ng-controller="manPalletMvmtCntrl">
-               <h4 ui-sref="managerApp.dashboard.palletmvmt"> Pallet Movement Statistics</h4>
+             <!--Sunburst Graph-->
+            <div class="col card card-shadow-border" ui-sref="managerApp.dashboard.sunburst" ng-controller="sunburstCntrl">
+               <h4 style="text-align:center"> Total DC Inventory Cost</h4>
+               <h3>${{total_dc_inventory}}.00</h3>
              </div>             
         </div>
 

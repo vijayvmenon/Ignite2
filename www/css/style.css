@@ -456,7 +456,7 @@ input[type="text"].supsearch-input{
 /**Supervisor Wiki Animations **/
 
 .sup-wiki-animation.ng-enter{
-  animation : zoomIn 2s;
+  animation : fadeInRight 2s;
 }
 
 .sup-wiki-animation.ng-enter-stagger{
@@ -541,3 +541,10 @@ iframe{
 }
 
 /**End of Styling**/
+
+/** Responsive Table for supervisor search - Associate - Timing Table in Mobile **/
+.sup-search-user-mob {
+}
+
+
+
