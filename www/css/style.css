@@ -15,7 +15,7 @@ border:1px solid black;
 .progress-wrapper .text{
     position: absolute;
     top: 37%;
-    left: -5%;
+    left: -3%;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     text-align: center;
@@ -29,8 +29,8 @@ border:1px solid black;
 
 .progress-wrapper .text_mob{
     position: absolute;
-    top: 42%;
-    left: -5%;
+    top: 38%;
+    left: -14%;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     text-align: center;

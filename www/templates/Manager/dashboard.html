@@ -100,54 +100,55 @@
                    <!--Slot Graph HTML-->
                 <div class="row row-responsive-md card card-shadow-border" style="margin-left:18px;width:490px"> 
                   <div class="col col-35" style="margin-left:-8px" ng-controller="manSlotCntrl">
-                    <div class="row responsive-md" style="text-align:center;margin-bottom:10px;margin-left:130px" >
-                     <h4 style="vertical-align:middle">Slot Statistics - {{manSlotSvc.active}}</h4>
+                    <div class="row responsive-md" style="margin-bottom:10px;margin-left:130px" >
+                     <h4>Slot Statistics - {{manSlotSvc.active}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h4><span style="background:#4dff4d"><h5 ng-if="manSlotSvc.showsstk">Total Slots : {{sstktotal}}</h5>
+                     <h5 ng-if="manSlotSvc.showpbyl">Total Slots : {{pbyltotal}}</h5></span>
                     </div>
                     <!--For SSTK Slot-->
                      <div ng-if="manSlotSvc.showsstk" class="row responsive-md slot-graph-class" style="margin-bottom:10px">
-                       <div class="progress-wrapper" style="width:160px;">
-                       <round-progress  max="sstktotal" current="sstkempty_data.count" color="#45ccce" bgcolor="#d9d9d9" radius="60" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
-                       <div class="text">{{sstkempty_data.count}}/{{sstktotal}}</div>
-                       <p class="bottom_text">&nbsp&nbsp&nbsp&nbsp&nbspEMPTY {{sstkempty_per}}%</p>
+                       <div class="progress-wrapper" style="width:160px;margin-left:5px">
+                       <round-progress  max="sstktotal" current="sstkempty_data.count" color="#45ccce" bgcolor="#d9d9d9" radius="50" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
+                       <div class="text">{{sstkempty_data.count}}</div>
+                       <p class="bottom_text">&nbsp&nbspEMPTY {{sstkempty_per}}%</p>
                        </div>
-                       <div class="progress-wrapper" style="width:160px;">
-                        <round-progress  max="sstktotal" current="sstkfull_data.count" color="#4295f4" bgcolor="#d9d9d9" radius="60" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
-                       <div class="text">{{sstkfull_data.count}}/{{sstktotal}}</div>                        
-                        <p class="bottom_text">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFULL {{sstkfull_per}}%</p>
+                       <div class="progress-wrapper" style="width:160px;margin-left:20px">
+                        <round-progress  max="sstktotal" current="sstkfull_data.count" color="#4295f4" bgcolor="#d9d9d9" radius="50" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
+                       <div class="text">{{sstkfull_data.count}}</div>                        
+                        <p class="bottom_text">&nbsp&nbsp&nbsp&nbsp&nbspFULL {{sstkfull_per}}%</p>
                         </div>
-                        <div class="progress-wrapper" style="width:160px;">
-                       <round-progress  max="sstktotal" current="sstkaudit_data.count" color="#f4d442" bgcolor="#d9d9d9" radius="60" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
-                       <div class="text">{{sstkaudit_data.count}}/{{sstktotal}}</div>                           
-                       <p class="bottom_text">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAUDIT {{sstkaudit_per}}%</p>
+                        <div class="progress-wrapper" style="width:160px;margin-left:18px">
+                       <round-progress  max="sstktotal" current="sstkaudit_data.count" color="#f4d442" bgcolor="#d9d9d9" radius="50" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
+                       <div class="text">{{sstkaudit_data.count}}</div>                           
+                       <p class="bottom_text">&nbsp&nbsp&nbsp&nbspAUDIT {{sstkaudit_per}}%</p>
                        </div>
-                       <div class="progress-wrapper" style="width:160px;">
-                       <round-progress  max="sstktotal" current="sstkpartial_data.count" color="#ff8080" bgcolor="#d9d9d9" radius="60" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
-                       <div class="text">{{sstkpartial_data.count}}/{{sstktotal}}</div>                           
-                       <p class="bottom_text">&nbsp&nbsp&nbspPARTIAL {{sstkpartial_per}}%</p>
+                       <div class="progress-wrapper" style="width:160px;margin-left:22px">
+                       <round-progress  max="sstktotal" current="sstkpartial_data.count" color="#ff8080" bgcolor="#d9d9d9" radius="50" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
+                       <div class="text">{{sstkpartial_data.count}}</div>                           
+                       <p class="bottom_text" style="margin-left:0px">PARTIAL {{sstkpartial_per}}%</p>
                        </div>
                      </div>  
                 
                     <!--For PBYL Slot-->
                      <div ng-if="manSlotSvc.showpbyl" class="row responsive-md slot-graph-class" style="margin-bottom:10px">
-                       <div class="progress-wrapper" style="width:160px;">
-                       <round-progress  max="pbyltotal" current="pbylempty_data.count" color="#45ccce" bgcolor="#d9d9d9" radius="60" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
-                       <div class="text">{{pbylempty_data.count}}/{{pbyltotal}}</div>
-                       <p class="bottom_text">&nbsp&nbsp&nbsp&nbsp&nbspEMPTY {{pbylempty_per}}%</p>
+                       <div class="progress-wrapper" style="width:160px;margin-left:5px">
+                       <round-progress  max="pbyltotal" current="pbylempty_data.count" color="#45ccce" bgcolor="#d9d9d9" radius="50" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
+                       <div class="text">{{pbylempty_data.count}}</div>
+                       <p class="bottom_text">&nbsp&nbspEMPTY {{pbylempty_per}}%</p>
                        </div>
-                       <div class="progress-wrapper" style="width:160px;">
-                        <round-progress  max="pbyltotal" current="pbylfull_data.count" color="#4295f4" bgcolor="#d9d9d9" radius="60" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
-                       <div class="text">{{pbylfull_data.count}}/{{pbyltotal}}</div>                        
-                        <p class="bottom_text">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFULL {{pbylfull_per}}%</p>
+                       <div class="progress-wrapper" style="width:160px;margin-left:20px">
+                        <round-progress  max="pbyltotal" current="pbylfull_data.count" color="#4295f4" bgcolor="#d9d9d9" radius="50" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
+                       <div class="text">{{pbylfull_data.count}}</div>                        
+                        <p class="bottom_text">&nbsp&nbsp&nbsp&nbsp&nbspFULL {{pbylfull_per}}%</p>
                         </div>
-                        <div class="progress-wrapper" style="width:160px;">
-                       <round-progress  max="pbyltotal" current="pbylaudit_data.count" color="#f4d442" bgcolor="#d9d9d9" radius="60" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
-                       <div class="text">{{pbylaudit_data.count}}/{{pbyltotal}}</div>                           
-                       <p class="bottom_text">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAUDIT {{pbylaudit_per}}%</p>
+                        <div class="progress-wrapper" style="width:160px;margin-left:18px">
+                       <round-progress  max="pbyltotal" current="pbylaudit_data.count" color="#f4d442" bgcolor="#d9d9d9" radius="50" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
+                       <div class="text">{{pbylaudit_data.count}}</div>                           
+                       <p class="bottom_text">&nbsp&nbsp&nbsp&nbspAUDIT {{pbylaudit_per}}%</p>
                        </div>
-                       <div class="progress-wrapper" style="width:160px;">
-                       <round-progress  max="pbyltotal" current="pbylpartial_data.count" color="#ff8080" bgcolor="#d9d9d9" radius="60" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
-                       <div class="text">{{pbylpartial_data.count}}/{{pbyltotal}}</div>                           
-                       <p class="bottom_text">&nbsp&nbsp&nbspPARTIAL {{pbylpartial_per}}%</p>
+                       <div class="progress-wrapper" style="width:160px;margin-left:22px">
+                       <round-progress  max="pbyltotal" current="pbylpartial_data.count" color="#ff8080" bgcolor="#d9d9d9" radius="50" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
+                       <div class="text">{{pbylpartial_data.count}}</div>                           
+                       <p class="bottom_text" style="margin-left:0px">PARTIAL {{pbylpartial_per}}%</p>
                        </div>
                      </div>                                                                                             
                     <div class="row responsive-md">
