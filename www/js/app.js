@@ -138,13 +138,13 @@ angular.module('ignite2', ['ionic','ngCordova','ignite2.loginController','ignite
 
 
 
-    .state('managerApp.dashboard.palletmvmt', {
-    url: '/palletMvmt',
+    .state('managerApp.dashboard.sunburst', {
+    url: '/financial',
     views: {
       'managerMenuContent@managerApp': {
     parent:'managerApp.dashboard',
-    templateUrl: 'templates/Manager/palletMvmt.html',
-    controller:'manPalletMvmtCntrl'
+    templateUrl: 'templates/Manager/financials.html',
+    controller:'sunburstCntrl'
   }
 }
   })
@@ -197,11 +197,12 @@ angular.module('ignite2', ['ionic','ngCordova','ignite2.loginController','ignite
 
      })
 
+   /**
             .state('suprvsrApp.search.item', {
       url: '/itemDetails',
            views: {
       'supSearchContent@suprvsrApp': {
-          templateUrl: 'templates/Supervisor/supervisorWiki/itemDetails.html',
+          templateUrl: ( platform == 'windows' ) ? 'templates/Supervisor/supervisorWiki/itemDetails.html' : 'templates/Supervisor/supervisorWiki/itemDetailsmob.html',
           controller:'itemDetailsController',
         }
       },
@@ -210,16 +211,26 @@ angular.module('ignite2', ['ionic','ngCordova','ignite2.loginController','ignite
       }
      })
 
+            .state('suprvsrApp.search.user', {
+      url: '/userDetails',
+           views: {
+      'supSearchContent@suprvsrApp': {
+          templateUrl: ( platform == 'windows' ) ? 'templates/Supervisor/supervisorWiki/userDetails.html' : 'templates/Supervisor/supervisorWiki/userDetailsmob.html',
+          controller:'userDetailsController',
+        }
+      },
+     })
+
+**/
     .state('suprvsrApp.overrideApp', {
       url: '/suprvsrOverride',
            views: {
       'supOverrideView': {
-          templateUrl: 'templates/Supervisor/override.html',
+          templateUrl: ( platform == 'windows' ) ? 'templates/Supervisor/override.html' : 'templates/Supervisor/overridemob.html',
           controller:'overrideCntrl'
         }
       }
     })
-
 
     .state('suprvsrApp.settings', {
     url: '/settings',
@@ -258,11 +269,5 @@ angular.module('ignite2', ['ionic','ngCordova','ignite2.loginController','ignite
     }
  
 });
-
-
-
-
-
-
 
 

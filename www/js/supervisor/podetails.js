@@ -5,7 +5,14 @@ angular.module('ignite2.supervisorSearch')
 
 	//$scope.displayedAppointments=[];
 	$scope.ponbr=dataFactory.supwikitext[0];
+$scope.text="test iframe";
+$scope.resizeIframe = function (event) {
+    console.log("iframe loaded!");
+    var iframe = event.target;
+    iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+};
 
+window.scopeToShare = $scope;
 	  dataFactory.get('templates/Supervisor/supervisorWiki/searchinput.json').then(function(data) {
            $scope.items= data;
            console.log($scope.items);
@@ -13,6 +20,7 @@ angular.module('ignite2.supervisorSearch')
 	  for (var i=0;i<$scope.items.length;i++) {
 	  	if($scope.items[i].id == $scope.ponbr) {
 	  		$scope.appointments=$scope.items[i].appointments;
+	  		window.scopeToShare = $scope;
 	  		//$scope.displayedAppointments=$scope.items[i].appointments;
 	  		$scope.poitems = $scope.items[i].items;
 	  	}

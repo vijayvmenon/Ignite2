@@ -218,5 +218,3 @@ $scope.bottomitemmvmtgraph_options = {
   }
 });
 
-
-

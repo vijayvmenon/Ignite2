@@ -1,10 +1,13 @@
 <ion-view>
-  <ion-content class="grid-basic-page" overflow-scroll="true">
+  <ion-content class="grid-basic-page" overflow-scroll="false">
           <div class="row responsive-sm" style="margin-left:20px;margin-top:10px;margin-bottom:10px">
            <div class="col" style="margin-top:10px">
-            <span class="u10">Supervisor Override Application</span>
+            <span class="u10">Supervisor Override</span>
+            <p class="u10" style="margin-top:10px">Application</p>
            </div>
-           <div style="margin-right:10px" class="col" ng-controller="manProductivityCntrl" ng-include="'templates/headerpill.html'"></div>
+          <div class="row responsive-md" style="margin-left:-20px">
+           <span ng-controller="manProductivityCntrl" ng-include="'templates/headerpillmob.html'">
+          </div>
         </div>
 
 <div>    

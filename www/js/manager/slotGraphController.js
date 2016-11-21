@@ -10,7 +10,7 @@ angular.module('ignite2.managerDashboard')
 $scope.showSSTKfn=function() {
 $scope.manSlotSvc.showsstk=true;
 $scope.manSlotSvc.showpbyl=false;
-$scope.manSlotSvc.active="SSTK"
+$scope.manSlotSvc.active="SSTK";
 };
 
 $scope.showPBYLfn=function() {
@@ -83,7 +83,7 @@ $scope.sstkSlotArray={"slotMetrics":sstk_sorted,"totalSlots":sstktotalslt};
   $scope.sstktotal=$scope.sstkSlotArray.totalSlots;
  // console.log($scope.sstktotal);
 $scope.sstkslotdet = $scope.sstkSlotArray.slotMetrics;
-console.log($scope.sstkslotdet);
+//console.log($scope.sstkslotdet);
  $scope.sstkempty_data=$scope.sstkslotdet[1];
 // console.log($scope.sstkempty_data);
  $scope.sstkempty_per=Math.round($scope.sstkempty_data.count*100/$scope.sstktotal);
@@ -135,7 +135,7 @@ $scope.pbylSlotArray={"slotMetrics":pbyl_sorted,"totalSlots":pbyltotalslt};
 //manSlotSvc.pbyl_data().success(function(data) {
   $scope.pbyltotal=$scope.pbylSlotArray.totalSlots;
 $scope.pbylslotdet = $scope.pbylSlotArray.slotMetrics;
-console.log($scope.pbylslotdet);
+//console.log($scope.pbylslotdet);
  $scope.pbylempty_data=$scope.pbylslotdet[1];
  $scope.pbylempty_per=Math.round($scope.pbylempty_data.count*100/$scope.pbyltotal);
   $scope.pbylfull_data = $scope.pbylslotdet[2];
@@ -168,13 +168,13 @@ $scope.tot_empty_per=round(((tot_empty_slots*100)/tot_dc_slots),0);
 $scope.tot_full_per=round(((tot_full_slots*100)/tot_dc_slots),0);
 $scope.tot_partial_per=round(((tot_partial_slots*100)/tot_dc_slots),0);
 
-console.log(tot_empty_slots)
-console.log(tot_full_slots);
-console.log(tot_dc_slots);
-console.log(tot_partial_slots);
-console.log($scope.tot_empty_per);
-console.log($scope.tot_full_per);
-console.log($scope.tot_partial_per);
+//console.log(tot_empty_slots)
+//console.log(tot_full_slots);
+//console.log(tot_dc_slots);
+//console.log(tot_partial_slots);
+//console.log($scope.tot_empty_per);
+//console.log($scope.tot_full_per);
+//console.log($scope.tot_partial_per);
 
 $scope.emptyStyle={ 
     backgroundColor: "#4ce600"
