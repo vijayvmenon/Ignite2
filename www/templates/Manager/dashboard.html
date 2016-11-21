@@ -67,23 +67,23 @@
            </div>
          </div>
          <div class="back">
-          <table style="border:1px solid black">
+          <table style="width:81%;margin-left:20%;">
             <thead>
-              <tr style="border:1px solid black">
-                <td>DEPARTMENT</td>
+              <tr style="font-weight:bold !important;font-size:10px;">
+                <td >DEPARTMENT</td>
                 <td>COUNT</td>
                 <td>CRITICAL</td>
               </tr>
             </thead>
             <tbody ng-repeat="tickets in ticket_data">
-              <tr style="border:1px solid black">
+              <tr style="font-size:10px;">
                 <td>{{tickets.key}}</td>
                 <td>{{tickets.value}}</td>
                 <td>{{tickets.critical}}</td>
               </tr>
             </tbody>
           </table>
-          <p id="remcrqbackanchor">GO BACK</p>
+          <p id="remcrqbackanchor" style="margin-top:2%;">GO BACK</p>
         </div>
       </div>
     </div>
@@ -122,23 +122,23 @@
 
        </div>
        <div class="back">
-        <table style="border:1px solid black">
+        <table style="width:81%;margin-left:20%;">
           <thead>
-            <tr style="border:1px solid black">
+            <tr style="font-weight:bold !important;font-size:10px;">
               <td>DEPARTMENT</td>
               <td>COUNT</td>
               <td>CRITICAL</td>
             </tr>
           </thead>
           <tbody ng-repeat="tickets in crq_data">
-            <tr style="border:1px solid black">
+            <tr style="font-size:10px;">
               <td>{{tickets.key}}</td>
               <td>{{tickets.value}}</td>
               <td>{{tickets.critical}}</td>
             </tr>
           </tbody>
         </table>
-        <p id="remcrqbackanchor">GO BACK</p>               
+        <p id="remcrqbackanchor" style="margin-top:10%;">GO BACK</p>               
       </div>
     </div>
   </div>
