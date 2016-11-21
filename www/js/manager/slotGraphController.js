@@ -10,7 +10,7 @@ angular.module('ignite2.managerDashboard')
 $scope.showSSTKfn=function() {
 $scope.manSlotSvc.showsstk=true;
 $scope.manSlotSvc.showpbyl=false;
-$scope.manSlotSvc.active="SSTK"
+$scope.manSlotSvc.active="SSTK";
 };
 
 $scope.showPBYLfn=function() {

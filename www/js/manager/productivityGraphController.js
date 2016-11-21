@@ -727,7 +727,7 @@ console.log($scope.recvgaugevalue);
             $scope.relativeGaugeSize = false;
 
             $scope.gaugeWidthScale = 0.6;
-            $scope.gaugeColor = '#b3c4ff';
+            $scope.gaugeColor = '#d9d9d9';
 
             $scope.showInnerShadow = true;
             $scope.shadowOpacity = 0.5;
