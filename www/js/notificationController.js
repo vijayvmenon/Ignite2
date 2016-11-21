@@ -46,20 +46,20 @@ angular.module('ignite2.notificationController', [])
 
     return {
 
-     manNotifications:[{"id":1,"text":"Dry Area low on Resources"},
-     {"id":2,"text":"Shipping Area Overloaded"},
-     {"id":3,"text":"Receiving rate lower than yesterday"},
-     {"id":4,"text":"Orderfilling rate higher than yesterday"}],
+     manNotifications:[{"id":1,"text":"Dry Area 45% Slots Empty"},
+     {"id":2,"text":"120 Unassigned Chase trips"},
+     {"id":3,"text":"Receiving Rate lower than yesterday"},
+     {"id":4,"text":"Shipping Rate higher than yesterday"}],
 
      manEmails:[{id:1,from:"DSSM",subject:"DC's with high receiving",time:"10/28/2016 9:10:00 AM"},
      {id:2,from:"Walmart-HR",subject:"DC Supervisor Quarterly Appraisal",time:"10/28/2016 9:30:00 AM"},
      {id:3,from:"Walmart-Finance",subject:"Invoices for October 2016",time:"10/28/2016 10:20:00 AM"}],
 
-          supNotifications:[{"id":1,"text":"Associate vmenon performance low"},
+          supNotifications:[{"id":1,"text":"Associate vmenon performance lower"},
           {"id":2,"text":"Inbound PO 1234 Late"},
-          {"id":3,"text":"Slot XYZ full"},
-          {"id":4,"text":"QA associte manney completed cycle count audit"},
-          {"id":5,"text":"shipping door 123 full"}],
+          {"id":3,"text":"Item 12345 Exceeds Treshold Cube Limit"},
+          {"id":4,"text":"40 PO's Received today"},
+          {"id":5,"text":"Item 87654 does not have Valid Slots"}],
 
      supEmails:[{id:1,from:"DC1234-Automated Reports",subject:"Associate Performace Report for October 2016",time:"10/27/2016 8:10:00 AM"}]
 

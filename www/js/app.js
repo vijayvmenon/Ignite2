@@ -82,7 +82,7 @@ angular.module('ignite2', ['ionic','ngCordova','ignite2.loginController','ignite
 
     .state('login', {
     url: '/login',
-    templateUrl: 'templates/login.html',
+    templateUrl: ( platform == 'windows' ) ? 'templates/login.html' : 'templates/loginmob.html',
     controller: 'LoginCtrl'
   })
 
