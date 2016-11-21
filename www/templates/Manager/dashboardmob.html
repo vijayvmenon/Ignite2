@@ -2,8 +2,8 @@
     <ion-content class="grid-basic-page" overflow-scroll="false">
      <section class="home-container">
         <div class="row responsive-md" style="margin-top:20px">
-            <div class="u10">Manager Dashboard</div><div style="margin-top:15px" class="u11">&nbsp&nbsp&nbsp Statistics and Reports
-            <button style="width:100px;margin-left:20px" class="button button-small button-positive" ui-sref="managerApp.dashboard" ui-sref-opts="{reload: true}">Randomize</button></div>
+            <div class="u16">Manager Dashboard</div><div style="margin-top:15px" class="u17">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStatistics and Reports
+            <button style="width:50px;margin-left:50px" class="button button-small button-positive" ui-sref="managerApp.dashboard" ui-sref-opts="{reload: true}">R</button></div>
             
          </div>
          <div class="row responsive-md" style="margin-top:15px">
@@ -13,7 +13,7 @@
   <div class="row row-responsive-sm">  
         <!--Productivity Graph-->
               <div class="col card card-shadow-border exception" ng-controller="manProductivityCntrl" ui-sref="managerApp.dashboard.productivity">
-                 <h4 style="text-align:center" > DC Productivity</h4>
+                 <h4 style="text-align:left;color:#29b4b6" > DC Productivity</h4>
           <div class="row" style="margin-top:-20px;">
           <div clas="col col-50" style="margin-top:-20px;margin-left:-10px;">
          <div justgage
@@ -67,13 +67,13 @@
   <div class="row row-responsive-sm"> 
                 <!--Remedy CRQ Statistics -->
                <div class="col card card-shadow-border" ng-controller="manRemedyCrqCntrl" ui-sref="managerApp.dashboard.remedycrq"> 
-               <h4 style="text-align:center" > Remedy CRQ Stats</h4>
+               <h4 style="text-align:left;color:#29b4b6" > Remedy CRQ Stats</h4>
                   <p><b>Open Tickets</b>&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp<span count-to="{{opentickets}}" value="0" duration="2"></span></p>
                   <p><b>Open CRQ's</b>&nbsp&nbsp&nbsp&nbsp :&nbsp&nbsp&nbsp<span count-to="{{opencrq}}" value="0" duration="2"></span></p>
                </div>  
                   <!--Trip Stats-->
              <div class="col card card-shadow-border"  ui-sref="managerApp.dashboard.trip" ng-controller="manTripCntrl">
-               <h4 style="text-align:center"> Trip Statistics</h4>
+               <h4 style="text-align:left;color:#29b4b6"> Trip Statistics</h4>
                   <!--<div isteven-omni-bar current-value="unassign_per" max-value="100"> -->
                   <div>
                    <p><b>Unassigned &nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp</b><span count-to="{{unassign_per}}" value="0" duration="2"></span>%</p>
@@ -90,7 +90,7 @@
       <div class="row row-responsive-sm"> 
                      <!--Item Movement-->      
   <div class="col card card-shadow-border" ui-sref="managerApp.dashboard.itemmvmt" ng-controller="manItemMvmtCntrl">
-               <h4 style="text-align:center">Item Mov Stats</h4>
+               <h4 style="text-align:left;color:#29b4b6">Item Mov Stats</h4>
                   <div>
                    <p><b>Top Moving item</b></p>
                    <p>{{top_item}}</p>
@@ -100,7 +100,7 @@
              </div>
              <!--Sunburst Graph-->
             <div class="col card card-shadow-border" ui-sref="managerApp.dashboard.sunburst" ng-controller="sunburstCntrl">
-               <h4 style="text-align:center"> Total DC Inventory Cost</h4>
+               <h4 style="text-align:left;color:#29b4b6;margin-bottom:40px"> Total DC Inv Cost</h4>
                <h3>${{total_dc_inventory}}.00</h3>
              </div>             
         </div>
@@ -108,8 +108,8 @@
 
      <div class="row row-responsive-sm">   
                      <!--Slot Graph-->
-              <div class="col card card-shadow-border" ui-sref="managerApp.dashboard.slot" ng-controller="manSlotCntrl">
-               <h4 style="text-align:center"> Slot Statistics</h4>
+              <div class="col card card-shadow-border" style="height:180px" ui-sref="managerApp.dashboard.slot" ng-controller="manSlotCntrl">
+               <h4 style="text-align:left;color:#29b4b6"> Slot Statistics</h4>
                       <div isteven-omni-bar current-value="tot_partial_per" max-value="100">
                      Partial Slots in the DC - {{tot_partial_per}}% 
                   </div>

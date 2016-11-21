@@ -8,7 +8,7 @@
     <div  style="margin-right:5px;margin-top:10px" class="col" ng-controller="manProductivityCntrl" ng-include="'templates/headerpill.html'"></div>
   </div>
 
-  <div class="row responsive-md" style="margin-left:10px;">  
+  <div class="row responsive-md" style="margin-left:2px;margin-bottom:-30px">  
     <!--Productivity Graph HTML-->
     <div class="col col-60 card card-shadow-border" class="with-3d-shadow with-transitions" style="margin-right:5px;border:#E4E4E4">
       <div class="row responsive-md">
@@ -147,8 +147,8 @@
 <!--Slot Graph HTML-->
 <div class="row row-responsive-md card card-shadow-border" style="margin-left:9px;width:497px;margin-top:-12px;height:302px;"> 
   <div class="col col-35" style="margin-left:-8px" ng-controller="manSlotCntrl">
-    <div class="row responsive-md" style="margin-bottom:10px;margin-left:130px" >
-     <h4 style="text-align:left;color:#29B4B6;font-family:'segoe ui';font-size:15px;">SLOT STATISTICS - {{manSlotSvc.active}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h4><span style="background:#4dff4d"><h5 ng-if="manSlotSvc.showsstk">Total Slots : {{sstktotal}}</h5>
+    <div class="row responsive-md" style="margin-bottom:10px;margin-left:130px;margin-top:5px" >
+     <h4 style="text-align:left;color:#29B4B6;font-family:'segoe ui';font-size:15px;margin-left:-120px;margin-right:100px">SLOT STATISTICS - {{manSlotSvc.active}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h4><span><h5 ng-if="manSlotSvc.showsstk">Total Slots : {{sstktotal}}</h5>
      <h5 ng-if="manSlotSvc.showpbyl">Total Slots : {{pbyltotal}}</h5></span>
    </div>
    <!--For SSTK Slot-->
@@ -198,7 +198,7 @@
    <p class="bottom_text" style="margin-left:0px">PARTIAL {{pbylpartial_per}}%</p>
  </div>
 </div>                                                                                             
-<div class="row responsive-md">
+<div class="row responsive-md" style="margin-top:20px;">
  <div class="col col-20"></div>
  <div class="col" ng-controller="manSlotCntrl">
    <div class="button-bar" style="max-width:300px" >

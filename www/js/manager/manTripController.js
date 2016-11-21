@@ -51,7 +51,7 @@ var getRandomInt=function(min, max) {
                 x: function(d){return d.key;},
                 y: function(d){return d.value;},
                 valueFormat:d3.format(".0f"),
-                showLabels: false,
+                showLabels: true,
                 duration: 500,
                 labelThreshold: 0.01,
                 labelSunbeamLayout: true,

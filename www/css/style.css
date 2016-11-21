@@ -293,6 +293,20 @@ border:1px solid black;
     font-size: 17px;
 }
 
+.u16 {
+    font-family: 'Roboto Light', 'Roboto Regular', 'Roboto','Segoe UI';
+    font-weight: bold;
+    font-style: normal;
+    font-size: 24px;
+}
+
+.u17 {
+    font-family: 'Roboto Light', 'Roboto Regular', 'Roboto','Segoe UI';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+}
+
 .button-bar > .button.u13 {
 	width: 100px;
 }
