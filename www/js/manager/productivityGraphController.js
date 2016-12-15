@@ -1,9 +1,20 @@
 angular.module('ignite2.managerDashboard')
 
-.controller('manProductivityCntrl', ['$scope','$http','$timeout','$filter','$ionicPopup','localStorageService', 'manProdSvc','$stateParams', '$state','_', function($scope,$http,$timeout,$filter,$ionicPopup,localStorageService,manProdSvc,$stateParams,$state,_){
+.controller('manProductivityCntrl', ['$scope','$http','$ionicPush','$timeout','$filter','$ionicPopup','localStorageService', 'manProdSvc','$stateParams', '$state','_', function($scope,$http,$ionicPush,$timeout,$filter,$ionicPopup,localStorageService,manProdSvc,$stateParams,$state,_){
 	
 
+
+  $ionicPush.register().then(function(t) {
+  return $ionicPush.saveToken(t);
+}).then(function(t) {
+  console.log('Token saved:', t.token);
+});
+
+
+
 //Get the Time and Date to display at the top Bar in Manager Dashboard
+
+
 
 $scope.today = new Date();
      $scope.tickInterval = 1000 //ms
