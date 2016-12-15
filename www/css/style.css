@@ -491,7 +491,7 @@ input[type="text"].supsearch-input{
 	font-size: 18px;
 	color: #444;
 }
-.active{
+.active1{
 	/*background-color: #C44741;*/
   background-color: #C44741;
 	color:#f2f2f2;
@@ -634,3 +634,11 @@ ion-popover-view.notify:before{
     border-right: 10px solid transparent;
     border-top: 0px solid #a04545;
 }
+
+
+
+/*Activate this if need to change background color of Modal
+.active{
+   background-color: #b3ffb3;
+}
+*/

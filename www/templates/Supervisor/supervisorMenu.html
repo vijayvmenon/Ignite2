@@ -1,13 +1,14 @@
 <ion-view>
     <ion-nav-bar class="bar-stable custom-bar-color">
-        <ion-nav-back-button>
+        <ion-nav-back-button style="color:white">
     </ion-nav-back-button>
           <ion-nav-title>
     <span> 
     <p style="float:left" class="main-header">ignite</p><p style="float:left" class="main-header-number">&nbsp2.0</p>
-    <i class="icon ion-power" style="cursor:pointer;float:right;font-size:28px;color:#FFFFFF;" ui-sref="login"></i>
-    <i ng-controller="supNotificationCntrl" class="icon ion-android-notifications badge-container" style="cursor:pointer;float:right;font-size:28px;color:#FFFFFF;margin-right:10px" ng-click="popover.show($event);supNotifCount=null"><span class="badge badge-assertive header-badge">{{supNotifCount}}</span></i>
-    <i ng-controller="supEmailCntrl" class="icon ion-ios-email" style="cursor:pointer;float:right;font-size:28px;color:#FFFFFF;margin-right:10px" ng-click="popover.show($event);supEmailCount=null"><span class="badge badge-assertive header-badge">{{supEmailCount}}</span></i>
+    <i class="icon ion-power" style="cursor:pointer;float:right;font-size:28px;color:#FFFFFF;margin-left:10px" ui-sref="login"></i>
+
+    <i ng-controller="supNotificationCntrl" class="icon ion-android-notifications" style="cursor:pointer;float:right;font-size:28px;color:#FFFFFF;margin-left:8px" ng-click="popover.show($event);supNotifCount=null"><span class="badge badge-assertive header-badge">{{supNotifCount}}</span></i>
+    <i ng-controller="supEmailCntrl" class="icon ion-ios-email" style="cursor:pointer;float:right;font-size:28px;color:#FFFFFF;margin-right:10px;margin-left:6px" ng-click="popover.show($event);supEmailCount=null"><span class="badge badge-assertive header-badge">{{supEmailCount}}</span></i>
     </span>
     </ion-nav-title>
     </ion-nav-bar>

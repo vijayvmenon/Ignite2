@@ -1,18 +1,23 @@
 angular.module('ignite2.supervisorSearch', ['LocalStorageModule','nvd3','isteven-omni-bar','angular-svg-round-progressbar','fmp-card','nvd3ChartDirectives','n3-pie-chart','circle.countdown','smart-table','ion-autocomplete','ngIframeResizer'])
 
 
-.controller('TypeAheadController', function($scope,$rootScope,$interval,$state,$ionicPopup,$stateParams,dataFactory,$cordovaBarcodeScanner) { // DI in action
+.controller('TypeAheadController', function($scope,$state,$rootScope,$interval,$state,$ionicPopup,$stateParams,dataFactory,$cordovaBarcodeScanner) { // DI in action
 
 
 //Below Logic is for Barcode Scanner for Supervisor Search Mobile Version
  // $scope.choices = ["item","po","user"];
+$scope.reloadpage = function() {
+  $state.reload('suprvsrApp.search');
+  console.log('supervisor search reloaded');
+}
 
 $scope.scanClick = function() {
+  console.log('reached scan function');
     $scope.choice = {
     value:'user'
   };
 
-$scope.selectedradio=null;
+$scope.selectedradio=$scope.choice.value;
 
 $scope.radioFunc= function() {
  $scope.selectedradio=$scope.choice.value;  
@@ -25,6 +30,7 @@ $scope.radioFunc= function() {
       .scan()
       .then(function(barcodeData) {
 
+    if (barcodeData.text != "") {
  $ionicPopup.confirm({
       templateUrl: 'templates/Supervisor/supervisorWiki/supsearchpopup.html',
       title: 'Scanned Barcode - ' + barcodeData.text,
@@ -43,6 +49,7 @@ $scope.radioFunc= function() {
         }
       }]
     });
+}
       }, function(error) {
         // An error occurred
       });

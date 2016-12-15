@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('ignite2', ['ionic','ngCordova','ignite2.loginController','ignite2.override','ignite2.managerDashboard','ignite2.notificationController','ignite2.supervisorSearch'])
+angular.module('ignite2', ['ionic','ionic.cloud','ngCordova','ignite2.loginController','ignite2.override','ignite2.managerDashboard','ignite2.notificationController','ignite2.supervisorSearch'])
 
   // allow DI for use in controllers, unit tests
   .constant('_', window._)
@@ -73,8 +73,26 @@ angular.module('ignite2', ['ionic','ngCordova','ignite2.loginController','ignite
 })
 
 
-.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider,$ionicCloudProvider) {
   
+//This is for ionic cloud 
+    $ionicCloudProvider.init({
+    "core": {
+      "app_id": "e85b76a6"
+    },
+    "push": {
+      "sender_id": "125343275449",
+      "pluginConfig": {
+        "ios": {
+          "badge": true,
+          "sound": true
+        },
+        "android": {
+          "iconColor": "#343434"
+        }
+      }
+    }
+  });
   //Below line is to show the Tabs on bottom in Mobile
   $ionicConfigProvider.tabs.position('bottom'); 
 
