@@ -403,6 +403,7 @@ button > * {
 }
 
 
+
 .supervisor-list-animation.ng-enter-stagger {
   -webkit-animation-delay:1s;
   animation-delay:1s;
