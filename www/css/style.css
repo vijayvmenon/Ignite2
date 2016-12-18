@@ -642,3 +642,13 @@ ion-popover-view.notify:before{
    background-color: #b3ffb3;
 }
 */
+
+
+.errspan {
+    float: right;
+    margin-right: 6px;
+    margin-top: -20px;
+    position: relative;
+    z-index: 2;
+    color: red;
+}
