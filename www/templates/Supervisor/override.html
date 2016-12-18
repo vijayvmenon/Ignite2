@@ -9,8 +9,8 @@
 
 <div>    
  <div class="list">
-  <div class="item item-divider" style="background:#b3b3ff">Pending</div>
-   <div class="supervisor-list-animation" ng-repeat="pendingitems in suprvsrArr">
+  <div class="item item-divider" style="background:#b3b3ff" ng-show="suprvsrArr.length > 0">Pending</div>
+   <div class="supervisor-list-animation" ng-repeat="pendingitems in suprvsrArr" >
      <div class="card card-shadow-border">
       <div style="cursor:pointer;margin-left:20px">
         <div class="row responsive-md">
