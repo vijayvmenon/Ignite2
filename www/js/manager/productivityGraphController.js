@@ -132,11 +132,11 @@ $scope.prodgraphdaily_data = [
                  tickFormat: function(d) {
                   return d3.time.format('%m/%d/%y')(new Date(d))
                 },
-         tickValues: function(values) {
-      return $window._.map(values[0].values, function(v) {
-      return new Date(v.date);
-      })
-      },
+        // tickValues: function(values) {
+  //    return $window._.map(values[0].values, function(v) {
+   //   return new Date(v.date);
+     // })
+     // },
       showMaxMin: false,
     //  staggerLabels: true
     },
@@ -217,7 +217,7 @@ $scope.prodgraphdailymob_options = {
     margin : {
       top: 20,
       right: 20,
-      bottom: 65,
+      bottom: 70,
       left:50
     },
                 legend: {
@@ -241,11 +241,11 @@ $scope.prodgraphdailymob_options = {
      tickFormat: function(d) {
       return d3.time.format('%m/%d/%y')(new Date(d))
     },
-             tickValues: function(values) {
-      return $window._.map(values[0].values, function(v) {
-      return new Date(v.date);
-      })
-      },
+          //   tickValues: function(values) {
+   //   return _.map(values[0].values, function(v) {
+   //   return new Date(v.date);
+   //  })
+    //  },
     showMaxMin: false,
   //  staggerLabels: true,
     axisLabelDistance: 50
