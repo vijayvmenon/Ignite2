@@ -128,17 +128,17 @@ $scope.prodgraphdaily_data = [
                 clipVoronoi: false,
                 xAxis: {
                  axisLabel: 'Date',
-                 rotateLabels: -45,
+            //     rotateLabels: -45,
                  tickFormat: function(d) {
                   return d3.time.format('%m/%d/%y')(new Date(d))
                 },
- //        tickValues: function(values) {
-   //   return _.map(values[0].values, function(v) {
-     // return new Date(v.date);
-      //})
-      //},
+         tickValues: function(values) {
+      return _.map(values[0].values, function(v) {
+      return new Date(v.date);
+      })
+      },
       showMaxMin: false,
-      staggerLabels: true
+    //  staggerLabels: true
     },
     reduceXTicks: false,
     yAxis: {
@@ -217,9 +217,17 @@ $scope.prodgraphdailymob_options = {
     margin : {
       top: 20,
       right: 20,
-      bottom: 40,
-      left:35
+      bottom: 65,
+      left:50
     },
+                legend: {
+                    margin: {
+                      //  top: 5,
+                       right: -15,
+                       // bottom: 5,
+                        left: -6
+                    }
+                },
 
     x: function(d){ return d.date},
     y: function(d){ return d.value },
@@ -233,8 +241,14 @@ $scope.prodgraphdailymob_options = {
      tickFormat: function(d) {
       return d3.time.format('%m/%d/%y')(new Date(d))
     },
+             tickValues: function(values) {
+      return _.map(values[0].values, function(v) {
+      return new Date(v.date);
+      })
+      },
     showMaxMin: false,
-    staggerLabels: true
+  //  staggerLabels: true,
+    axisLabelDistance: 50
   },
   reduceXTicks: false,
   yAxis: {
@@ -544,10 +558,19 @@ $scope.prodgraphmonthly_options = {
     height: 370,
     margin : {
       top: 30,
-      right: 0,
+      right: 20,
       bottom: 40,
-      left:40
+      left:50
     },
+                    legend: {
+                    margin: {
+                      //  top: 5,
+                       right: -8,
+                       // bottom: 5,
+                        left: -15
+                    }
+                },
+
 
     x: function(d){ return d.date },
     y: function(d){ return d.value},
