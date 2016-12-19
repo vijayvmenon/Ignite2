@@ -28,10 +28,12 @@
  </div>
 
    <div class="item item-divider" style="background:#b3b3ff">Approved</div>
-   <label class="item item-input padding">
+   <div class="col col-40">
+   <label class="item item-input padding" style="background:blue">
        <i class="icon ion-search placeholder-icon"></i>
-        <input type="text" placeholder="Search" ng-model="searchText" style="background:#f2f2f2;">
+      <input type="text" placeholder="Search" ng-model="searchText" style="height:40px;background:#f2f2f2;border-radius:10px;">
      </label>
+     </div>
              <!--<input type="text" placeholder=" Search" ng-model="searchText" 
                   style="width:100%; padding-left:11px;" /> -->
     <div ng-repeat="appritems in apprvData|filter:searchText track by $index">
