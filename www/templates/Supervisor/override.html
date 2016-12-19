@@ -27,21 +27,27 @@
    </div>
  </div>
 
- <div class="item item-divider" style="background:#b3b3ff">Approved</div>
- <div ng-repeat="appritems in apprvData track by $index">
-  <div class="item">
-    <div class="row responsive-md">
-      <div class="col col-30"><span class="u13"> Delivery Number : {{appritems.deliveryNbr}}</span></div>
-      <div class="col col-30"><span class="u13">PO Number : {{appritems.poNbr}} </span></div>
-      <div class="col col-30"><span class="u13">Item Number : {{appritems.itemNbr}}</span></div>
-    </div>
-    <div class="row responsive-md">
-     <div class="col col-30"><span class="u13">Operator ID : {{appritems.userId}}</span></div>
-     <div class="col col-30"><span class="u13">Comments:{{appritems.comment}}</span></div>  
-     <div class="col col-30"></div>          
-   </div> 
- </div>
-</div>
+   <div class="item item-divider" style="background:#b3b3ff">Approved</div>
+   <label class="item item-input padding">
+       <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-model="searchText" style="background:#f2f2f2;">
+     </label>
+             <!--<input type="text" placeholder=" Search" ng-model="searchText" 
+                  style="width:100%; padding-left:11px;" /> -->
+    <div ng-repeat="appritems in apprvData|filter:searchText track by $index">
+      <div class="item">
+        <div class="row responsive-md">
+          <div class="col col-30"><span class="u13"> Delivery Number : {{appritems.deliveryNbr}}</span></div>
+         <div class="col col-30"><span class="u13">PO Number : {{appritems.poNbr}} </span></div>
+         <div class="col col-30"><span class="u13">Item Number : {{appritems.itemNbr}}</span></div>
+         </div>
+        <div class="row responsive-md">
+         <div class="col col-30"><span class="u13">Operator ID : {{appritems.userId}}</span></div>
+         <div class="col col-30"><span class="u13">Comments:{{appritems.comment}}</span></div>  
+         <div class="col col-30"></div>          
+         </div> 
+      </div>
+   </div>
 </div>
 </ion-content>
 </ion-view>
