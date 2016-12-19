@@ -48,7 +48,9 @@ $scope.createUser=  function(newuser) {
 }, function(err) {
   for (var e of err.details) {
     if (e === 'conflict_email') {
-      alert('Email already exists.');
+                    var alertPopup = $ionicPopup.alert({
+                title: 'Email ID already Exists!!',
+            });
     } else {
       // handle other errors
     }
