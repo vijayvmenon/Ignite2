@@ -2,7 +2,7 @@ angular.module('ignite2.loginController', [])
 
 
 //This is the Controller that controls login to the Application
-.controller('LoginCtrl', ['$scope','LoginService','$rootScope','$ionicAuth', '$ionicUser','$interval','$ionicModal','$ionicPopup','$state', function($scope,LoginService,$rootScope,$ionicAuth, $ionicUser,$interval,$ionicModal,$ionicPopup, $state) {
+.controller('LoginCtrl', ['$scope','LoginService','$rootScope','$ionicAuth', '$ionicPush','$ionicUser','$interval','$ionicModal','$ionicPopup','$state', function($scope,LoginService,$rootScope,$ionicAuth, $ionicPush,$ionicUser,$interval,$ionicModal,$ionicPopup, $state) {
   
   $scope.pswdresetclicked=false;
    $scope.data = {};
@@ -46,9 +46,11 @@ $scope.createUser=  function(newuser) {
               $scope.closeModal(1);
     $state.reload('login');
 }, function(err) {
-  for (var e of err.newuser) {
+  for (var e of err.details) {
     if (e === 'conflict_email') {
-      alert('Email already exists.');
+                    var alertPopup = $ionicPopup.alert({
+                title: 'Email ID already Exists!!',
+            });
     } else {
       // handle other errors
     }
@@ -62,9 +64,24 @@ $ionicAuth.login('basic',currUser).then(function() {
   console.log('user logged in');
       if(userRole == 'Manager') {
             $state.go('managerApp');
+
+            //for push
+            $ionicPush.register().then(function(t) {
+  return $ionicPush.saveToken(t);
+}).then(function(t) {
+  console.log('Token saved:', t.token);
+});
+
           };
          if(userRole == 'Supervisor') {
             $state.go('suprvsrApp');
+
+            //for push
+            $ionicPush.register().then(function(t) {
+  return $ionicPush.saveToken(t);
+}).then(function(t) {
+  console.log('Token saved:', t.token);
+});
           }
 }, function(err) {
  console.log('invalid login');

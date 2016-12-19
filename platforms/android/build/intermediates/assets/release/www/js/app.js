@@ -58,7 +58,7 @@ angular.module('ignite2', ['ionic','ionic.cloud','ngCordova','ignite2.loginContr
       StatusBar.styleDefault();
     }
 //Below is for hiding splashscreen
-navigator.splashscreen.hide()
+//navigator.splashscreen.hide()
 //Below is for local notifications
            window.plugin.notification.local.onadd = function (id, state, json) {
             var notification = {

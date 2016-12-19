@@ -10,16 +10,21 @@
           </div>
         </div>
 
-<div class = "row responsive-sm">
-       <h3 style="color: #C44741">Supervisor Wiki</h3>
+<h3 style="color: #C44741;margin-top:-15px">Supervisor Wiki</h3>
+<div class = "row">
  <!-- <label class="item item-input"> -->
- <div style="display:block">
-  <button class="button button-calm" ng-style="styleonLoad()" ion-autocomplete type="text" readonly="readonly" class="ion-autocomplete" ng-model="model" items-method="getItemPoUser(query)" items-method-value-key="items" cancel-label="Go back" placeholder="Enter Item, PO or UserID" autocomplete="on" max-selected-items="1" items-clicked-method="clickedMethod(callback)" select-items-label="Select Item, PO or User below">Click to Search</button>
-  <button ng-show="showclear" class="button button-balanced" ng-click="showclear=false;" ui-sref="suprvsrApp.search" ui-sref-opts="{reload: true}">Clear</button>
+ <div ng-class="getClass()">
+  <label class="item item-input padding" style="background:blue">
+   <i class="icon ion-search placeholder-icon"></i>
+  <input  ng-disabled="showclear" style="width:100%;height:40px;background:#f2f2f2;border-radius:10px;" ng-style="styleonLoad()" ion-autocomplete type="text" readonly="readonly" class="ion-autocomplete" ng-model="model" items-method="getItemPoUser(query)" items-method-value-key="items" cancel-label="Go back" placeholder="Enter Item, PO or UserID" autocomplete="on" max-selected-items="1" items-clicked-method="clickedMethod(callback)" select-items-label="Select Item, PO or User below" />
+  </label>
   </div>
-   <div style="display:block;margin-top:8px">
-  <button class="button button-calm" style="width:100%" ng-click="scanClick()">Click to Scan</button>
+   <div class="col col-20" style="margin-top:3px">
+<button ng-disabled="showclear" class="button button-positive" ng-click="scanClick()"><i class="fa fa-barcode fa-lg" aria-hidden="true" style="font-size:50px;padding-top:9px" ></i></button>
   </div>
+  <div class="col col-20" style="margin-top:10px;margin-left:5px" ng-show="showclear">
+    <button class="button button-balanced" ng-click="showclear=false;" ui-sref="suprvsrApp.search" ui-sref-opts="{reload: true}">Clear</button>
+    </div>
 <!--  </label>-->
 </div>
 

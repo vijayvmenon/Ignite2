@@ -1,5 +1,5 @@
 <ion-view view-title="Login" name="login-view">
-  <ion-content class="padding" style="background:#64b3f4">
+  <ion-content class="padding" style="background-image:url('img/app_background.jpg');background-repeat:no-repeat;">
       <div class="list list-inset" style="margin-top:100px">
           <label class="item item-input">
               <input type="text" placeholder="Username" ng-model="currUser.email">
@@ -23,12 +23,12 @@
         </div> 
 
      <div>
-      <span><a href style="color:black;font-weight:bold;float:left" ng-click="openModal(1)">New User?</a><a href ng-click="openModal(2)" style="color:black;font-weight:bold;float:right">Forgot Password?</a></span>
+      <span><a href style="color:#f2f2f2;font-weight:bold;float:left" ng-click="openModal(1)">New User?</a><a href ng-click="openModal(2)" style="color:#f2f2f2;font-weight:bold;float:right">Forgot Password?</a></span>
       </div>
-
-      <button style="width:350px;margin-left:20px;margin-top:60px;background-color: #9e5725 !important;" class="button button-block button-royal" ng-click="login(currUser,userRole)">Login</button>
+      
+      <button style="width:350px;margin-left:20px;margin-top:60px;background-color: #76c043 !important;border-radius: 8px" class="button button-block button-royal" ng-click="login(currUser,userRole)">Login</button>
       <div class="row">
-      <img src="img/ignite_logo3.png"/ style="width: 228px;margin-left: 67px;margin-top:41px;">
+      <img src="img/homepage.png" height:50 width:20 style="margin-left:-150px;margin-top:41px;">
       </div>
   </ion-content>
 

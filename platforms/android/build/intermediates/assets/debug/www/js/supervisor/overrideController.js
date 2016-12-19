@@ -6,6 +6,7 @@ $scope.podata=[];
 $scope.suprvsrArr=[];
 $scope.apprvData=[];
 $scope.getbadge=0;
+
 //This function is called in supervisorMenu.html for the tab for override, where badge count is binded to this function
 
 $scope.getdata = function() {

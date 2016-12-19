@@ -7,7 +7,7 @@ angular.module('ignite2.supervisorSearch', ['LocalStorageModule','nvd3','isteven
 //Below Logic is for Barcode Scanner for Supervisor Search Mobile Version
  // $scope.choices = ["item","po","user"];
 $scope.reloadpage = function() {
-  $state.reload('suprvsrApp.search');
+  $state.reload();
   console.log('supervisor search reloaded');
 }
 
