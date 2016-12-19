@@ -4,6 +4,10 @@ angular.module('ignite2.managerDashboard', ['LocalStorageModule','ionic.cloud','
 .controller(function($watch,$scope,$rootScope,$interval,manItemSvc,$ionicPush){
 	//$interval.cancel($rootScope.supOverrideInterval);
 	console.log('reached main manager controller');
+	$scope.$on('cloud:push:notification', function(event, data) {
+  var msg = data.message;
+  alert(msg.title + ': ' + msg.text);
+});
 });
 
 
