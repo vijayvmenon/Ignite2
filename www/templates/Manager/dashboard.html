@@ -3,7 +3,7 @@
    <section class="home-container">
     <div class="row responsive-md" style="margin-left:20px;margin-top:10px">
      <div class="col" style="margin-top:10px">
-      <span class="u10">Manager Dashboard</span><span class="u11">&nbsp&nbsp&nbsp Statistics and Reports&nbsp&nbsp&nbsp<button class="button button-small button-positive" ui-sref="managerApp.dashboard" ui-sref-opts="{reload: true}">Randomize</button></span>
+      <span class="u10">Manager Dashboard</span><span class="u11">&nbsp&nbsp&nbsp Statistics and Reports&nbsp&nbsp&nbsp<button class="button button-small button-positive" ui-sref="managerApp.dashboard" ui-sref-opts="{reload: true}">R</button></span>
     </div>
     <div  style="margin-right:5px;margin-top:10px" class="col" ng-controller="manProductivityCntrl" ng-include="'templates/headerpill.html'"></div>
   </div>
@@ -67,23 +67,26 @@
            </div>
          </div>
          <div class="back">
-          <table style="width:81%;margin-left:20%;">
+          <table style="width:100%;margin-left:5%;margin-top:5%;color:#FFFFFF">
             <thead>
-              <tr style="font-weight:bold !important;font-size:10px;">
-                <td >DEPARTMENT</td>
+              <tr style="font-weight:500;font-size:12px;">
+                <td>DEPARTMENT</td>
                 <td>COUNT</td>
                 <td>CRITICAL</td>
               </tr>
+              <!--<tr>
+              <td colspan="3"><hr style="background-color:#FFFFFF"> </td>
+              </tr> -->
             </thead>
             <tbody ng-repeat="tickets in ticket_data">
-              <tr style="font-size:10px;">
+             <tr style="font-size:12px;">
                 <td>{{tickets.key}}</td>
                 <td>{{tickets.value}}</td>
                 <td>{{tickets.critical}}</td>
               </tr>
-            </tbody>
+           </tbody>
           </table>
-          <p id="remcrqbackanchor" style="margin-top:2%;">GO BACK</p>
+         <!-- <p id="remcrqbackanchor" style="margin-top:2%;">GO BACK</p> -->
         </div>
       </div>
     </div>
@@ -122,23 +125,23 @@
 
        </div>
        <div class="back">
-        <table style="width:81%;margin-left:20%;">
+        <table style="width:100%;margin-left:5%;margin-top:5%;color:#FFFFFF;">
           <thead>
-            <tr style="font-weight:bold !important;font-size:10px;">
+            <tr style="font-weight:500;font-size:12px;">
               <td>DEPARTMENT</td>
               <td>COUNT</td>
               <td>CRITICAL</td>
             </tr>
           </thead>
           <tbody ng-repeat="tickets in crq_data">
-            <tr style="font-size:10px;">
+            <tr style="font-size:12px;">
               <td>{{tickets.key}}</td>
               <td>{{tickets.value}}</td>
               <td>{{tickets.critical}}</td>
             </tr>
           </tbody>
         </table>
-        <p id="remcrqbackanchor" style="margin-top:10%;">GO BACK</p>               
+        <!--<p id="remcrqbackanchor" style="margin-top:10%;">GO BACK</p> -->
       </div>
     </div>
   </div>
