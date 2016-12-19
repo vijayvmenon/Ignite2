@@ -60,7 +60,7 @@ if(typeof tempcount == 'undefined') {
       $cordovaLocalNotification.schedule({
       id: random_id,
       text: '1 New Override Request',
-      title: 'Manager Override'
+      title: 'Supervisor Override'
      // icon:null,
      // sound:null
     }).then(function () {
