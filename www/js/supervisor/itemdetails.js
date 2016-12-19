@@ -129,7 +129,15 @@ $scope.itemgraphline_options = {
 
     title: {
         enable: true,
-        text: 'Item '+$scope.itemnbr+' - Past 30 Days Movement'
+        text: 'Item '+$scope.itemnbr+' - Past 30 Days Movement',
+        css: {
+            'text-align': 'left',
+            'margin': '10px 13px 0px 7px',
+            'font-size':'15px',
+            'color':'#29B4B6',
+            'font-width':'bold',
+            'font-family':'segoe ui'
+          }
         },
 };
 
@@ -180,14 +188,23 @@ $scope.itemgraphline_options = {
                         top: 5,
                         right: 10,
                         bottom: 5,
-                        left: 0
+                             left: 0
                     }
                 }
             },
         title: {
         enable: true,
-        text: 'Item-Store Stats - '+$scope.itemnbr
-        }
+        text: 'Item-Store Stats - '+$scope.itemnbr,
+        css: {
+            'text-align': 'left',
+            'margin': '10px 13px 0px 7px',
+            'font-size':'15px',
+            'color':'#29B4B6',
+            'font-width':'bold',
+            'font-family':'segoe ui'
+          }
+        },
+
         };
        
 
@@ -217,8 +234,16 @@ $scope.itemgraphline_options = {
             },
         title: {
         enable: true,
-        text: 'Item-PO Stats - '+$scope.itemnbr
-        }
+        text: 'Item-PO Stats - '+$scope.itemnbr,
+        css: {
+            'text-align': 'left',
+            'margin': '10px 13px 0px 7px',
+            'font-size':'15px',
+            'color':'#29B4B6',
+            'font-width':'bold',
+            'font-family':'segoe ui'
+          }
+        },
         };
 
         if (platform == "windows") {
@@ -353,7 +378,15 @@ $scope.itemgraphlinebar_options = {
             },
                 title: {
         enable: true,
-        text: 'Item '+$scope.itemnbr+ '- BOH-WAC Graph'
+        text: 'Item '+$scope.itemnbr+ '- BOH-WAC Graph',
+        css: {
+            'text-align': 'left',
+            'margin': '10px 13px 0px 7px',
+            'font-size':'15px',
+            'color':'#29B4B6',
+            'font-width':'bold',
+            'font-family':'segoe ui'
+          }
         },
         };
 
@@ -432,7 +465,15 @@ $scope.itemgraphmob_options = {
             },
                 title: {
         enable: true,
-        text: 'Item '+$scope.itemnbr+ '- BOH-WAC Graph'
+        text: 'Item '+$scope.itemnbr+ '- BOH-WAC Graph',
+        css: {
+            'text-align': 'left',
+            'margin': '10px 13px 0px 7px',
+            'font-size':'15px',
+            'color':'#29B4B6',
+            'font-width':'bold',
+            'font-family':'segoe ui'
+          }
         },
         };  
  
