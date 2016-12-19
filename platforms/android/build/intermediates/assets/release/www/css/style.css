@@ -1,0 +1,644 @@
+/* Empty. Add your own CSS if you like */
+
+/**
+.col{
+border:1px solid black;
+}
+**/
+
+
+/**Below Styling is for angular svg round bar used in remedy crq statistics in manager dashboard  **/
+.progress-wrapper{
+    position: relative;
+}
+
+.progress-wrapper .text{
+    position: absolute;
+    top: 37%;
+    left: -3%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+    font-family: 'Roboto Thin', 'Roboto Regular', 'Roboto','Segoe UI'
+    font-weight: 700;
+    font-style: bold;
+    font-size: 20px;
+}
+
+.progress-wrapper .text_mob{
+    position: absolute;
+    top: 38%;
+    left: -14%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+    font-family: 'Roboto Thin', 'Roboto Regular', 'Roboto','Segoe UI';
+    font-weight: 700;
+    font-style: bold;
+    font-size: 20px;
+}
+
+.progress-wrapper .bottom_text {
+    font-family: 'Roboto Thin', 'Roboto Regular', 'Roboto','Segoe UI';
+    font-weight: 700;
+    font-style: bold;
+    font-size: 15px;
+
+}
+
+.progress-wrapper .bottom_text_mob {
+    font-family: 'Roboto Thin', 'Roboto Regular', 'Roboto','Segoe UI';
+    font-weight: 700;
+    font-style: bold;
+    font-size: 20px;
+
+}
+
+
+ /** End od Angular svg round styling **/
+
+ #nvtooltip-69762 {
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  height: 12px;
+  padding: 8px;
+  margin-top: -20px;
+  font: 10px sans-serif;
+  background: #ddd;
+  pointer-events: none;
+ }
+
+
+ /**Below Style is for flipping cards to Show Tickets and CRQ details in Manager Dashboard **/
+
+		.flip-container {
+			-webkit-perspective: 1000;
+			-moz-perspective: 1000;
+			-ms-perspective: 1000;
+			perspective: 1000;
+
+			-ms-transform: perspective(1000px);
+			-moz-transform: perspective(1000px);
+			-moz-transform-style: preserve-3d; 
+			-ms-transform-style: preserve-3d; 
+		}
+
+		.flip-container.clicked .back {
+      -webkit-transform: rotateY(0deg);
+      -moz-transform: rotateY(0deg);
+      -o-transform: rotateY(0deg);
+      -ms-transform: rotateY(0deg);
+      transform: rotateY(0deg);
+    }
+
+    .flip-container.clicked .front {
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -o-transform: rotateY(180deg);
+      -ms-transform: rotateY(180deg);
+      transform: rotateY(180deg);
+    }
+
+		.flip-container, .front, .back {
+			width:195px;
+			height: 169px;
+		}
+
+		#remcrqfronttextheader {
+     font-family: 'Roboto Thin', 'Roboto Regular', 'Roboto','Segoe UI';
+    font-weight: 600;
+    font-style: normal;
+    color: #ffffff;
+    font-size: 20px;
+    margin-top: 7px;
+    margin-left: 14px;
+   /** line-height: 200px;**/
+   }
+
+   #remcrqfontsize {
+     font-family: 'Roboto Bold', 'Roboto Regular', 'Roboto','segoe ui';
+    font-weight: 700;
+    /*font-style: bold; */
+    font-size: 50px;
+    padding-top: 15px;
+    padding-left: 6px;
+    /*padding-left: -13px; */
+    /*padding-right: 1px;*/
+    /*margin-top: 15px;
+    margin-left: 40px; */
+    color: #FFFFFF;
+   }
+
+
+
+		#remcrqfronttext {
+     font-family: 'Roboto Thin', 'Roboto Regular', 'Roboto','Segoe UI';
+    font-weight: 700;
+    font-style: bold;
+    font-size: 30px;
+    margin-top: 15px;
+    margin-left: 70px;
+    color: #FFFFFF;
+   }
+
+   #remcrqfrontanchor {
+   	font-family: Georgia;
+   	 font-size: 1em;
+   	 text-align: center;
+   	 margin-top: 30px;
+    cursor: pointer;
+    color: blue;
+   }
+ 
+
+   		#remcrqbacktextheader {
+     font-family: 'Roboto Thin', 'Roboto Regular', 'Roboto','Segoe UI';
+    font-weight: 300;
+    font-style: normal;
+    margin-top: 10px;
+    margin-left: 20px;
+    color: #FFFFFF;
+    font-size: 20px;
+   /** line-height: 200px;**/
+   }
+
+
+   		#remcrqbacktext {
+     font-family: 'Roboto Thin', 'Roboto Regular', 'Roboto','Segoe UI';
+    font-weight: 700;
+    font-style: bold;
+    font-size: 15px;
+    width: 100%;
+    margin-top: -5px;
+    margin-left: 25px;
+    color: #FFFFFF;
+   }
+
+   #remcrqbackanchor {
+   	font-family: Georgia;
+   	 font-size: 1em;
+   	 text-align: center;
+   	 line-height: 20px;
+    cursor: pointer;
+    color: blue;
+   }
+
+		.flipper {
+			-webkit-transition: 0.6s;
+			-webkit-transform-style: preserve-3d;
+			-ms-transition: 0.6s;
+
+			-moz-transition: 0.6s;
+			-moz-transform: perspective(1000px);
+			-moz-transform-style: preserve-3d;
+			-ms-transform-style: preserve-3d;
+
+			transition: 0.6s;
+			transform-style: preserve-3d;
+
+			position: relative;
+		}
+
+		.front, .back {
+			-webkit-backface-visibility: hidden;
+			-moz-backface-visibility: hidden;
+			-ms-backface-visibility: hidden;
+			backface-visibility: hidden;
+
+	    -webkit-transition: 0.6s;
+	    -webkit-transform-style: preserve-3d;
+
+	    -moz-transition: 0.6s;
+	    -moz-transform-style: preserve-3d;
+
+	    -o-transition: 0.6s;
+	    -o-transform-style: preserve-3d;
+
+	    -ms-transition: 0.6s;
+	    -ms-transform-style: preserve-3d;
+
+	    transition: 0.6s;
+	    transform-style: preserve-3d;
+
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.front {
+			-webkit-transform: rotateY(0deg);
+			-ms-transform: rotateY(0deg);
+			z-index: 2;
+		}
+
+		.back {
+			-webkit-transform: rotateY(-180deg);
+	    -moz-transform: rotateY(-180deg);
+	    -o-transform: rotateY(-180deg);
+	    -ms-transform: rotateY(-180deg);
+	    transform: rotateY(-180deg);
+		}
+/**End of Flip Card Styling **/
+
+
+/**Manager Dashboard styling based on Wireframe**/
+
+.u10 {
+    font-family: 'Roboto Light', 'Roboto Regular', 'Roboto','Segoe UI';
+    font-weight: 500;
+    font-style: normal;
+    font-size: 30px;
+}
+
+.u11 {
+	font-family: 'Roboto Thin', 'Roboto Regular', 'Roboto','Segoe UI';
+	font-weight: bold;
+    font-style: normal;
+    font-size: 20px;
+}
+
+
+.u12 {
+	height: 16px;
+  font-family: 'Roboto Thin', 'Roboto Regular', 'Roboto','Segoe UI';
+  font-size: 12px;
+  font-weight: bold;
+   /* color: #ffffff; */
+}
+
+.u13 {
+	font-family: 'Roboto Thin', 'Roboto Regular', 'Roboto','Segoe UI';
+	font-weight: bold;
+    font-style: normal;
+    font-size: 15px;
+}
+
+/**Mobile **/
+.u14 {
+    font-family: 'Roboto Thin', 'Roboto Regular', 'Roboto','Segoe UI';
+    font-size: 15px;
+    font-weight: bold;
+    /*color: #ffffff; */
+}
+
+.u15 {
+  font-family: 'Roboto Thin', 'Roboto Regular', 'Roboto';
+  font-weight: normal;
+    font-style: normal;
+    font-size: 17px;
+}
+
+.u16 {
+    font-family: 'Roboto Light', 'Roboto Regular', 'Roboto','Segoe UI';
+    font-weight: bold;
+    font-style: normal;
+    font-size: 24px;
+}
+
+.u17 {
+    font-family: 'Roboto Light', 'Roboto Regular', 'Roboto','Segoe UI';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+}
+
+.button-bar > .button.u13 {
+	width: 100px;
+}
+
+.button-bar.button-pill {
+  /*box-shadow: 0 5px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+  border-radius: 30px;
+  background-color:#29b4b6;
+}
+
+.button-bar.button-pill .button {
+  background-color:#29b4b6;
+}
+
+.card-shadow-border {
+  /*box-shadow: 0 5px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  /*background: #e6f0ff; */
+  background: white;
+}
+
+.button-bar.button-pill .button:first-child {
+  -webkit-border-radius: 30px 0 0 30px;
+  border-radius: 30px 0 0 30px;
+  background-color:#29b4b6;
+}
+
+.button-bar.button-pill .button:last-child {
+  -webkit-border-radius: 0 30px 30px 0;
+  border-radius: 0 30px 30px 0;
+  background-color:#29b4b6;
+
+}
+
+button > * {
+    vertical-align: middle;
+}
+
+/**CSS for custom bar color in ionic - the top navigation bar**/
+
+.custom-bar-color {
+	background: #004C91 !important;
+	height: 50px;
+}
+
+.main-header {
+	font-family: 'Garamond Italic Bold', 'Garamond';
+    font-weight: 700;
+    font-style: italic;
+    color: #FFFFFF;
+    font-size: 36px;
+}
+
+.main-header-number {
+    font-family: 'Garamond Italic Bold', 'Garamond';
+    font-weight: 700;
+    font-style: italic;
+    font-size: 48px;
+    color: #FFCC00;
+}
+
+
+/**For notifications **/
+.list .item.item-accordion {
+  line-height: 60px;
+  padding-top:;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
+.badge-container{
+      position: relative;
+}
+
+
+
+.supervisor-list-animation.ng-enter {
+	    -webkit-animation: fadeInLeft 2s;
+    animation: fadeInLeft 2s;
+}
+
+.supervisor-list-animation.ng-leave {
+	    -webkit-animation: fadeOutRight 2s;
+    animation: fadeOutRight 2s;
+}
+
+
+.supervisor-list-animation.ng-enter-stagger {
+  -webkit-animation-delay:1s;
+  animation-delay:1s;
+  /* override to make sure it's not inherited from other styles */
+  -webkit-animation-duration:0;
+  animation-duration:0;
+}
+
+.supervisor-appr-animation.ng-enter {
+      -webkit-animation: slideInUp 1s;
+    animation: slideInUp 1s;
+}
+
+
+
+.slot-graph-class.ng-enter{
+  animation : zoomIn 3s;
+}
+
+.slot-graph-class.ng-enter-stagger{
+  transition-delay: 2s;
+  animation-delay: 2s;
+    transition-duration: 0s;
+}
+
+/**
+.slot-graph-class.ng-leave {
+    animation: rollOut 2s;
+}**/
+
+ion-popover-view.fit {
+  height: auto;
+  width: auto;
+}
+
+ion-popover-view.fit ion-content {
+  position: relative;
+  font-size: 5px;
+}
+
+
+
+/**Below styles are for Supervisor Wiki/Search **/
+.supsearch-container{
+	width: 100%;
+	margin:auto;
+	text-align: center;
+	background: #FFF;
+	opacity: 0.95;
+	border: 1px solid #CCC;
+	box-shadow: 0px 0px 15px #CCC;
+	margin-top: 40px;
+}
+
+
+
+input[type="text"].supsearch-input{
+	padding: 10px;
+	font-size: 22px;
+	margin: 0 auto;
+	border-radius: 20px;
+	border: 2px solid #004C91;
+	outline: none;
+  height: auto;
+  width: 80%;
+  display:block;
+
+}
+
+.supsearch-item{
+	width: 80%;
+  margin: 0 auto;
+	text-align: left;
+	margin-top: 10px;
+	background: #F2F2F2;
+	padding: 10px;
+	box-shadow: 0px 0px 5px #CCC;
+}
+
+.supsearch-item..title{
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.supsearch-item.subtitle{
+	font-size: 18px;
+	color: #444;
+}
+.active1{
+	/*background-color: #C44741;*/
+  background-color: #C44741;
+	color:#f2f2f2;
+}
+
+/**End of SUpervisor Search styling **/
+
+/**Supervisor Wiki Animations **/
+
+.sup-wiki-animation.ng-enter{
+  animation : fadeInRight 1s;
+}
+
+.sup-wiki-animation.ng-enter-stagger{
+  transition-delay: 2s;
+  animation-delay: 2s;
+    transition-duration: 0s;
+}
+
+/**below styling is for smart-table in supervisor wiki po details**/
+
+  .st-sort-ascent:before{
+    content: '\25B2';
+  }
+
+  .st-sort-descent:before{
+    content: '\25BC';
+  }
+
+ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+
+ul.pagination li {display: inline;
+  margin-left:5px;
+  margin-right:5px;
+  padding-left:5px;
+  padding-right:3px;
+  cursor:pointer;
+  border: 1px solid black;
+  font-weight: bold;
+}
+
+
+/**
+ul.pagination li a {
+    float: left;
+    padding: 8px 16px;
+    border: 1px solid black;
+}
+
+/**
+
+ul.pagination li a:hover:not(.active) {background-color: #ddd;cursor:pointer;}
+
+**/
+/**End of styling **/
+
+
+    #target {
+      width: 500px;
+      height: 400px;
+      background-color: gray;
+      margin: 200px
+    }
+
+    .disabled {
+      opacity: .3
+    }
+
+    div#nvtooltip-4634.nvtooltip.xy-tooltip {
+      margin-left: 100px;
+    }
+
+
+iframe{
+    overflow:hidden;
+}    
+
+
+/**Below Classes are for Blinking Text in SUpervisor Search PO and Item**/
+
+
+.blink_me {
+  animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0; }
+}
+
+/**End of Styling**/
+
+/** Responsive Table for supervisor search - Associate - Timing Table in Mobile **/
+.sup-search-user-mob {
+}
+
+
+.login_gradient {
+background: #c2e59c; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #c2e59c , #64b3f4); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #c2e59c , #64b3f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+}
+ion-popover-view.email:before{
+  content: '';
+    height: 0;
+    width: 0;
+    border: 10px solid green;
+    border-color: #fff;
+    margin-left: 65%;
+    display: block;
+    border-left: 9px;
+    margin-top: -3%;
+    -moz-border-radius: 9px !important;
+    /*-webkitborder-radius: 9px !important; */
+    color: transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 0px solid #a04545;
+}
+
+ion-popover-view.notify:before{
+  content: '';
+    height: 0;
+    width: 0;
+    border: 10px solid green;
+    border-color: #fff;
+    margin-left: 84%;
+    display: block;
+    border-left: 9px;
+    margin-top: -3%;
+    -moz-border-radius: 9px !important;
+    /*-webkitborder-radius: 9px !important; */
+    color: transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 0px solid #a04545;
+}
+
+
+
+/*Activate this if need to change background color of Modal
+.active{
+   background-color: #b3ffb3;
+}
+*/

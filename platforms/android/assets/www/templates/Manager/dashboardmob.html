@@ -1,0 +1,131 @@
+<ion-view style="background:#E5EAF0" >
+    <ion-content class="grid-basic-page" overflow-scroll="false">
+     <section class="home-container">
+        <div class="row responsive-md" style="margin-top:20px">
+            <div class="u16">Manager Dashboard</div><div style="margin-top:15px" class="u17">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStatistics and Reports
+            <button style="width:50px;margin-left:50px" class="button button-small button-positive" ui-sref="managerApp.dashboard" ui-sref-opts="{reload: true}">R</button></div>
+            
+         </div>
+         <div class="row responsive-md" style="margin-top:15px">
+           <span ng-controller="manProductivityCntrl" ng-include="'templates/headerpillmob.html'"></div>
+        </div>
+
+  <div class="row row-responsive-sm">  
+        <!--Productivity Graph-->
+              <div class="col card card-shadow-border exception" ng-controller="manProductivityCntrl" ui-sref="managerApp.dashboard.productivity">
+                 <h4 style="text-align:left;color:#29b4b6" > DC Productivity</h4>
+          <div class="row" style="margin-top:-20px;">
+          <div clas="col col-50" style="margin-top:-20px;margin-left:-10px;">
+         <div justgage
+         title="{{title}}" title-font-color="{{titleFontColor}}"
+         value="{{recvgaugevalue}}" value-font-color="{{valueFontColor}}"
+         width="{{width}}" height="{{height}}" relative-gauge-size="{{relativeGaugeSize}}"
+         value-min-font-size="{{valueMinFontSize}}" title-min-font-size="{{titleMinFontSize}}"
+         label-min-font-size="{{labelMinFontSize}}" min-label-min-font-size="{{minLabelMinFontSize}}"
+         maxLabelMinFontSize="{{maxLabelMinFontSize}}"
+         min="{{min}}" max="{{max}}"
+         hide-min-max="{{hideMinMax}}" hide-value="{{hideValue}}" hide-inner-shadow="{{hideInnerShadow}}"
+         gauge-width-scale="{{gaugeWidthScale}}" gauge-color="{{gaugeColor}}"
+         show-inner-shadow="{{showInnerShadow}}" shadow-opacity="{{shadowOpacity}}"
+         shadow-size="{{shadowSize}}" shadow-vertical-offset="{{shadowVerticalOffset}}"
+         level-colors="{{levelColors}}"  level-colors-gradient="{{levelColorsGradient}}"
+         label="{{label}}" label-font-color="{{labelFontColor}}"
+         start-animation-time="{{startAnimationTime}}" start-animation-type="{{startAnimationType}}"
+         refresh-animation-time="{{refreshAnimationTime}}" refresh-animation-type="{{refreshAnimationType}}"
+         counter="{{counter}}" decimals="{{decimals}}" symbol="{{symbol}}" format-number="{{formatNumber}}"
+         human-friendly="{{humanFriendly}}" human-friendly-decimal="{{humanFriendlyDecimal}}"
+         text-renderer="textRendererrcv">
+         </div>
+         </div>
+        <div class="col col-50" style="margin-top:-27px;margin-right:10px;margin-left:-10px">
+         <div justgage
+         title="{{shptitle}}" title-font-color="{{titleFontColor}}"
+         value="{{shpgaugevalue}}" value-font-color="{{valueFontColor}}"
+         width="{{width}}" height="{{height}}" relative-gauge-size="{{relativeGaugeSize}}"
+         value-min-font-size="{{valueMinFontSize}}" title-min-font-size="{{titleMinFontSize}}"
+         label-min-font-size="{{labelMinFontSize}}" min-label-min-font-size="{{minLabelMinFontSize}}"
+         maxLabelMinFontSize="{{maxLabelMinFontSize}}"
+         min="{{min}}" max="{{max}}"
+         hide-min-max="{{hideMinMax}}" hide-value="{{hideValue}}" hide-inner-shadow="{{hideInnerShadow}}"
+         gauge-width-scale="{{gaugeWidthScale}}" gauge-color="{{gaugeColor}}"
+         show-inner-shadow="{{showInnerShadow}}" shadow-opacity="{{shadowOpacity}}"
+         shadow-size="{{shadowSize}}" shadow-vertical-offset="{{shadowVerticalOffset}}"
+         level-colors="{{levelColorsShip}}"  level-colors-gradient="{{levelColorsGradient}}"
+         label="{{label}}" label-font-color="{{labelFontColor}}"
+         start-animation-time="{{startAnimationTime}}" start-animation-type="{{startAnimationType}}"
+         refresh-animation-time="{{refreshAnimationTime}}" refresh-animation-type="{{refreshAnimationType}}"
+         counter="{{counter}}" decimals="{{decimals}}" symbol="{{symbol}}" format-number="{{formatNumber}}"
+         human-friendly="{{humanFriendly}}" human-friendly-decimal="{{humanFriendlyDecimal}}"
+         text-renderer="textRenderershp">
+         </div>
+         </div>
+         </div>
+        </div> 
+
+  </div> 
+
+  <div class="row row-responsive-sm"> 
+                <!--Remedy CRQ Statistics -->
+               <div class="col card card-shadow-border" ng-controller="manRemedyCrqCntrl" ui-sref="managerApp.dashboard.remedycrq"> 
+               <h4 style="text-align:left;color:#29b4b6" > Remedy CRQ Stats</h4>
+                  <p><b>Open Tickets</b>&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp<span count-to="{{opentickets}}" value="0" duration="2"></span></p>
+                  <p><b>Open CRQ's</b>&nbsp&nbsp&nbsp&nbsp :&nbsp&nbsp&nbsp<span count-to="{{opencrq}}" value="0" duration="2"></span></p>
+               </div>  
+                  <!--Trip Stats-->
+             <div class="col card card-shadow-border"  ui-sref="managerApp.dashboard.trip" ng-controller="manTripCntrl">
+               <h4 style="text-align:left;color:#29b4b6"> Trip Statistics</h4>
+                  <!--<div isteven-omni-bar current-value="unassign_per" max-value="100"> -->
+                  <div>
+                   <p><b>Unassigned &nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp</b><span count-to="{{unassign_per}}" value="0" duration="2"></span>%</p>
+                  </div>
+                  <div>
+                <!--  <div isteven-omni-bar current-style="emptyStyle" current-value="hold_per" max-value="100"> -->
+                     <p><b>Held &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp&nbsp</b><span count-to="{{hold_per}}" value="0" duration="2"></span>%</p>
+                  </div>
+             </div>               
+   </div>
+               
+
+
+      <div class="row row-responsive-sm"> 
+                     <!--Item Movement-->      
+  <div class="col card card-shadow-border" ui-sref="managerApp.dashboard.itemmvmt" ng-controller="manItemMvmtCntrl">
+               <h4 style="text-align:left;color:#29b4b6">Item Mov Stats</h4>
+                  <div>
+                   <p><b>Top Moving item</b></p>
+                   <p>{{top_item}}</p>
+                  <p><b>Least Moving item</b></p>
+                  <p>{{last_item}}</p>
+                  </div>              
+             </div>
+             <!--Sunburst Graph-->
+            <div class="col card card-shadow-border" ui-sref="managerApp.dashboard.sunburst" ng-controller="sunburstCntrl">
+               <h4 style="text-align:left;color:#29b4b6;margin-bottom:40px"> Total DC Inv Cost</h4>
+               <h3>${{total_dc_inventory}}.00</h3>
+             </div>             
+        </div>
+
+
+     <div class="row row-responsive-sm">   
+                     <!--Slot Graph-->
+              <div class="col card card-shadow-border" style="height:180px" ui-sref="managerApp.dashboard.slot" ng-controller="manSlotCntrl">
+               <h4 style="text-align:left;color:#29b4b6"> Slot Statistics</h4>
+                      <div isteven-omni-bar current-value="tot_partial_per" max-value="100">
+                     Partial Slots in the DC - {{tot_partial_per}}% 
+                  </div>
+                  <div isteven-omni-bar current-style="emptyStyle" current-value="tot_empty_per" max-value="100">
+                     Empty Slots in the DC - {{tot_empty_per}}% 
+                  </div>
+                  <div isteven-omni-bar current-style="fullStyle" current-value="tot_full_per" max-value="100">
+                     Full Slots in the DC - {{tot_full_per}}% 
+                  </div>
+             </div>
+
+   </div>
+  
+</section>
+  </ion-content>
+</ion-view>
+
+
+

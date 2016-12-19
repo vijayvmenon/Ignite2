@@ -1,0 +1,272 @@
+<ion-view style="background:#E5EAF0">
+  <ion-content class="grid-basic-page" overflow-scroll="true">
+   <section class="home-container">
+    <div class="row responsive-md" style="margin-left:20px;margin-top:10px">
+     <div class="col" style="margin-top:10px">
+      <span class="u10">Manager Dashboard</span><span class="u11">&nbsp&nbsp&nbsp Statistics and Reports&nbsp&nbsp&nbsp<button class="button button-small button-positive" ui-sref="managerApp.dashboard" ui-sref-opts="{reload: true}">Randomize</button></span>
+    </div>
+    <div  style="margin-right:5px;margin-top:10px" class="col" ng-controller="manProductivityCntrl" ng-include="'templates/headerpill.html'"></div>
+  </div>
+
+  <div class="row responsive-md" style="margin-left:2px;margin-bottom:-30px">  
+    <!--Productivity Graph HTML-->
+    <div class="col col-60 card card-shadow-border" class="with-3d-shadow with-transitions" style="margin-right:5px;border:#E4E4E4">
+      <div class="row responsive-md">
+        <div class="col" ng-controller="manProductivityCntrl">
+          <div ng-if="manProdSvc.showDaily"><nvd3 options="prodgraphdaily_options" data="prodgraphdaily_data"></nvd3></div>
+          <div ng-if="manProdSvc.showWeekly"><nvd3 options="prodgraphweekly_options" data="prodgraphweekly_data"></nvd3></div>
+          <div ng-if="manProdSvc.showMonthly"><nvd3 options="prodgraphmonthly_options" data="prodgraphmonthly_data"></nvd3></div> 
+        </div>
+      </div>
+      <div class="row responsive-md">
+        <div class="col"></div>
+        <div class = "col-50" ng-controller="manProductivityCntrl">
+          <div class="button-bar">
+            <button class="button button-small button-positive" ng-click="showDailyfn();">Daily</button>
+            <button class="button button-small button-assertive" ng-click="showWeeklyfn();">Weekly</button>
+            <button class="button button-small button-energized" ng-click="showMonthlyfn();">Monthly</button>
+          </div>
+        </div>
+        <div class="col"></div>
+      </div>
+    </div> 
+
+    <!--Remedy CRQ Statistics HTML -->
+    <div class="col col-40" style="margin-left:-5px;margin-right:10px"> 
+     <div class="row row-responsive-md">
+       <div class="col col-15 card card-shadow-border" style="background:#FFCC00;margin-top: 10px;margin-left: 3px;" ng-controller="manRemedyCrqCntrl" >
+         <div class="flip-container" ng-click="flip = !flip" ng-class="{'clicked': flip}">
+          <div class="flipper">
+           <div class="front">
+             <!---<p id="remcrqfronttextheader">Open Ticket's</p>
+             <br>
+             <p id="remcrqfronttext">{{opentickets}}</p>
+             <p id="remcrqfrontanchor">CLICK FOR DETAILS</p> -->
+             
+             <div class='row'>
+               <div class="col col-90">
+                 <p id="remcrqfronttextheader"> Open Ticket's </p>
+               </div>
+               <div class="col col-10" style="font-size:40%;margin-top:10px;margin-left:20px">
+                <i class="fa fa-arrow-circle-right" aria-hidden="true" style="font-size:25px;color:white;padding-left:6%">
+                </i>
+              </div>
+            </div>
+            <div class="row">
+             <div class = "col col-60">
+               <i class="fa fa-tag" aria-hidden="true" style="font-size:100px;color:white;padding-left:6%;margin-left: 20px">
+               </i>
+             </div>
+             <div class = "col col-40">
+               <!--<p id="remcrqfronttext"> -->
+               <p id="remcrqfontsize"> {{opentickets}} </p>
+               <!--<span id="remcrqfontsize1"> out of {{totaltickets}} </span> -->
+               <!--</p>-->
+               <!--<p id="remcrqfrontanchor">CLICK FOR DETAILS</p> -->
+             </div> 
+           </div>
+         </div>
+         <div class="back">
+          <table style="width:81%;margin-left:20%;">
+            <thead>
+              <tr style="font-weight:bold !important;font-size:10px;">
+                <td >DEPARTMENT</td>
+                <td>COUNT</td>
+                <td>CRITICAL</td>
+              </tr>
+            </thead>
+            <tbody ng-repeat="tickets in ticket_data">
+              <tr style="font-size:10px;">
+                <td>{{tickets.key}}</td>
+                <td>{{tickets.value}}</td>
+                <td>{{tickets.critical}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p id="remcrqbackanchor" style="margin-top:2%;">GO BACK</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col col-15 card card-shadow-border" style="background: #76C043;margin-left:3px;
+    margin-top: 10px;margin-right: 18px;" ng-controller="manRemedyCrqCntrl">
+    <div class="flip-container" ng-click="flip = !flip" ng-class="{'clicked': flip}">
+     <div class="flipper">
+       <div class="front">  
+         <div class='row'>
+           <div class="col col-90">
+             <p id="remcrqfronttextheader"> Open CRQ's </p>
+           </div>
+           <div class="col col-10" style="font-size:40%;margin-top:10px;margin-left:20px">
+            <i class="fa fa-arrow-circle-right" aria-hidden="true" style="font-size:25px;color:white;padding-left:6%">
+            </i>
+          </div>
+        </div>
+        <div class="row">
+         <div class = "col col-60">
+           <i class="fa fa-clipboard" aria-hidden="true" style="font-size:100px;color:white;padding-left:6%;margin-left: 20px">
+           </i>
+         </div>
+         <div class = "col col-40">
+           <!--<p id="remcrqfronttext"> -->
+           <p id="remcrqfontsize" style="padding-left:26px;"> {{opencrq}} </p>
+           <!--<span id="remcrqfontsize1"> out of {{totaltickets}} </span> -->
+           <!--</p>-->
+           <!--<p id="remcrqfrontanchor">CLICK FOR DETAILS</p> -->
+         </div> 
+       </div>
+        <!-- <p id="remcrqfronttextheader">Open CRQ's</p>
+         <br>
+         <p id ="remcrqfronttext">{{opencrq}}</p>
+       <p id="remcrqfrontanchor">CLICK FOR DETAILS</p> -->
+
+       </div>
+       <div class="back">
+        <table style="width:81%;margin-left:20%;">
+          <thead>
+            <tr style="font-weight:bold !important;font-size:10px;">
+              <td>DEPARTMENT</td>
+              <td>COUNT</td>
+              <td>CRITICAL</td>
+            </tr>
+          </thead>
+          <tbody ng-repeat="tickets in crq_data">
+            <tr style="font-size:10px;">
+              <td>{{tickets.key}}</td>
+              <td>{{tickets.value}}</td>
+              <td>{{tickets.critical}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p id="remcrqbackanchor" style="margin-top:10%;">GO BACK</p>               
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!--Slot Graph HTML-->
+<div class="row row-responsive-md card card-shadow-border" style="margin-left:9px;width:497px;margin-top:-12px;height:302px;"> 
+  <div class="col col-35" style="margin-left:-8px" ng-controller="manSlotCntrl">
+    <div class="row responsive-md" style="margin-bottom:10px;margin-left:130px;margin-top:5px" >
+     <h4 style="text-align:left;color:#29B4B6;font-family:'segoe ui';font-size:15px;margin-left:-120px;margin-right:100px">SLOT STATISTICS - {{manSlotSvc.active}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h4><span><h5 ng-if="manSlotSvc.showsstk">Total Slots : {{sstktotal}}</h5>
+     <h5 ng-if="manSlotSvc.showpbyl">Total Slots : {{pbyltotal}}</h5></span>
+   </div>
+   <!--For SSTK Slot-->
+   <div ng-if="manSlotSvc.showsstk" class="row responsive-md slot-graph-class" style="margin-bottom:10px">
+     <div class="progress-wrapper" style="width:160px;margin-left:5px">
+       <round-progress  max="sstktotal" current="sstkempty_data.count" color="#45ccce" bgcolor="#d9d9d9" radius="50" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
+       <div class="text">{{sstkempty_data.count}}</div>
+       <p class="bottom_text">&nbsp&nbspEMPTY {{sstkempty_per}}%</p>
+     </div>
+     <div class="progress-wrapper" style="width:160px;margin-left:20px">
+      <round-progress  max="sstktotal" current="sstkfull_data.count" color="#4295f4" bgcolor="#d9d9d9" radius="50" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
+      <div class="text">{{sstkfull_data.count}}</div>                        
+      <p class="bottom_text">&nbsp&nbsp&nbsp&nbsp&nbspFULL {{sstkfull_per}}%</p>
+    </div>
+    <div class="progress-wrapper" style="width:160px;margin-left:18px">
+     <round-progress  max="sstktotal" current="sstkaudit_data.count" color="#f4d442" bgcolor="#d9d9d9" radius="50" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
+     <div class="text">{{sstkaudit_data.count}}</div>                           
+     <p class="bottom_text">&nbsp&nbsp&nbsp&nbspAUDIT {{sstkaudit_per}}%</p>
+   </div>
+   <div class="progress-wrapper" style="width:160px;margin-left:22px">
+     <round-progress  max="sstktotal" current="sstkpartial_data.count" color="#ff8080" bgcolor="#d9d9d9" radius="50" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
+     <div class="text">{{sstkpartial_data.count}}</div>                           
+     <p class="bottom_text" style="margin-left:0px">PARTIAL {{sstkpartial_per}}%</p>
+   </div>
+ </div>  
+
+ <!--For PBYL Slot-->
+ <div ng-if="manSlotSvc.showpbyl" class="row responsive-md slot-graph-class" style="margin-bottom:10px">
+   <div class="progress-wrapper" style="width:160px;margin-left:5px">
+     <round-progress  max="pbyltotal" current="pbylempty_data.count" color="#45ccce" bgcolor="#d9d9d9" radius="50" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
+     <div class="text">{{pbylempty_data.count}}</div>
+     <p class="bottom_text">&nbsp&nbspEMPTY {{pbylempty_per}}%</p>
+   </div>
+   <div class="progress-wrapper" style="width:160px;margin-left:20px">
+    <round-progress  max="pbyltotal" current="pbylfull_data.count" color="#4295f4" bgcolor="#d9d9d9" radius="50" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
+    <div class="text">{{pbylfull_data.count}}</div>                        
+    <p class="bottom_text">&nbsp&nbsp&nbsp&nbsp&nbspFULL {{pbylfull_per}}%</p>
+  </div>
+  <div class="progress-wrapper" style="width:160px;margin-left:18px">
+   <round-progress  max="pbyltotal" current="pbylaudit_data.count" color="#f4d442" bgcolor="#d9d9d9" radius="50" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
+   <div class="text">{{pbylaudit_data.count}}</div>                           
+   <p class="bottom_text">&nbsp&nbsp&nbsp&nbspAUDIT {{pbylaudit_per}}%</p>
+ </div>
+ <div class="progress-wrapper" style="width:160px;margin-left:22px">
+   <round-progress  max="pbyltotal" current="pbylpartial_data.count" color="#ff8080" bgcolor="#d9d9d9" radius="50" stroke="10" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="2"></round-progress>
+   <div class="text">{{pbylpartial_data.count}}</div>                           
+   <p class="bottom_text" style="margin-left:0px">PARTIAL {{pbylpartial_per}}%</p>
+ </div>
+</div>                                                                                             
+<div class="row responsive-md" style="margin-top:20px;">
+ <div class="col col-20"></div>
+ <div class="col" ng-controller="manSlotCntrl">
+   <div class="button-bar" style="max-width:300px" >
+     <button class="button button-small button-positive" style="max-width:150px" ng-click="showSSTKfn();">SSTK</button>
+     <button class="button button-small button-assertive" style="max-width:150px" ng-click="showPBYLfn();">PBYL</button>
+   </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class = "row responsive-md" style="margin-left:10px;margin-right:20px">
+  <!--Pallet Movment Graph HTML-->
+  <div class="col col-40 card card-shadow-border" ng-controller="sunburstCntrl">
+    <nvd3 options="options" data="data"></nvd3>
+    <!--   </div> -->
+  </div>
+
+  <!--Item Movement HTML-->
+  <div class="col card card-shadow-border" ng-controller="manItemMvmtCntrl">
+    <div class="row responsive-md">
+     <div ng-if="manItemSvc.showtop"><nvd3 options="topitemmvmtgraph_options" data="topitem_data"></nvd3></div>
+     <div ng-if="manItemSvc.showbottom"><nvd3 options="bottomitemmvmtgraph_options" data="bottomitem_data"></nvd3></div>        
+   </div>   
+   <div class="row responsive-md"> 
+    <div class="col col-10"></div> 
+    <div class="col">           
+     <div class="button-bar">
+      <button class="button button-small button-positive" style="max-width:150px" ng-click="showtopfn();">TOP 10</button>
+      <button class="button button-small button-assertive" style="max-width:150px" ng-click="showbottomfn();">LOW 10</button>
+    </div>
+  </div>
+</div>
+</div>
+<!--Trip Stats -->
+<div class="col card card-shadow-border" style="margin-right:20px" ng-controller="manTripCntrl">
+ <div class="row responsive-md">
+   <div ng-if="manTripSvc.showCasePick" class="slot-graph-class"><nvd3 options="case_options" data="case_data"></nvd3></div>
+   <div ng-if="manTripSvc.showFullPull" class="slot-graph-class"><nvd3 options="full_options" data="full_data"></nvd3></div>
+   <div ng-if="manTripSvc.showChase" class="slot-graph-class"><nvd3 options="chase_options" data="chase_data"></nvd3></div>
+   <div ng-if="manTripSvc.showRegularPbyl" class="slot-graph-class"><nvd3 options="regpbyl_options" data="regpbyl_data"></nvd3></div>
+ </div>
+ <div class="row responsive-md"> 
+  <div class="col col-10"></div> 
+  <div class="col">           
+   <div class="button-bar">
+    <button class="button button-small button-positive" style="max-width:150px" ng-click="showcasefn();">CASEPICK</button>
+    <button class="button button-small button-assertive" style="max-width:150px" ng-click="showfullpullfn();">FULLPULL</button>
+  </div>
+</div>
+</div>
+<div class="row responsive-md"> 
+  <div class="col col-10"></div> 
+  <div class="col">           
+   <div class="button-bar">
+    <button class="button button-small button-positive" style="max-width:150px" ng-click="showchasefn();">CHASE</button>
+    <button class="button button-small button-assertive" style="max-width:150px" ng-click="showregpbylfn();">REG PBYL</button>
+  </div>
+</div>
+</div>        
+</div>      
+</div>
+</section>
+</ion-content>
+</ion-view>
+
+
+

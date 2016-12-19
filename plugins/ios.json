@@ -1,0 +1,19 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "com.ionicframework.ignite2app663636"
+        },
+        "phonegap-plugin-push": {
+            "SENDER_ID": "125343275449",
+            "PACKAGE_NAME": "com.ionicframework.ignite2app663636"
+        }
+    },
+    "dependent_plugins": {}
+}

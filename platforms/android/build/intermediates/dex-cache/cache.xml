@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\Ignite2\ignite2\platforms\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="9f6d236bac26d02b410e4ee186ba517ace5ee661">
+        <dex dex="D:\Ignite2\ignite2\platforms\android\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-basement-9.8.0_324b4a9d78c701cf05440a37e116444fbe4a990f.jar" />
+    </item>
+    <item
+        jar="D:\Ignite2\ignite2\platforms\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="7e92aadd0697922316d1395c1887a23aebec640a">
+        <dex dex="D:\Ignite2\ignite2\platforms\android\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-base-9.8.0_57f10e65ac2171cce91d2ffcc37f0cddd616d937.jar" />
+    </item>
+    <item
+        jar="D:\Ignite2\ignite2\platforms\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\9.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="9dae58326f6f6a515022468cce56dd04ec3b9fdb">
+        <dex dex="D:\Ignite2\ignite2\platforms\android\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-gcm-9.8.0_2e9db4288e57c1ee727b5659e91da314ddcd27cc.jar" />
+    </item>
+    <item
+        jar="D:\Ignite2\ignite2\platforms\android\build\intermediates\exploded-aar\me.leolin\ShortcutBadger\1.1.4\jars\classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="b346a5d3fc5d6d1d36c6262c8cc865b76df9f40c">
+        <dex dex="D:\Ignite2\ignite2\platforms\android\build\intermediates\pre-dexed\release\me.leolin-ShortcutBadger-1.1.4_da2460d6cb2dfd10108886a17e285abaebc9d6db.jar" />
+    </item>
+    <item
+        jar="D:\Ignite2\ignite2\platforms\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="bf2e1838e4428616c1aa26edf43de72b5b99bf84">
+        <dex dex="D:\Ignite2\ignite2\platforms\android\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-tasks-9.8.0_51534eeae51509587de9ab5f67962e5764e0a8d9.jar" />
+    </item>
+    <item
+        jar="D:\Ignite2\ignite2\platforms\android\build\intermediates\exploded-aar\com.android.support\support-v13\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="be09545b7e6ff322c7286d2e80bed3b75b76c529">
+        <dex dex="D:\Ignite2\ignite2\platforms\android\build\intermediates\pre-dexed\release\internal_impl-23.4.0_6280ef2541158a665ddc72620fbc80582dcece5e.jar" />
+    </item>
+    <item
+        jar="D:\Ignite2\ignite2\platforms\android\build\intermediates\exploded-aar\com.android.support\support-v13\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="2bf893856577f5038c0b8007a43fda3b3c5beb23">
+        <dex dex="D:\Ignite2\ignite2\platforms\android\build\intermediates\pre-dexed\release\com.android.support-support-v13-23.4.0_78bb167e26444a81c002834494b178ab278a50ee.jar" />
+    </item>
+    <item
+        jar="D:\Ignite2\ignite2\platforms\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\9.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="85299bf1924dde0200109a58033c5ef84ecb6991">
+        <dex dex="D:\Ignite2\ignite2\platforms\android\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-iid-9.8.0_0f90e9f96eae86f9d4d9f815f40d8b9e380b36f4.jar" />
+    </item>
+
+</items>

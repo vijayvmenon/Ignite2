@@ -1,0 +1,102 @@
+<div ng-controller="userDetailsController" style="margin-top:10px">
+<div ng-show="nouser==false">
+<div class="col" style="margin-left:20px">
+<table style="border:2px solid blue;width:350px"">
+   <tr style="border:2px solid blue;height:40px;background:#bbff99">
+      <th colspan="2" style="border:2px solid blue;vertical-align:middle"><h4>USER DETAILS</h4></th>
+    </tr>
+<tr style="border:2px solid blue;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#ffcc80" width="40%"><b>USERID</b></td><td style="vertical-align:middle;text-align:center;background:#b3b3ff" width="60%">{{userdetails.UserID}}</td>
+</tr>
+<tr style="border:2px solid blue;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#ffcc80" width="40%"><b>NAME</b></td><td style="vertical-align:middle;text-align:center;background:#b3b3ff" width="60%">{{userdetails.Name}}</td>
+</tr>
+<tr style="border:2px solid blue;height:40px">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#ffcc80" width="40%"><b>ROLE</b></td><td style="vertical-align:middle;text-align:center;background:#b3b3ff" width="60%">{{userdetails.Role}}</td>
+</tr>
+<tr style="border:2px solid blue;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#ffcc80" width="40%"><b>SUPERVISOR</b></td><td style="vertical-align:middle;text-align:center;background:#b3b3ff" width="60%">{{userdetails.Supervisor}}</td>
+</tr>
+<tr style="border:2px solid blue;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#ffcc80" width="40%"><b>ACTIVE DATE</b></td><td style="vertical-align:middle;text-align:center;background:#b3b3ff" width="60%">{{userdetails.ActiveDate}}</td>
+</tr>
+</table>
+</div>
+
+<div class = "row responsive-sm" style="margin-top:10px">
+<div class = "col card-shadow-border">
+<h2 style="text-align:center;"><u>Performance Rate</u></h2>
+ <div ng-if="isHigh">
+ <h3>Cases Received Yesterday : {{yesterate}}</h3>
+ <h3>Cases Received Today &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: {{todayrate}}</h3>
+ <h3>Performance&nbsp&nbsp:<span style="color:green">&nbsp{{percent}}% Higher</span></h3>
+ </div>
+  <div ng-if="isLow">
+  <h3>Cases Received Yesterday : {{yesterate}}</h3>
+ <h3>Cases Received Today&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: {{todayrate}}</h3>
+ <h3>Performance&nbsp&nbsp:<span style="color:red">&nbsp{{percent}}% Lower</span></h3>
+  </div>
+ </div>
+<div class="col">
+  <nvd3 options="user_options" data="user_data"></nvd3>
+</div>
+
+ </div>
+
+
+<div class="row">
+  <h3 style="background:#bbff99;text-align:left">USER SWIPE STATS - PAST 1 WEEK</h3>
+  </div>
+
+<div class="row">
+<table style="border:2px solid blue;margin-top:-1px">
+ <tbody>
+ <tr style="border:2px solid blue;width:100px;height:40px;">
+     <td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#d4d4aa"><b>DATES</b></td>
+ </tr>
+ <tr style="border:2px solid blue;width:100px;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#ffcc80;"><b>CHECK-IN</b></td>
+</tr>
+<tr style="border:2px solid blue;width:100px;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#ffcc80;"><b>LUNCH CHECK-OUT</b></td>
+</tr>
+<tr style="border:2px solid blue;width:100px;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#ffcc80;"><b>LUNCH CHECK-IN</b></td>
+</tr>
+<tr style="border:2px solid blue;width:100px;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#ffcc80;"><b>CHECK-OUT</b></td>
+</tr>
+ </tbody>
+ </table>
+
+<ion-scroll zooming="true" direction="x" style="width:1000px;margin-right:80px" >
+<table style="width:800px;">
+<tbody>
+   <tr style="border:2px solid blue;background:#d4d4aa;height:40px;">
+      <td style="border:2px solid blue;vertical-align:middle;text-align:center;width:150px" ng-repeat="dat in usertimedetails">{{dat.date}}</td>
+      </tr>
+<tr style="border:2px solid blue;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#b3b3ff;width:150px" ng-repeat="usertime in usertimedetails">{{usertime.checkin}}</td>
+</tr>
+
+<tr style="border:2px solid blue;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#b3b3ff;width:150px" ng-repeat="usertime in usertimedetails">{{usertime.lcheckout}}</td>
+</tr>
+
+<tr style="border:2px solid blue;height:40px;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#b3b3ff;width:150px" ng-repeat="usertime in usertimedetails">{{usertime.lcheckin}}</td>
+</tr>
+
+<tr style="border:2px solid blue;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#b3b3ff;width:150px" ng-repeat="usertime in usertimedetails">{{usertime.checkout}}</td>
+</tr>
+</tbody>
+</table>
+</ion-scroll>
+</div>
+
+</div>
+ <div ng-show="nouser==true">
+ <p>User {{userid}} not found</p>
+ </div>
+ </div>

@@ -1,0 +1,30 @@
+<div ng-controller="itemDetailsController">
+<div class = "row responsive-sm">
+<div class="col" style="width:600px;float:left">
+  <nvd3 options="itemStorePie_options" data="itemStorePie_data"></nvd3>
+</div>
+<div class="col" style="border:1px solid black;">
+	<h3 style="text-align:center"><u>ALERTS</u></h3>
+	<ul style="list-style-type:disc;margin-left:20px">
+	<li><h4 class="blink_me" style="color:red">Cube for Item {{itemnbr}} exceeds Max Treshold of Selection Section</h4></li>
+	<li><h4 class="blink_me" style="color:red;margin-top:20px">750 cases for Item {{itemnbr}} not rotated in SLOT01 from 11/01 </h4></li>
+	</ul>
+</div>
+<div class = "col" style="width:600px;float:right">
+  <nvd3 options="itemPoPie_options" data="itemPoPie_data"></nvd3>
+ </div>
+ </div>
+
+<div class = "row responsive-sm" style="margin-top:10px">
+<div class="col">
+  <nvd3 options="itemgraphlinebar_options" data="itemgraphlinebar_data"></nvd3>
+</div>
+<div class = "col">
+  <nvd3 options="itemgraphline_options" data="itemgraphline_data"></nvd3>
+ </div>
+ </div>
+ </div>
+
+
+
+  

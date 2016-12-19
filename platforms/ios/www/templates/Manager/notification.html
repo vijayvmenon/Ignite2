@@ -1,0 +1,13 @@
+      <ion-popover-view class="fit">
+        <ion-content>  
+
+        <!--Notification for manager-->    
+        <div class="list">
+        <div class="item item-divider">Pending Notifications</div>
+          <div class="item" ng-repeat="notif in manNotif">
+              <p style="font-size:12px;">{{notif.text}}</p>
+          </div>
+          </div>
+
+    </ion-content>
+      </ion-popover-view>

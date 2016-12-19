@@ -1,0 +1,90 @@
+
+<div ng-controller="poDetailsController">
+<div class="row responsive-sm" style="margin-top:10px;">
+    <div class="col" style="width:500px;height:150px;border:1px solid black">
+       <p class="u13">PO Receiving Status</p>
+       <div style="margin-top:10px;margin-bottom:15px" isteven-omni-bar current-value="rcvqty" max-value="totqty">
+         {{rcvqty}} of {{totqty}} received for PO {{ponbr}} 
+       </div>
+       <p style="margin-top:5px" class="u13"><span style="float:left">Total Appointments : {{totappts}}</span><span style="float:right"> Total Items : {{totitems}}</span></p>
+    </div>
+    <div class="col col-offset-25" style="width:800px;height:150px;border:1px solid black">
+       <p class="u13">PO Receiving ETA {{etatime}}</p>
+       <div>
+           <countdown autostart="true" colors="flat-colors-black" finish-callback="finished()"></countdown>
+         </div>
+    </div>
+</div>
+
+<div class ="row responsive-sm" style="margin-top:10px">
+<div class="col">
+<h4 style="text-align:center;background-color:#99e699;border-radius:5px;">APPOINTMENT DETAILS</h4>
+ <table st-table="displayedappointments" st-safe-src="appointments" class="table table-condensed table-bordered table-striped">
+ 	<thead>
+	  <tr>
+	 	<th style="cursor:pointer;font-weight:bold" st-sort="appt_nbr">Appointment Number</th>
+	 	<th style="cursor:pointer;font-weight:bold" st-sort="status">Status</th>
+	  </tr>
+	  <tr>
+	  	<th>
+		<input style="border:2px solid #99b3ff;border-radius:10px;width:80%" st-search="appt_nbr" placeholder="  Search for Appointment" type="search"/>
+		</th>
+	    <th>
+			<input style="border:2px solid #99b3ff;border-radius:10px;width:80%" st-search="status" placeholder="  Search for Status" type="search"/>
+		</th>
+	  </tr>
+	</thead>
+	<tbody>
+    <tr ng-repeat="appointment in displayedappointments">
+        <td>{{appointment.appt_nbr}}</td>
+        <td>{{appointment.status}}</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="3" class="text-center">
+      <div st-template="templates/Supervisor/supervisorWiki/pagination.html" st-pagination="" st-items-by-page="10"></div>
+      </td>
+     </tr>
+    </tfoot>
+</table>
+  </div>
+
+  <div class="col">
+  <h4 style="text-align:center;background-color:#ffb3b3;border-radius:5px;">ITEM DETAILS</h4>
+ <table st-table="displayedpoitems" st-safe-src="poitems" class="table table-condensed table-bordered table-striped">
+  	<thead>
+	  <tr>
+	 	<th  style="cursor:pointer;font-weight:bold" st-sort="item_nbr">Item Number</th>
+	 	<th  style="cursor:pointer;font-weight:bold" st-sort="desc">Description</th>
+	 	<th style="font-weight:bold">Due Quantity</th>	 	
+	  </tr>
+	  	  <tr>
+	  	<th>
+		<input style="border:2px solid #99b3ff;border-radius:10px;width:80%" st-search="item_nbr" placeholder="  Search for Item" type="search"/>
+		</th>
+	    <th>
+	<input style="border:2px solid #99b3ff;border-radius:10px;width:80%" st-search="desc" placeholder="  Search for Description" type="search"/>
+	</th>
+	<th></th>
+	  </tr>
+	</thead>
+	<tbody>
+    <tr ng-repeat="item in displayedpoitems">
+        <td>{{item.item_nbr}}</td>
+        <td>{{item.desc}}</td>
+       <td>{{item.dueqty}}</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="3" class="text-center">
+      <div st-template="templates/Supervisor/supervisorWiki/pagination.html" st-pagination="" st-items-by-page="10"></div>
+      </td>
+     </tr>
+    </tfoot>
+</table>
+
+  </div>
+ </div>
+</div>

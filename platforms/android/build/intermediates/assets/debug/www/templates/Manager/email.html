@@ -1,0 +1,13 @@
+  <ion-popover-view class="email" style="cursor:pointer;border: 2px solid #fff;margin-top:0%;">
+        <ion-content>  
+        <!--Email for Manager-->
+       <div class="list">
+        <div class="item item-divider">Unread Emails</div>
+          <div class="item" ng-repeat="email in manEmail">
+              <p style="font-size:12px;"><b>From:</b>{{email.from}}</p>
+              <p style="font-size:12px"><b>Subject:</b>{{email.subject}}</p>
+              <p style="font-size:12px"><b>Time:</b>{{email.time}}</p>             
+          </div>
+      </div>
+    </ion-content>
+      </ion-popover-view>

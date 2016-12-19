@@ -1,0 +1,112 @@
+ <ion-view>
+ <ion-content>
+       <div class="col card card-shadow-border" style="background:#FFCC00;margin-top:10px;" ng-controller="manRemedyCrqCntrl" >
+         <div class="flip-container" ng-click="flip = !flip" ng-class="{'clicked': flip}">
+          <div class="flipper">
+           <div class="front">
+             <!---<p id="remcrqfronttextheader">Open Ticket's</p>
+             <br>
+             <p id="remcrqfronttext">{{opentickets}}</p>
+             <p id="remcrqfrontanchor">CLICK FOR DETAILS</p> -->
+             
+             <div class='row'>
+               <div class="col col-90">
+                 <p id="remcrqfronttextheader"> Open Ticket's </p>
+               </div>
+               <div class="col col-10" style="font-size:40%;margin-top:10px;margin-left:20px">
+                <i class="fa fa-arrow-circle-right" aria-hidden="true" style="font-size:25px;color:white;padding-left:6%">
+                </i>
+              </div>
+            </div>
+            <div class="row">
+             <div class = "col col-60">
+               <i class="fa fa-tag" aria-hidden="true" style="font-size:100px;color:white;padding-left:6%;margin-left: 20px">
+               </i>
+             </div>
+             <div class = "col col-40">
+               <!--<p id="remcrqfronttext"> -->
+               <p id="remcrqfontsize"> {{opentickets}} </p>
+               <!--<span id="remcrqfontsize1"> out of {{totaltickets}} </span> -->
+               <!--</p>-->
+               <!--<p id="remcrqfrontanchor">CLICK FOR DETAILS</p> -->
+             </div> 
+           </div>
+         </div>
+         <div class="back">
+          <table style="width:81%;margin-left:20%;">
+            <thead>
+              <tr style="font-weight:bold !important;font-size:10px;">
+                <td >DEPARTMENT</td>
+                <td>COUNT</td>
+                <td>CRITICAL</td>
+              </tr>
+            </thead>
+            <tbody ng-repeat="tickets in ticket_data">
+              <tr style="font-size:15px;">
+                <td>{{tickets.key}}</td>
+                <td>{{tickets.value}}</td>
+                <td>{{tickets.critical}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p id="remcrqbackanchor" style="margin-top:2%;">GO BACK</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col card card-shadow-border" style="background: #76C043;margin-top: 10px;" ng-controller="manRemedyCrqCntrl">
+    <div class="flip-container" ng-click="flip = !flip" ng-class="{'clicked': flip}">
+     <div class="flipper">
+       <div class="front">  
+         <div class='row'>
+           <div class="col col-90">
+             <p id="remcrqfronttextheader"> Open CRQ's </p>
+           </div>
+           <div class="col col-10" style="font-size:40%;margin-top:10px;margin-left:20px">
+            <i class="fa fa-arrow-circle-right" aria-hidden="true" style="font-size:25px;color:white;padding-left:6%">
+            </i>
+          </div>
+        </div>
+        <div class="row">
+         <div class = "col col-60">
+           <i class="fa fa-clipboard" aria-hidden="true" style="font-size:100px;color:white;padding-left:6%;margin-left: 20px">
+           </i>
+         </div>
+         <div class = "col col-40">
+           <!--<p id="remcrqfronttext"> -->
+           <p id="remcrqfontsize" style="padding-left:26px;"> {{opencrq}} </p>
+           <!--<span id="remcrqfontsize1"> out of {{totaltickets}} </span> -->
+           <!--</p>-->
+           <!--<p id="remcrqfrontanchor">CLICK FOR DETAILS</p> -->
+         </div> 
+       </div>
+        <!-- <p id="remcrqfronttextheader">Open CRQ's</p>
+         <br>
+         <p id ="remcrqfronttext">{{opencrq}}</p>
+       <p id="remcrqfrontanchor">CLICK FOR DETAILS</p> -->
+
+       </div>
+       <div class="back">
+        <table style="width:81%;margin-left:20%;">
+          <thead>
+            <tr style="font-weight:bold !important;font-size:10px;">
+              <td>DEPARTMENT</td>
+              <td>COUNT</td>
+              <td>CRITICAL</td>
+            </tr>
+          </thead>
+          <tbody ng-repeat="tickets in crq_data">
+            <tr style="font-size:15px;">
+              <td>{{tickets.key}}</td>
+              <td>{{tickets.value}}</td>
+              <td>{{tickets.critical}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p id="remcrqbackanchor" style="margin-top:10%;">GO BACK</p>               
+      </div>
+    </div>
+  </div>
+</div>
+    </ion-content>
+    </ion-view>

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\Ignite2\\ignite2\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\xml\\preferences.xml",
+        "source": "D:\\Ignite2\\ignite2\\platforms\\android\\res\\xml\\preferences.xml"
+    },
+    {
+        "merged": "D:\\Ignite2\\ignite2\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\xml\\config.xml",
+        "source": "D:\\Ignite2\\ignite2\\platforms\\android\\res\\xml\\config.xml"
+    }
+]

@@ -1,0 +1,25 @@
+<ion-view>
+    <ion-nav-bar class="bar-stable custom-bar-color">
+       <ion-nav-back-button style="color:white">
+    </ion-nav-back-button>
+          <ion-nav-title>
+    <span> 
+    <p style="float:left" class="main-header">ignite</p><p style="float:left" class="main-header-number">&nbsp2.0</p>
+    <i class="icon ion-power" style="cursor:pointer;float:right;font-size:28px;color:#FFFFFF;margin-left:10px" ui-sref="login"></i>
+    
+    <i ng-controller="manNotificationCntrl" class="icon ion-android-notifications" style="cursor:pointer;float:right;font-size:28px;color:#FFFFFF;margin-left:8px" ng-click="popover.show($event);manNotifCount=null"><span class="badge badge-assertive header-badge">{{manNotifCount}}</span></i>
+    <i ng-controller="manEmailCntrl" class="icon ion-ios-email" style="cursor:pointer;float:right;font-size:28px;color:#FFFFFF;margin-right:10px;margin-left:6px" ng-click="popover.show($event);manEmailCount=null"><span class="badge badge-assertive header-badge">{{manEmailCount}}</span></i>
+    </span>
+    </ion-nav-title>
+    </ion-nav-bar>
+
+
+    <ion-tabs class="tabs-icon-bottom tabs-positive tabs-item-hide">
+        <ion-tab title="Dashboard" icon="ion-home" ui-sref="managerApp.dashboard">
+          <ion-nav-view name="managerMenuContent"></ion-nav-view>
+        </ion-tab>
+      </ion-tabs>
+      </ion-view>
+
+
+

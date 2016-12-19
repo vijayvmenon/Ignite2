@@ -1,0 +1,25 @@
+  <ion-view>
+  <ion-content ng-controller="TypeAheadController" class="grid-basic-page" overflow-scroll="true">
+       <section class="home-container">
+        <div class="row responsive-sm" style="margin-left:20px;margin-top:10px">
+           <div class="col" style="margin-top:10px">
+            <span class="u10" style="float:left;margin-top:3%;">Supervisor Dashboard</span>
+           </div>
+           <div style="margin-right:10px;margin-top:2%;" class="col" ng-controller="manProductivityCntrl" ng-include="'templates/headerpill.html'"></div>
+        </div>
+
+<div class = "row responsive-sm">
+     <div class="supsearch-container">
+       <h1 style="color: #C44741">Supervisor Wiki</h1>
+     <typeahead items="items" prompt="Search Item,PO or UserID" title="id" subtitle="category" model="name" on-select="onItemSelected()"/>
+   </div>
+</div>
+<div class = "row responsive-sm" style="margin-top:5px">
+   <button ng-show="showclear" class="button button-balanced" ng-click="showclear=false;" ui-sref="suprvsrApp.search" ui-sref-opts="{reload: true}">Clear</button>
+   </div>
+<div ng-if="showitem" class="row responsive-sm sup-wiki-animation" ng-include="'templates/Supervisor/supervisorWiki/itemDetails.html'"></div>
+<div ng-if="showpo" class="row responsive-sm sup-wiki-animation" ng-include="'templates/Supervisor/supervisorWiki/poDetails.html'"></div>
+<div ng-if="showuser" class="row responsive-sm sup-wiki-animation" ng-include="'templates/Supervisor/supervisorWiki/userDetails.html'"></div>
+ </section>
+  </ion-content>
+</ion-view>

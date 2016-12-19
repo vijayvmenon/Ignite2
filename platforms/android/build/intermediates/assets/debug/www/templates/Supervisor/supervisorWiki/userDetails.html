@@ -1,0 +1,83 @@
+<div ng-controller="userDetailsController" style="margin-top:10px">
+
+<div class = "row responsive-sm">
+<div class="col col-20">
+<table style="border:2px solid blue;width:350px"">
+   <tr style="border:2px solid blue;height:40px;background:#bbff99">
+      <th colspan="2" style="border:2px solid blue;vertical-align:middle"><h4>USER DETAILS</h4></th>
+    </tr>
+<tr style="border:2px solid blue;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#ffcc80" width="40%"><b>USERID</b></td><td style="vertical-align:middle;text-align:center;background:#b3b3ff" width="60%">{{userdetails.UserID}}</td>
+</tr>
+<tr style="border:2px solid blue;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#ffcc80" width="40%"><b>NAME</b></td><td style="vertical-align:middle;text-align:center;background:#b3b3ff" width="60%">{{userdetails.Name}}</td>
+</tr>
+<tr style="border:2px solid blue;height:40px">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#ffcc80" width="40%"><b>ROLE</b></td><td style="vertical-align:middle;text-align:center;background:#b3b3ff" width="60%">{{userdetails.Role}}</td>
+</tr>
+<tr style="border:2px solid blue;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#ffcc80" width="40%"><b>SUPERVISOR</b></td><td style="vertical-align:middle;text-align:center;background:#b3b3ff" width="60%">{{userdetails.Supervisor}}</td>
+</tr>
+<tr style="border:2px solid blue;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#ffcc80" width="40%"><b>ACTIVE DATE</b></td><td style="vertical-align:middle;text-align:center;background:#b3b3ff" width="60%">{{userdetails.ActiveDate}}</td>
+</tr>
+</table>
+</div>
+
+
+<div class="col col-offset-10" class="sup-search-user-mob">
+<table style="border:2px solid blue;width:930px">
+<thead>
+   <tr style="border:2px solid blue;height:40px;background:#bbff99">
+     <th colspan="8" style="border:2px solid blue;vertical-align:middle"><h4 style="text-align:center">USER SWIPE STATS - PAST 1 WEEK</h4></th>
+   </tr>
+   <tr style="border:2px solid blue;height:40px;background:#d4d4aa">
+     <th style="border:2px solid blue;vertical-align:middle"><b>DATES</b></th>
+      <th style="border:2px solid blue;vertical-align:middle" ng-repeat="dat in usertimedetails">{{dat.date}}</th>
+   </tr>
+</thead>
+<tbody>
+<tr style="border:2px solid blue;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#ffcc80;width:170px"><b>CHECK-IN</b></td>
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#b3b3ff;width:100px" ng-repeat="usertime in usertimedetails">{{usertime.checkin}}</td>
+</tr>
+
+<tr style="border:2px solid blue;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#ffcc80;width:170px"><b>LUNCH CHECK-OUT</b></td>
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#b3b3ff;width:100px" ng-repeat="usertime in usertimedetails">{{usertime.lcheckout}}</td>
+</tr>
+
+<tr style="border:2px solid blue;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#ffcc80;width:170px"><b>LUNCH CHECK-IN</b></td>
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#b3b3ff;width:100px" ng-repeat="usertime in usertimedetails">{{usertime.lcheckin}}</td>
+</tr>
+
+<tr style="border:2px solid blue;height:40px;">
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#ffcc80;width:170px"><b>CHECK-OUT</b></td>
+<td style="border:2px solid blue;vertical-align:middle;text-align:center;background:#b3b3ff;width:100px" ng-repeat="usertime in usertimedetails">{{usertime.checkout}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+ </div>
+
+<div class = "row responsive-sm" style="margin-top:10px">
+<div class="col">
+  <nvd3 options="user_options" data="user_data"></nvd3>
+</div>
+<div class = "col card-shadow-border" style="margin-top:100px;margin-bottom:100px;margin-left:30px;height:300px">
+<h2 style="text-align:center;margin-bottom:20px"><u>Performance Rate</u></h2>
+ <div ng-if="isHigh">
+ <h3 style="margin-bottom:20px">Cases Received Yesterday : {{yesterate}}</h3>
+ <h3 style="margin-bottom:20px">Cases Received Today&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: {{todayrate}}</h3>
+ <h3 style="margin-bottom:20px">Performance&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:<span style="color:green">&nbsp{{percent}}% Higher</span></h3>
+ </div>
+  <div ng-if="isLow">
+  <h3>Cases Received Yesterday : {{yesterate}}</h3>
+ <h3>Cases Received Today&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: {{todayrate}}</h3>
+ <h3>Performance&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:<span style="color:red">&nbsp{{percent}}% Lower</span></h3>
+  </div>
+ </div>
+ </div>
+ </div>

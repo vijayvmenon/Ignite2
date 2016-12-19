@@ -1,0 +1,35 @@
+ {
+    "poNbr": 12346,
+    "itemNbr": 56782,
+    "totalQty": 34,
+    "labelNbr": null,
+    "userId": "dftr5",
+    "doorNbr": "121",
+    "rcvdQty": 0,
+    "rcvdTs": 1478713032648,
+    "deliveryNbr": 3425,
+    "poStatus": "Created",
+    "slotId": "A001",
+    "palletCount": 4,
+    "comment": "",
+    "isLocked": "false",
+    "overrideStatus": "N"
+  },
+  
+  {
+    "poNbr": 12345,
+    "itemNbr": 56782,
+    "totalQty": 34,
+    "labelNbr": null,
+    "userId": "dftr5",
+    "doorNbr": "121",
+    "rcvdQty": 5665,
+    "rcvdTs": 1478713032648,
+    "deliveryNbr": 3425,
+    "poStatus": "Waiting for Override",
+    "slotId": "A001",
+    "palletCount": 4,
+    "comment": "re",
+    "isLocked": "true",
+    "overrideStatus": "N"
+  }

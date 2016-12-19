@@ -1,0 +1,109 @@
+<ion-view view-title="Login" name="login-view">
+  <ion-content class="padding" style="background:#64b3f4">
+      <div class="list list-inset" style="margin-top:100px">
+          <label class="item item-input">
+              <input type="text" placeholder="Username" ng-model="currUser.email">
+          </label>
+          </div>
+          <div class="list list-inset" style="margin-top:40px">
+          <label class="item item-input">
+              <input type="password" placeholder="Password" ng-model="currUser.password">
+          </label>
+      </div>
+
+
+       <div data-tap-disabled="true" class="list list-inset" style="margin-top:40px">
+             <div class="item item-input item-select" style="border: 1px solid #e45562;border-radius: 8px;">
+              <span class="input-label">Role</span>
+                  <select ng-model="userRole">
+                   <option>Manager</option>
+                   <option>Supervisor</option>
+                  </select>
+            </div>
+        </div> 
+
+     <div>
+      <span><a href style="color:black;font-weight:bold;float:left" ng-click="openModal(1)">New User?</a><a href ng-click="openModal(2)" style="color:black;font-weight:bold;float:right">Forgot Password?</a></span>
+      </div>
+
+      <button style="width:350px;margin-left:20px;margin-top:60px;background-color: #9e5725 !important;" class="button button-block button-royal" ng-click="login(currUser,userRole)">Login</button>
+      <div class="row">
+      <img src="img/ignite_logo3.png"/ style="width: 228px;margin-left: 67px;margin-top:41px;">
+      </div>
+  </ion-content>
+
+        <script id="templates/newuser.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">New User</h1>
+          <button class="button button-clear button-primary" ng-click="closeModal(1)">Cancel</button>
+        </ion-header-bar>
+        <ion-content class="padding">
+        <form name="myForm" novalidate>
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">UserName</span>
+              <input name="username" ng-model="newUser.email" type="email" required>
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Password</span>
+              <input name="password" ng-model="newUser.password" type="password" required>
+            </label>
+               <div class="padding">
+                 <p ng-show="myForm.username.$error.required">* Username is required</p>
+                 <p ng-show="myForm.username.$invalid && !myForm.username.$pristine">* Username must be an email address</p>
+                 <p ng-show="myForm.password.$error.required">* Password is required</p>
+               </div> 
+            <button class="button button-full button-positive" ng-disabled="myForm.$invalid" ng-click="createUser(newUser)">Create User</button>
+          </div>
+          </form>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+
+      <script id="templates/passwdreset.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">Password Reset</h1>
+          <button class="button button-clear button-primary" ng-click="closeModal(2)">Cancel</button>
+        </ion-header-bar>
+        <ion-content class="padding" ng-show="!pswdresetclicked">
+         <form name="myForm1" novalidate>
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">Email</span>
+              <input name="email" ng-model="pswdResetEmail" type="email" required>
+            </label>
+              <div class="padding">
+                 <p ng-show="myForm1.email.$error.required">* Email ID is required</p>
+                 <p ng-show="myForm1.email.$invalid && !myForm1.email.$pristine">* Enter Valid Email ID</p>
+               </div> 
+            <button class="button button-full button-positive" ng-disabled="myForm1.$invalid" ng-click="sendEmail(pswdResetEmail)">Send Email</button>
+          </div>
+          </form>
+        </ion-content>
+
+          <ion-content class="padding" ng-show="pswdresetclicked">
+        <form name="myForm2" novalidate>
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">Reset Code</span>
+              <input name="code" ng-model="resetCode" type="text" required>
+            </label>
+            <label class="item item-input">
+              <span class="input-label">New Password</span>
+              <input name="password" ng-model="resetPswd" type="password" required>
+            </label>   
+                <div class="padding">
+                 <p ng-show="myForm2.code.$error.required">* Code is required</p>
+                 <p ng-show="myForm2.password.$error.required">* Password is required</p>                 
+               </div>                    
+            <button class="button button-full button-positive" ng-disabled="myForm2.$invalid" ng-click="pswdreset(resetCode,resetPswd)">Reset Password</button>
+          </div>
+          </form>
+        </ion-content>
+
+      </ion-modal-view>
+    </script>
+
+</ion-view>

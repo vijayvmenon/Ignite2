@@ -1,0 +1,17 @@
+        <ion-view> 
+        <ion-content>
+        <div class="row responsive-md">
+           <div ng-if="manItemSvc.showtop"><nvd3 options="topitemmvmtgraph_options" data="topitem_data"></nvd3></div>
+           <div ng-if="manItemSvc.showbottom"><nvd3 options="bottomitemmvmtgraph_options" data="bottomitem_data"></nvd3></div>        
+        </div>   
+        <div class="row responsive-md" style="margin-left:50px"> 
+          <div class="col col-10"></div> 
+           <div class="col">           
+           <div class="button-bar">
+            <button class="button button-small button-positive" style="max-width:150px" ng-click="showtopfn();">TOP 10</button>
+            <button class="button button-small button-assertive" style="max-width:150px" ng-click="showbottomfn();">LOW 10</button>
+           </div>
+           </div>
+        </div>
+        </ion-content>
+        </ion-view>

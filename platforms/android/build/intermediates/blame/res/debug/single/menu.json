@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\Ignite2\\ignite2\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\menu\\history.xml",
+        "source": "D:\\Ignite2\\ignite2\\platforms\\android\\res\\menu\\history.xml"
+    },
+    {
+        "merged": "D:\\Ignite2\\ignite2\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\menu\\encode.xml",
+        "source": "D:\\Ignite2\\ignite2\\platforms\\android\\res\\menu\\encode.xml"
+    },
+    {
+        "merged": "D:\\Ignite2\\ignite2\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\menu\\capture.xml",
+        "source": "D:\\Ignite2\\ignite2\\platforms\\android\\res\\menu\\capture.xml"
+    }
+]

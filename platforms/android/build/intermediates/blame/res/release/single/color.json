@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\Ignite2\\ignite2\\platforms\\android\\build\\intermediates\\res\\merged\\release\\color\\common_google_signin_btn_text_dark.xml",
+        "source": "D:\\Ignite2\\ignite2\\platforms\\android\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.8.0\\res\\color\\common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "D:\\Ignite2\\ignite2\\platforms\\android\\build\\intermediates\\res\\merged\\release\\color\\common_google_signin_btn_text_light.xml",
+        "source": "D:\\Ignite2\\ignite2\\platforms\\android\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.8.0\\res\\color\\common_google_signin_btn_text_light.xml"
+    }
+]

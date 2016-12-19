@@ -1,0 +1,21 @@
+ <ion-view> 
+ <ion-content>
+  <div class="row responsive-md">
+      <div class="col" ng-controller="manProductivityCntrl">
+          <div ng-if="manProdSvc.showDaily"><nvd3 options="prodgraphdailymob_options" data="prodgraphdaily_data"></nvd3></div>
+          <div ng-if="manProdSvc.showWeekly"><nvd3 options="prodgraphweekly_options" data="prodgraphweekly_data"></nvd3></div>
+          <div ng-if="manProdSvc.showMonthly"><nvd3 options="prodgraphmonthly_options" data="prodgraphmonthly_data"></nvd3></div> 
+      </div>
+  </div>
+  <div class="row responsive-md">
+      <div class="col"></div>
+      <div class = "col-50" ng-controller="manProductivityCntrl">
+        <div class="button-bar">
+          <button class="button button-small button-positive" ng-click="showDailyfn();">Daily</button>
+          <button class="button button-small button-assertive" ng-click="showWeeklyfn();">Weekly</button>
+          <button class="button button-small button-energized" ng-click="showMonthlyfn();">Monthly</button>
+        </div>
+      </div>
+  </div>
+  </ion-content>
+  </ion-view>

@@ -1,0 +1,101 @@
+ <ion-view>   
+ <ion-content> 
+      <div class="row" style="margin-top:10px">
+         <h3 style="text-align:center;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Slot Statistics - {{manSlotSvc.active}}</u></h3>
+      </div>
+        <!--For SSTK Slot-->
+  <div class="col slot-graph-class" ng-if="manSlotSvc.showsstk">   
+     <div class="row" style="margin-top:-20px;margin-bottom:10px;">
+     <h4 >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style="background:#4dff4d">Total SSTK Slots : {{sstktotal}}</h4>
+     </div>
+      <div class="row" style="margin-left:20px;margin-top:-10px">
+           <div class="progress-wrapper" style="width:160px;">
+           <round-progress  max="sstktotal" current="sstkempty_data.count" color="#45ccce" bgcolor="#eaeaea" radius="60" stroke="20" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
+           <div class="text_mob">{{sstkempty_data.count}}</div>
+           <p class="bottom_text_mob">&nbsp&nbspEMPTY {{sstkempty_per}}%</p>
+           </div>
+           <div class="progress-wrapper" style="width:160px;margin-left:50px">
+            <round-progress  max="sstktotal" current="sstkfull_data.count" color="#4295f4" bgcolor="#eaeaea" radius="60" stroke="20" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
+           <div class="text_mob">{{sstkfull_data.count}}</div>                        
+            <p class="bottom_text_mob">&nbsp&nbsp&nbsp&nbspFULL {{sstkfull_per}}%</p>
+           </div>
+      </div>
+       <div class="row" style="margin-top:-5px;margin-left:20px">
+          <div class="progress-wrapper" style="width:160px;">
+           <round-progress  max="sstktotal" current="sstkaudit_data.count" color="#f4d442" bgcolor="#eaeaea" radius="60" stroke="20" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
+           <div class="text_mob">{{sstkaudit_data.count}}</div>                           
+           <p class="bottom_text_mob">&nbsp&nbsp&nbsp&nbspAUDIT {{sstkaudit_per}}%</p>
+           </div>
+           <div class="progress-wrapper" style="width:160px;margin-left:50px">
+           <round-progress  max="sstktotal" current="sstkrotate_data.count" color="#ff8080" bgcolor="#eaeaea" radius="60" stroke="20" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
+           <div class="text_mob">{{sstkrotate_data.count}}</div>                           
+           <p class="bottom_text_mob">&nbsp&nbsp&nbspROTATE {{sstkrotate_per}}%</p>
+           </div>
+        </div>
+       <div class="row" style="margin-top:-5px;margin-left:20px">
+          <div class="progress-wrapper" style="width:160px;">
+           <round-progress  max="sstktotal" current="sstkpartial_data.count" color="#99994d" bgcolor="#eaeaea" radius="60" stroke="20" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
+           <div class="text_mob">{{sstkpartial_data.count}}</div>                           
+           <p class="bottom_text_mob">&nbsp&nbsp&nbspPARTIAL {{sstkpartial_per}}%</p>
+           </div>
+           <div class="progress-wrapper" style="width:160px;margin-left:50px">
+           <round-progress  max="sstktotal" current="sstklock_data.count" color="#b366ff" bgcolor="#eaeaea" radius="60" stroke="20" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
+           <div class="text_mob">{{sstklock_data.count}}</div>                           
+           <p class="bottom_text_mob">&nbsp&nbsp&nbspLOCKED {{sstklock_per}}%</p>
+           </div>
+        </div>
+ </div>     
+    
+        <!--For PBYL Slot-->
+  <div class="col slot-graph-class" ng-if="manSlotSvc.showpbyl">
+     <div class="row" style="margin-top:-20px;margin-bottom:10px;">
+     <h4 >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style="background:#4dff4d">Total PBYL Slots : {{pbyltotal}}</h4>
+     </div>
+      <div class="row" style="margin-left:20px;margin-top:-10px">
+           <div class="progress-wrapper" style="width:160px;">
+           <round-progress  max="pbyltotal" current="pbylempty_data.count" color="#45ccce" bgcolor="#eaeaea" radius="60" stroke="20" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
+           <div class="text_mob">{{pbylempty_data.count}}</div>
+           <p class="bottom_text_mob">&nbsp&nbspEMPTY {{pbylempty_per}}%</p>
+           </div>
+           <div class="progress-wrapper" style="width:160px;margin-left:50px">
+            <round-progress  max="pbyltotal" current="pbylfull_data.count" color="#4295f4" bgcolor="#eaeaea" radius="60" stroke="20" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
+           <div class="text_mob">{{pbylfull_data.count}}</div>                        
+            <p class="bottom_text_mob">&nbsp&nbsp&nbsp&nbspFULL {{pbylfull_per}}%</p>
+           </div>
+      </div>
+       <div class="row" style="margin-top:-5px;margin-left:20px">
+          <div class="progress-wrapper" style="width:160px;">
+           <round-progress  max="pbyltotal" current="pbylaudit_data.count" color="#f4d442" bgcolor="#eaeaea" radius="60" stroke="20" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
+           <div class="text_mob">{{pbylaudit_data.count}}</div>                           
+           <p class="bottom_text_mob">&nbsp&nbsp&nbsp&nbspAUDIT {{pbylaudit_per}}%</p>
+           </div>
+           <div class="progress-wrapper" style="width:160px;margin-left:50px">
+           <round-progress  max="pbyltotal" current="pbylrotate_data.count" color="#ff8080" bgcolor="#eaeaea" radius="60" stroke="20" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
+           <div class="text_mob">{{pbylrotate_data.count}}</div>                           
+           <p class="bottom_text_mob">&nbsp&nbsp&nbspROTATE {{pbylrotate_per}}%</p>
+           </div>
+        </div>
+       <div class="row" style="margin-top:-5px;margin-left:20px">
+          <div class="progress-wrapper" style="width:160px;">
+           <round-progress  max="pbyltotal" current="pbylpartial_data.count" color="#99994d" bgcolor="#eaeaea" radius="60" stroke="20" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
+           <div class="text_mob">{{pbylpartial_data.count}}</div>                           
+           <p class="bottom_text_mob">&nbsp&nbsp&nbspPARTIAL {{pbylpartial_per}}%</p>
+           </div>
+           <div class="progress-wrapper" style="width:160px;margin-left:50px">
+           <round-progress  max="pbyltotal" current="pbyllock_data.count" color="#b366ff" bgcolor="#eaeaea" radius="60" stroke="20" semi="false" rounded="true" clockwise="false" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
+           <div class="text_mob">{{pbyllock_data.count}}</div>                           
+           <p class="bottom_text_mob">&nbsp&nbsp&nbspLOCKED {{pbyllock_per}}%</p>
+           </div>
+        </div>
+  </div>                                                                                          
+        <div class="row responsive-md" style="margin-left:40px;margin-top:-30px">
+           <div class="col col-20"></div>
+            <div class="col" ng-controller="manSlotCntrl">
+             <div class="button-bar">
+               <button class="button button-small button-positive" style="max-width:150px" ng-click="showSSTKfn();">SSTK</button>
+               <button class="button button-small button-assertive" style="max-width:150px" ng-click="showPBYLfn();">PBYL</button>
+            </div>
+          </div>
+      </div>
+      </ion-content>
+   </ion-view>

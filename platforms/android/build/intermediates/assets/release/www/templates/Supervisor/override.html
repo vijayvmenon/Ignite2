@@ -1,0 +1,54 @@
+<ion-view>
+  <ion-content class="grid-basic-page" overflow-scroll="true">
+          <div class="row responsive-sm" style="margin-left:20px;margin-top:10px;margin-bottom:10px">
+           <div class="col" style="margin-top:10px">
+            <span class="u10">Supervisor Override Application</span>
+           </div>
+           <div style="margin-right:10px" class="col" ng-controller="manProductivityCntrl" ng-include="'templates/headerpill.html'"></div>
+        </div>
+
+<div>    
+ <div class="list">
+  <div class="item item-divider" style="background:#b3b3ff">Pending</div>
+   <div class="supervisor-list-animation" ng-repeat="pendingitems in suprvsrArr">
+     <div class="card card-shadow-border">
+      <div style="cursor:pointer;margin-left:20px">
+        <div class="row responsive-md">
+          <div class="col col-30"><span class="u13"> Delivery Number : {{pendingitems.deliveryNbr}}</span></div>
+         <div class="col col-30"><span class="u13">PO Number : {{pendingitems.poNbr}} </span></div>
+         <div class="col col-30"><span class="u13">Item Number : {{pendingitems.itemNbr}}</span></div>
+         </div>
+        <div class="row responsive-md">
+         <div class="col col-30" style="margin-top:10px"><span class="u13">Operator ID : {{pendingitems.userId}}</span></div>
+         <div class="col col-30" style="margin-top:10px"><span class="u13">Comments:{{pendingitems.comment}}</span></div>  
+         <div class="col col-30"><div class="button button-positive button-pill" ng-click="approve(pendingitems);" style="max-width:300px">APPROVE</div></div> 
+         </div> 
+     </div>
+   </div>
+   </div>
+  </div>
+
+   <div class="item item-divider" style="background:#b3b3ff">Approved</div>
+   <label class="item item-input padding">
+       <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-model="searchText" style="background:#f2f2f2;">
+     </label>
+             <!--<input type="text" placeholder=" Search" ng-model="searchText" 
+                  style="width:100%; padding-left:11px;" /> -->
+    <div ng-repeat="appritems in apprvData|filter:searchText track by $index">
+      <div class="item">
+        <div class="row responsive-md">
+          <div class="col col-30"><span class="u13"> Delivery Number : {{appritems.deliveryNbr}}</span></div>
+         <div class="col col-30"><span class="u13">PO Number : {{appritems.poNbr}} </span></div>
+         <div class="col col-30"><span class="u13">Item Number : {{appritems.itemNbr}}</span></div>
+         </div>
+        <div class="row responsive-md">
+         <div class="col col-30"><span class="u13">Operator ID : {{appritems.userId}}</span></div>
+         <div class="col col-30"><span class="u13">Comments:{{appritems.comment}}</span></div>  
+         <div class="col col-30"></div>          
+         </div> 
+      </div>
+   </div>
+</div>
+</ion-content>
+</ion-view>

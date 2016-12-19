@@ -1,0 +1,30 @@
+   <ion-view>
+    <ion-content>
+    <div class="row responsive-md">
+         <div ng-if="manTripSvc.showCasePick" class="slot-graph-class"><nvd3 options="case_options" data="case_data"></nvd3></div>
+         <div ng-if="manTripSvc.showFullPull" class="slot-graph-class"><nvd3 options="full_options" data="full_data"></nvd3></div>
+         <div ng-if="manTripSvc.showChase" class="slot-graph-class"><nvd3 options="chase_options" data="chase_data"></nvd3></div>
+         <div ng-if="manTripSvc.showRegularPbyl" class="slot-graph-class"><nvd3 options="regpbyl_options" data="regpbyl_data"></nvd3></div>
+       </div>
+       <div class="row responsive-sm" style="margin-left:40px"> 
+          <div class="col"></div> 
+           <div class="col">           
+           <div class="button-bar">
+            <button class="button button-small button-positive" style="max-width:150px" ng-click="showcasefn();">CASEPICK</button>
+            <button class="button button-small button-assertive" style="max-width:150px" ng-click="showfullpullfn();">FULLPULL</button>
+           </div>
+           </div>
+          <div class="col"></div> 
+        </div>
+       <div class="row responsive-sm" style="margin-left:40px;margin-top:-60px"> 
+          <div class="col"></div> 
+           <div class="col">           
+           <div class="button-bar">
+            <button class="button button-small button-positive" style="max-width:150px" ng-click="showchasefn();">CHASE</button>
+            <button class="button button-small button-assertive" style="max-width:150px" ng-click="showregpbylfn();">REG PBYL</button>
+           </div>
+           </div>
+          <div class="col"></div> 
+        </div>   
+        </ion-content>
+        </ion-view>

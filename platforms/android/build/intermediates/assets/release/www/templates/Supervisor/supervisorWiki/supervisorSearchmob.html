@@ -1,0 +1,31 @@
+  <ion-view>
+  <ion-content ng-controller="TypeAheadController" class="grid-basic-page" overflow-scroll="true">
+       <section class="home-container">
+        <div class="row responsive-sm" style="margin-left:20px;margin-top:10px">
+           <div class="col" style="margin-top:10px">
+            <span class="u10">Supervisor Dashboard</span>
+           </div>
+         <div class="row responsive-md" style="margin-left:-20px">
+           <span ng-controller="manProductivityCntrl" ng-include="'templates/headerpillmob.html'">
+          </div>
+        </div>
+
+<div class = "row responsive-sm">
+       <h3 style="color: #C44741">Supervisor Wiki</h3>
+ <!-- <label class="item item-input"> -->
+ <div style="display:block">
+  <button class="button button-calm" ng-style="styleonLoad()" ion-autocomplete type="text" readonly="readonly" class="ion-autocomplete" ng-model="model" items-method="getItemPoUser(query)" items-method-value-key="items" cancel-label="Go back" placeholder="Enter Item, PO or UserID" autocomplete="on" max-selected-items="1" items-clicked-method="clickedMethod(callback)" select-items-label="Select Item, PO or User below">Click to Search</button>
+  <button ng-show="showclear" class="button button-balanced" ng-click="showclear=false;" ui-sref="suprvsrApp.search" ui-sref-opts="{reload: true}">Clear</button>
+  </div>
+   <div style="display:block;margin-top:8px">
+  <button class="button button-calm" style="width:100%" ng-click="scanClick()">Click to Scan</button>
+  </div>
+<!--  </label>-->
+</div>
+
+<div ng-if="showitem" class="row responsive-sm sup-wiki-animation" ng-include="'templates/Supervisor/supervisorWiki/itemDetailsmob.html'"></div>
+<div ng-if="showpo" class="row responsive-sm sup-wiki-animation" ng-include="'templates/Supervisor/supervisorWiki/poDetails.html'"></div>
+<div ng-if="showuser" class="row responsive-sm sup-wiki-animation" ng-include="'templates/Supervisor/supervisorWiki/userDetailsmob.html'"></div>
+ </section>
+  </ion-content>
+</ion-view>

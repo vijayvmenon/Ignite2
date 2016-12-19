@@ -1,0 +1,13 @@
+<ion-popover-view class="notify" style="cursor:pointer;border:2px solid #fff;margin-top:0%;top:47px;">
+        <ion-content>  
+
+        <!--Notification for supervisor-->    
+        <div class="list">
+        <div class="item item-divider">Pending Notifications</div>
+          <div class="item" ng-repeat="notif in supNotif">
+              <p style="font-size:12px;">{{notif.text}}</p>
+          </div>
+          </div>
+
+    </ion-content>
+      </ion-popover-view>

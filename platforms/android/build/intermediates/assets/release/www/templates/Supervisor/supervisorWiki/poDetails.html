@@ -1,0 +1,38 @@
+<div ng-controller="poDetailsController">
+<div ng-if="nopo==false">
+<div class="row responsive-sm" style="margin-top:10px;">
+    <div class="col" style="width:450px;height:150px;margin-left:5px;border:1px solid black;">
+       <p class="u13">PO Receiving Status</p>
+       <div style="margin-top:10px;margin-bottom:15px" isteven-omni-bar current-value="rcvqty" max-value="totqty">
+         {{rcvqty}} of {{totqty}} received for PO {{ponbr}} 
+       </div>
+       <p style="margin-top:5px;" class="u13"><span style="float:left">Total Appointments : {{totappts}}</span><span style="float:right"> Total Items : {{totitems}}</span></p>
+    </div>
+    <div class="col" style="width:390px;margin-left:5px;margin-right:5px;border:1px solid black;">
+      <h3 style="text-align:center"><u>ALERTS</u></h3>
+        <ul style="list-style-type:disc;margin-left:20px">
+        <li><h4 class="blink_me" style="color:red">PO {{ponbr}} has 1 Exception for Item 12345</h4></li>
+       <!-- <li><h4 class="blink_me" style="color:red;margin-top:20px"></h4></li>-->
+        </ul>
+   </div>
+    <div class="col" style="width:450px;height:150px;border:1px solid black">
+       <p class="u13">PO Receiving ETA {{etatime}}</p>
+       <div>
+           <countdown autostart="true" colors="flat-colors-black" finish-callback="finished()"></countdown>
+         </div>
+    </div>
+</div>
+
+ <div class="row responsive-sm" style="margin-top:10px">
+ <div class="col">
+ <iframe scrolling="no" style="overflow:hidden;position:absolute;background-color: #f2f0ea;border:none;" width=100% 
+ src="templates/Supervisor/supervisorWiki/poDetailsTable.html" ng-iframe-resizer> </iframe>
+ </div>
+</div>
+</div>
+<div ng-show="nopo==true">
+<p>PO {{ponbr}} not found</p>
+</div>
+</div>
+
+
