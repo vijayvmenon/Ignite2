@@ -1,6 +1,6 @@
 angular.module('ignite2.managerDashboard')
 
-.controller('manProductivityCntrl', ['$scope','$http','$ionicPush','$timeout','$filter','$ionicPopup','localStorageService', 'manProdSvc','$stateParams', '$state','_', function($scope,$http,$ionicPush,$timeout,$filter,$ionicPopup,localStorageService,manProdSvc,$stateParams,$state,_){
+.controller('manProductivityCntrl', ['$scope','$http','$ionicPush','$window','$timeout','$filter','$ionicPopup','localStorageService', 'manProdSvc','$stateParams', '$state','_', function($scope,$http,$ionicPush,$window,$timeout,$filter,$ionicPopup,localStorageService,manProdSvc,$stateParams,$state,_){
 	
 
 
@@ -133,7 +133,7 @@ $scope.prodgraphdaily_data = [
                   return d3.time.format('%m/%d/%y')(new Date(d))
                 },
          tickValues: function(values) {
-      return _.map(values[0].values, function(v) {
+      return $window._.map(values[0].values, function(v) {
       return new Date(v.date);
       })
       },
@@ -242,7 +242,7 @@ $scope.prodgraphdailymob_options = {
       return d3.time.format('%m/%d/%y')(new Date(d))
     },
              tickValues: function(values) {
-      return _.map(values[0].values, function(v) {
+      return $window._.map(values[0].values, function(v) {
       return new Date(v.date);
       })
       },
