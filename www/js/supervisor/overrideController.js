@@ -1,6 +1,6 @@
 angular.module('ignite2.override', ['LocalStorageModule'])
 
-.controller('overrideCntrl', ['$scope','$http','$rootScope','$interval','$ionicPlatform','$cordovaLocalNotification','overrideService','$ionicPopup', '$stateParams', '$state', function($scope,$http,$rootScope,$interval,$ionicPlatform,$cordovaLocalNotification,overrideService,$ionicPopup,$stateParams,$state){
+.controller('overrideCntrl', ['$scope','$http','$rootScope','$timeout','$interval','$ionicPlatform','$cordovaLocalNotification','overrideService','$ionicPopup', '$stateParams', '$state', function($scope,$http,$rootScope,$timeout,$interval,$ionicPlatform,$cordovaLocalNotification,overrideService,$ionicPopup,$stateParams,$state){
 
 $scope.podata=[];  
 $scope.suprvsrArr=[];
@@ -24,8 +24,9 @@ $scope.apprvData=[];
   }
   if($scope.podata[i].overrideStatus == "Y") {
     $scope.apprvData.push($scope.podata[i]);
-  }  
+  } 
  } 
+ $scope.pendingcount=count;
 })
 .error(function() {
   console.log("error!!");
@@ -109,7 +110,7 @@ $scope.getdata();
 
 $rootScope.supOverrideInterval=$interval(function() {
   $scope.getintervaldata();
-},4000)
+},2000)
 
 
 //$scope.$on('$destroy',function(){
@@ -117,11 +118,17 @@ $rootScope.supOverrideInterval=$interval(function() {
 //console.log('interval cancelled');
 //});
 
-
-
+/**
+$scope.runApprove= function() {
+  console.log(new Date());
+  $timeout(function() {
+  },2000);
+}
+**/
 
 var temppodata=[];
 $scope.approve=function(item) {
+  console.log(new Date());
 for (var i=0;i<$scope.podata.length;i++) { 
   //Looping through podata array to find the record matching the one that is approved
   if ($scope.podata[i].poNbr == item.poNbr && $scope.podata[i].itemNbr == item.itemNbr && $scope.podata[i].deliveryNbr == item.deliveryNbr) {

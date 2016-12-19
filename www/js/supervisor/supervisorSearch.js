@@ -66,13 +66,17 @@ $scope.showclear=dataFactory.showclear;
 };
 
 $scope.styleonLoad= function() {
-  if ( $scope.showclear) 
-  styl = {"width":'80%'};  
-else 
-  styl = {"width":'100%'};  
-return styl;
+//  if ( $scope.showclear) 
+ // styl = {"width":'80%'};  
+//else 
+  //styl = {"width":'100%'};  
+//return styl;
 }
 
+$scope.getClass= function() {
+if ($scope.showclear) {return "col col-60";}
+return "col col-75";
+}
 
 
 $scope.url_param=getRandomInt(1,1000);

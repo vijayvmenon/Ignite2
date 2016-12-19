@@ -417,6 +417,7 @@ button > * {
 }
 
 
+
 .supervisor-list-animation.ng-enter-stagger {
   -webkit-animation-delay:1s;
   animation-delay:1s;
@@ -689,10 +690,17 @@ ion-popover-view.notify:before{
 }
 */
 
-
 .button.button-balanced {
     border-color: transparent;
     background-color: #33cd5f;
     color: #fff;
     margin-left: 10px;
+=======
+.errspan {
+    float: right;
+    margin-right: 6px;
+    margin-top: -20px;
+    position: relative;
+    z-index: 2;
+    color: red;
 }

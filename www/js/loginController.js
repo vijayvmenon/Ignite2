@@ -103,13 +103,20 @@ $scope.sendEmail = function(email) {
 
 $scope.pswdreset = function(resetCode,resetPswd) {
   console.log('reached here');
-$ionicAuth.confirmPasswordReset(resetCode,resetPswd);
+$ionicAuth.confirmPasswordReset(resetCode,resetPswd).then(function() {
+  console.log('reset code correct');
             var alertPopup = $ionicPopup.alert({
                 title: 'Password Reset Successfully!!',
             });
-            $scope.closeModal(2);
-            $state.reload('login');
+           $scope.closeModal(2);
+          $state.reload('login');
 $scope.pswdresetclicked=false;
+},function(err) {
+    console.log('reached reset code error');
+            var alertPopup = $ionicPopup.alert({
+                title: 'Incorrect Reset Code',
+            });
+})
 }
 
 }]);

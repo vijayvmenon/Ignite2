@@ -12,7 +12,7 @@
 
 <div>    
  <div class="list">
-  <div class="item item-divider">Pending</div>
+  <div class="item item-divider" style="background:#b3b3ff" ng-show="suprvsrArr.length > 0">Pending</div>
    <div class="supervisor-list-animation" ng-repeat="pendingitems in suprvsrArr">
      <div class="card card-shadow-border">
       <div style="cursor:pointer">
@@ -33,10 +33,14 @@
      </div>
    </div>
    </div>
-  </div>
+  </div>  
 
-   <div class="item item-divider">Approved</div>
-    <div ng-repeat="appritems in apprvData track by $index">
+   <div class="item item-divider" style="background:#b3b3ff">Approved</div>
+      <label class="item item-input padding">
+       <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-model="searchText" style="background:#f2f2f2;">
+     </label>
+    <div ng-repeat="appritems in apprvData |filter:searchText track by $index">
       <div class="item">
         <div class="row">
           <span class="u13"> Delivery Number :<span class="u15"> {{appritems.deliveryNbr}}</span></span>
