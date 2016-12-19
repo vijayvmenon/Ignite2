@@ -1,4 +1,4 @@
-  <ion-view>
+  <ion-view style="background:#E5EAF0;">
     <ion-content ng-controller="TypeAheadController" class="grid-basic-page" overflow-scroll="true">
      <section class="home-container">
       <div class="row responsive-sm" style="margin-left:20px;margin-top:10px">
@@ -8,9 +8,9 @@
       <div style="margin-right:10px;margin-top:2%;" class="col" ng-controller="manProductivityCntrl" ng-include="'templates/headerpill.html'"></div>
     </div>
 
-    <div class = "row responsive-sm">
+    <div class = "row responsive-sm" style="margin-top:-30px">
      <div class="supsearch-container">
-     <h1 style="color:#FFCC00;font-size:26px;font-weight:600;font-family:'Roboto Light', 'Roboto Regular', 'Roboto','Segoe UI';">Supervisor Wiki</h1>
+     <h1 style="color:#f47321;font-size:26px;font-weight:700;font-family:'Roboto Light', 'Roboto Regular', 'Roboto','Segoe UI';">Supervisor Wiki</h1>
        <typeahead items="items" prompt="Search Item,PO or UserID" title="id" subtitle="category" model="name" on-select="onItemSelected()"/>
      </div>
    </div>
