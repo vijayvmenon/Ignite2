@@ -1,19 +1,19 @@
 <ion-view view-title="Login" name="login-view">
-  <ion-content class="padding" style="background-image:url('img/locations-map.png');background-repeat: no-repeat;">
-    <div style="width:34%;height:246px;margin-left:32%;margin-top:13%;border:1px solid #e45562;">
+  <ion-content class="padding" style="background-image:url('img/app_background.jpg');background-repeat:no-repeat;" >
+    <div style="width:34%;height:350px;margin-left:32%;margin-top:5%;border:1px solid #333333;background:white;border-radius:10px;">
       <div class="list list-inset" style="margin-left:14%;width:70%;margin-top:5%;">
-          <label class="item item-input" style="border: 1px solid #e45562;border-radius: 8px;">
+          <label class="item item-input" style="border: 1px solid #333333;border-radius: 8px;">
               <input type="text" placeholder="Username" ng-model="currUser.email">
           </label>
           </div>
           <div class="list list-inset" style="margin-left:14%;width:70%;">
-          <label class="item item-input" style="border: 1px solid #e45562;border-radius: 8px;">
+          <label class="item item-input" style="border: 1px solid #333333;border-radius: 8px;">
               <input type="password" placeholder="Password" ng-model="currUser.password">
           </label>
       </div>
 
            <div class="list list-inset" style="margin-left:14%;width:70%;">
-             <label class="item item-input item-select" style="border: 1px solid #e45562;border-radius: 8px;">
+             <label class="item item-input item-select" style="border: 1px solid #333333;border-radius: 8px;">
               <div class="input-label">Role</div>
                   <select ng-model="userRole">
                    <option>Manager</option>
@@ -21,13 +21,13 @@
                   </select>
             </label>
            </div>
+<button style="width:50%;text-align:center;margin-left:24%;margin-top:40px;border-radius: 14px;background:
+#76c043" class="button button-block button-royal" ng-click="login(currUser,userRole)">Login</button>
       <div>
-      <span><a href style="color:black;font-weight:bold;float:left" ng-click="openModal(1)">New User?</a><a href ng-click="openModal(2)" style="color:black;font-weight:bold;float:right">Forgot Password?</a></span>
+      <span><a href style="color:black;font-weight:bold;float:left;margin-left:7px" ng-click="openModal(1)">New User?</a><a href ng-click="openModal(2)" style="color:black;font-weight:bold;float:right;margin-right:7px">Forgot Password?</a></span>
       </div>
-
-      <button style="width:50%;text-align:center;margin-left:24%;margin-top:40px;border-radius: 14px;" class="button button-block button-royal" ng-click="login(currUser,userRole)">Login</button>
       <div class="row">
-      <img style="text-align:center;margin-left:450px;margin-top:150px" src="img/ignite_logo3.png"/>
+      <img style="text-align:center;margin-left:-100px;margin-top:80px" src="img/homepage.png"/>
     </div>
 
   </ion-content>
